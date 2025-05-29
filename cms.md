@@ -1,5 +1,5 @@
 A **Content Management System (CMS)** should provide a robust set of features to efficiently create, manage, and publish digital content. Here are the key features a modern CMS should have:
-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
+
 ### **1. Core Content Management Features**
 - **User-Friendly Editor** (WYSIWYG or Markdown support)
 - **Multi-Format Support** (HTML, text, images, videos, PDFs, etc.)
