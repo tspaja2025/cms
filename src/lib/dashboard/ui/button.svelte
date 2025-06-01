@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { ButtonProps } from '$lib/dashboard/ui/button-types';
 
 	let {
 		children,
@@ -8,15 +8,9 @@
 		tag = 'button',
 		disabled,
 		class: className = '',
+		onclick,
 		...restProps
-	}: {
-		children: Snippet;
-		href?: string;
-		type?: 'button' | 'submit' | 'reset' | null | undefined;
-		tag?: string;
-		disabled?: boolean;
-		class?: string;
-	} = $props();
+	}: ButtonProps = $props();
 </script>
 
 {#if href}
@@ -33,6 +27,7 @@
 		{type}
 		class="relative flex items-center justify-center px-4 py-2 transition-colors duration-200 hover:bg-neutral-100 disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:opacity-50 {className}"
 		{disabled}
+		{onclick}
 		{...restProps}
 	>
 		{@render children()}
