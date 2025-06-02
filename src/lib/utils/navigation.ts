@@ -50,7 +50,7 @@ export const navigation = [
 	{ name: 'Email', href: '/admin/email' },
 	{ name: 'Chat', href: '/' },
 	{ name: 'Calendar', href: '/admin/calendar' },
-	{ name: 'Kanban', href: '/' },
+	{ name: 'Kanban', href: '/admin/kanban' },
 	{
 		parent: 'Invoice',
 		children: [
