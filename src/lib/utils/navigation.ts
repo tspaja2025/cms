@@ -54,10 +54,10 @@ export const navigation = [
 	{
 		parent: 'Invoice',
 		children: [
-			{ name: 'List', href: '/' },
-			{ name: 'Preview', href: '/' },
-			{ name: 'Edit', href: '/' },
-			{ name: 'Add', href: '/' }
+			{ name: 'List', href: '/admin/invoice/list' },
+			{ name: 'Preview', href: '/admin/invoice/preview' },
+			{ name: 'Edit', href: '/admin/invoice/edit' },
+			{ name: 'Add', href: '/admin/invoice/add' }
 		]
 	},
 	{
