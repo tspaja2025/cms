@@ -3,10 +3,10 @@ export const navigation = [
 		parent: 'Dashboards',
 		children: [
 			{ name: 'CRM', href: '/admin/dashboards/crm' },
-			{ name: 'Analytics', href: '' },
-			{ name: 'eCommerce', href: '/' },
-			{ name: 'Academy', href: '/' },
-			{ name: 'Logistics', href: '/' }
+			{ name: 'Analytics', href: '/admin/dashboards/analytics' },
+			{ name: 'eCommerce', href: '/admin/dashboards/ecommerce' },
+			{ name: 'Academy', href: '/admin/dashboards/academy' },
+			{ name: 'Logistics', href: '/admin/dashboards/logistics' }
 		]
 	},
 	{
@@ -23,21 +23,21 @@ export const navigation = [
 	{
 		parent: 'Ecommerce',
 		children: [
-			{ name: 'Dashboard', href: '/' },
-			{ name: 'Product', href: '/' },
-			{ name: 'Order', href: '/' },
-			{ name: 'Customer', href: '/' },
-			{ name: ' Review', href: '/' },
+			{ name: 'Dashboard', href: '/admin/ecommerce/dashboard' },
+			{ name: 'Product', href: '/admin/ecommerce/product' },
+			{ name: 'Order', href: '/admin/ecommerce/order' },
+			{ name: 'Customer', href: '/admin/ecommerce/customer' },
+			{ name: 'Review', href: '/' },
 			{ name: 'Referrals', href: '/' },
-			{ name: 'Settings', href: '/' }
+			{ name: 'Settings', href: '/admin/ecommerce/settings' }
 		]
 	},
 	{
 		parent: 'Academy',
 		children: [
-			{ name: 'Dashboard', href: '/' },
-			{ name: 'Courses', href: '/' },
-			{ name: 'Course Details', href: '/' }
+			{ name: 'Dashboard', href: '/admin/academy/dashboard' },
+			{ name: 'Courses', href: '/admin/academy/mcourses' },
+			{ name: 'Course Details', href: '/admin/academy/course-details' }
 		]
 	},
 	{
@@ -77,7 +77,7 @@ export const navigation = [
 	{
 		parent: 'Pages',
 		children: [
-			{ name: 'User Profile', href: '/' },
+			{ name: 'User Profile', href: '/admin/pages/user-profile' },
 			{ name: 'Account Settings', href: '/' },
 			{ name: 'Pricing', href: '/' },
 			{ name: 'FAQ', href: '/' },

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import type { ButtonProps } from '$lib/dashboard/ui/button-types';
 
 	let {
@@ -17,6 +18,7 @@
 	<a
 		role="button"
 		class="relative flex items-center justify-center px-4 py-2 transition-colors duration-200 hover:bg-neutral-100 {className}"
+		class:bg-neutral-100={page.url.pathname === href}
 		{href}
 		{...restProps}
 	>

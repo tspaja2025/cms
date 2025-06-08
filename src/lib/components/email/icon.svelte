@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let name: string;
-	export let className: string = 'w-5 h-5';
+	let { name, class: className = 'w-5 h-5' }: { name?: string | undefined; class?: string } =
+		$props();
 
 	// This is a simple icon component that uses Heroicon paths
 	// In a real app, you might use a proper icon library

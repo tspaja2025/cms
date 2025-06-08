@@ -9,10 +9,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
-
 {#if course}
 	<div class="p-8">
 		<!-- Back Button -->

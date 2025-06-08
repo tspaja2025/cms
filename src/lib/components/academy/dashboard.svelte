@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { getDashboardStats, getEnrolledCourses } from '$lib/components/academy/store/data';
 	import { navigateTo } from '$lib/components/academy/store/navigation';
 	import CourseCard from '$lib/components/academy/course-card.svelte';
@@ -6,10 +6,6 @@
 	const stats = getDashboardStats();
 	const recentCourses = getEnrolledCourses().slice(0, 3);
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="p-8">
 	<div class="mb-8">

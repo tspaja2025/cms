@@ -8,10 +8,6 @@
 	let activeTab = 'enrolled';
 </script>
 
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
-
 <div class="p-8">
 	<div class="mb-8">
 		<h1 class="mb-2 text-3xl font-bold text-gray-900">My Courses</h1>
