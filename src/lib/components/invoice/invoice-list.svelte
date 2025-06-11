@@ -5,7 +5,11 @@
 	import { sortInvoices, filterInvoices } from '$lib/components/invoice/utils';
 	import InvoiceCard from '$lib/components/invoice/invoice-card.svelte';
 
-	const { status = 'all' }: InvoiceStatus | 'all' = $props();
+	const {
+		status = 'all'
+	}: {
+		status: InvoiceStatus | 'all';
+	} = $props();
 
 	const filter = $state<InvoiceFilter>({
 		status: status,

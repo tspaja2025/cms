@@ -2,8 +2,13 @@
 	import type { CalendarEvent } from '$lib/components/calendar/types';
 	import { formatEventTime } from '$lib/components/calendar/utils/date-utils';
 
-	export let event: CalendarEvent;
-	export let compact = false;
+	let {
+		event,
+		compact = false
+	}: {
+		event: CalendarEvent;
+		compact: boolean;
+	} = $props();
 
 	const categoryColors = {
 		work: 'bg-blue-100 text-blue-800 border-blue-200',
@@ -38,7 +43,3 @@
 		{/if}
 	</div>
 {/if}
-
-<style>
-	/* Add any component-specific styles here */
-</style>

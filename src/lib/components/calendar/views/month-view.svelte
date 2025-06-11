@@ -55,7 +55,3 @@
 		{/each}
 	</div>
 </div>
-
-<style>
-	/* Add any component-specific styles here */
-</style>

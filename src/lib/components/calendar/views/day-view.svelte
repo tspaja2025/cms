@@ -9,13 +9,15 @@
 	const hours = getHourLabels();
 
 	// Get events for the current day
-	$: dayEvents = $filteredEvents.filter((event) => isSameDay(event.start, $currentDate));
+	const dayEvents = $derived(
+		$filteredEvents.filter((event) => isSameDay(event.start, $currentDate))
+	);
 
 	// All-day events
-	$: allDayEvents = dayEvents.filter((event) => event.allDay);
+	const allDayEvents = $derived(dayEvents.filter((event) => event.allDay));
 
 	// Timed events
-	$: timedEvents = dayEvents.filter((event) => !event.allDay);
+	const timedEvents = $derived(dayEvents.filter((event) => !event.allDay));
 
 	// Calculate event position and height
 	function getEventStyle(event) {
@@ -71,7 +73,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	/* Add any component-specific styles here */
-</style>

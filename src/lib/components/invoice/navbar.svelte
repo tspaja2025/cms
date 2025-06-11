@@ -41,10 +41,7 @@
 				</div>
 			</div>
 
-			<button
-				class="btn btn-primary flex items-center space-x-2"
-				onclick={() => push('/invoices/new')}
-			>
+			<button class="btn btn-primary flex items-center space-x-2" onclick={() => '/invoices/new'}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5"
@@ -61,7 +58,7 @@
 			</button>
 		</div>
 
-		<button class="btn btn-primary md:hidden" onclick={() => push('/invoices/new')}>
+		<button class="btn btn-primary md:hidden" onclick={() => '/invoices/new'} aria-labelledby="new">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-5 w-5"

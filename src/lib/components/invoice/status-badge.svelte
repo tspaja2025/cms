@@ -2,7 +2,11 @@
 	import type { InvoiceStatus } from '$lib/components/invoice/types';
 	import { getStatusLabel, getStatusColorClass } from '$lib/components/invoice/utils';
 
-	export let status: InvoiceStatus;
+	let {
+		status
+	}: {
+		status: InvoiceStatus;
+	} = $props();
 </script>
 
 <span class={`badge ${getStatusColorClass(status)}`}>

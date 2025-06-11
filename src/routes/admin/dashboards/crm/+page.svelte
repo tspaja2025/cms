@@ -1,7 +1,10 @@
 <script>
-	import Button from '$lib/dashboard/ui/button.svelte';
-	import Card from '$lib/dashboard/ui/card.svelte';
+	import Button from '$lib/dashboard/ui/button/button.svelte';
+	import Card from '$lib/dashboard/ui/card/card.svelte';
+	import DropdownMenu from '$lib/dashboard/ui/dropdown-menu/dropdown-menu.svelte';
 	import { EllipsisVerticalIcon } from '@lucide/svelte';
+
+	let open = $state(true);
 </script>
 
 <svelte:head>
@@ -18,9 +21,11 @@
 	<div class="col-span-6">
 		<Card title="Transactions">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
@@ -29,27 +34,33 @@
 	<div class="col-span-3">
 		<Card title="Total Sales">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
 	<div class="col-span-3">
 		<Card title="Revenue Report">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
 	<div class="col-span-6">
 		<Card title="Sales Overview">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
@@ -58,18 +69,22 @@
 	<div class="col-span-6">
 		<Card title="Activity Timeline">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
 	<div class="col-span-4">
 		<Card title="Weekly Sales">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
@@ -81,18 +96,22 @@
 	<div class="col-span-4">
 		<Card title="Upgrade Plan">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>
 	<div class="col-span-4">
 		<Card title="Meeting Schedule">
 			{#snippet actions()}
-				<Button class="rounded-full !px-2">
-					<EllipsisVerticalIcon />
-				</Button>
+				<DropdownMenu icon>
+					<Button>Item 1</Button>
+					<Button>Item 2</Button>
+					<Button>Item 3</Button>
+				</DropdownMenu>
 			{/snippet}
 		</Card>
 	</div>

@@ -1,11 +1,20 @@
 <script lang="ts">
 	import type { KanbanCard as KanbanCardType, Tag } from '$lib/components/kanban/types/types';
-	import { createEventDispatcher } from 'svelte';
 
-	export let card: KanbanCardType;
-	export let isDragging: boolean = false;
+	let {
+		card,
+		dispatch
+	}: {
+		card: KanbanCardType;
+		dispatch: any;
+	} = $props();
 
-	const dispatch = createEventDispatcher();
+	let isDragging = $state(false);
+
+	// export let card: KanbanCardType;
+	// export let isDragging: boolean = false;
+
+	// const dispatch = createEventDispatcher();
 
 	function handleClick() {
 		dispatch('openCard', { cardId: card.id });
@@ -35,8 +44,8 @@
 	class:opacity-70={isDragging}
 	class:scale-105={isDragging}
 	class:shadow-apple-md={isDragging}
-	on:click={handleClick}
-	on:keydown={(e) => e.key === 'Enter' && handleClick()}
+	onclick={handleClick}
+	onkeydown={(e) => e.key === 'Enter' && handleClick()}
 	role="button"
 	tabindex="0"
 >

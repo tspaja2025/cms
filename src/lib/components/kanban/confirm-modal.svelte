@@ -1,13 +1,8 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-	export let title: string;
-	export let message: string;
-	export let confirmText: string = 'Confirm';
-	export let cancelText: string = 'Cancel';
-	export let isDangerous: boolean = false;
-
-	const dispatch = createEventDispatcher();
+	let { title, message, confirmText = 'Confirm', cancelText = 'Cancel', dispatch } = $props();
+	let isDangerous = $state(false);
 
 	function handleConfirm() {
 		dispatch('confirm');
@@ -54,10 +49,19 @@
 
 		<div class="flex justify-end border-t border-neutral-200 p-6">
 			<div class="flex gap-3">
-				<button id="cancel-button" class="btn btn-secondary" on:click={handleCancel}>
+				<button
+					id="cancel-button"
+					class="btn btn-secondary"
+					onclick={handleCancel}
+					aria-labelledby={cancelText}
+				>
 					{cancelText}
 				</button>
-				<button class="btn {isDangerous ? 'btn-danger' : 'btn-primary'}" on:click={handleConfirm}>
+				<button
+					class="btn {isDangerous ? 'btn-danger' : 'btn-primary'}"
+					onclick={handleConfirm}
+					aria-labelledby={confirmText}
+				>
 					{confirmText}
 				</button>
 			</div>

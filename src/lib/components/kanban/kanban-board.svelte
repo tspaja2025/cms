@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { kanbanStore } from '$lib/components/kanban/store/kanban-store';
 	import KanbanColumn from '$lib/components/kanban/kanban-column.svelte';
 	import CardDetailModal from '$lib/components/kanban/card-detail-modal.svelte';
@@ -117,9 +117,9 @@
 		activeCardId = null;
 		activeColumnId = null;
 	}
-</script>
+</script> -->
 
-<div class="flex h-full flex-col">
+<!-- <div class="flex h-full flex-col">
 	<header class="shadow-apple-sm z-10 bg-white p-4">
 		<div class="container mx-auto flex items-center justify-between">
 			<h1 class="text-primary-500 text-2xl font-bold">Kanban Board</h1>
@@ -186,4 +186,4 @@
 		on:confirm={handleConfirmDeleteColumn}
 		on:cancel={() => (deleteColumnId = null)}
 	/>
-{/if}
+{/if} -->

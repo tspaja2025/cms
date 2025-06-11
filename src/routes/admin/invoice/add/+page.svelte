@@ -6,6 +6,4 @@
 	<title>Admin Dashboard</title>
 </svelte:head>
 
-<div>
-	<InvoiceForm />
-</div>
+<InvoiceForm />

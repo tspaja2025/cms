@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { currentDate } from '$lib/components/calendar/stores/calendar';
+	import Button from '$lib/dashboard/ui/button/button.svelte';
 	import {
 		startOfMonth,
 		endOfMonth,
@@ -12,11 +13,11 @@
 		isSameDay
 	} from 'date-fns';
 
-	$: monthStart = startOfMonth($currentDate);
-	$: monthEnd = endOfMonth($currentDate);
-	$: calendarStart = startOfWeek(monthStart);
-	$: calendarEnd = endOfWeek(monthEnd);
-	$: days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
+	const monthStart = $derived(startOfMonth($currentDate));
+	const monthEnd = $derived(endOfMonth($currentDate));
+	const calendarStart = $derived(startOfWeek(monthStart));
+	const calendarEnd = $derived(endOfWeek(monthEnd));
+	const days = $derived(eachDayOfInterval({ start: calendarStart, end: calendarEnd }));
 
 	const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -25,7 +26,7 @@
 	}
 </script>
 
-<div class="mini-calendar">
+<div>
 	<div class="mb-2 text-sm font-medium">
 		{format($currentDate, 'MMMM yyyy')}
 	</div>
@@ -36,24 +37,18 @@
 		{/each}
 
 		{#each days as day, d (d)}
-			<button
-				class="flex h-7 w-7 items-center justify-center rounded-full transition-colors duration-200 {isToday(
-					day
-				)
-					? 'bg-primary-500 text-white'
+			<Button
+				class="h-7 w-7 rounded-full {isToday(day)
+					? 'bg-neutral-500 text-black'
 					: isSameDay(day, $currentDate)
-						? 'bg-primary-100 text-primary-800'
+						? 'bg-neutral-100 text-neutral-800'
 						: isSameMonth(day, $currentDate)
 							? 'hover:bg-gray-100'
 							: 'text-gray-400 hover:bg-gray-100'}"
-				on:click={() => selectDay(day)}
+				onclick={() => selectDay(day)}
 			>
 				{format(day, 'd')}
-			</button>
+			</Button>
 		{/each}
 	</div>
 </div>
-
-<style>
-	/* Add any component-specific styles here */
-</style>

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Button from '$lib/dashboard/ui/button.svelte';
-	import Dropdown from '$lib/dashboard/ui/dropdown.svelte';
+	import Button from '$lib/dashboard/ui/button/button.svelte';
+	import Dropdown from '$lib/dashboard/ui/dropdown/dropdown.svelte';
 	import { MenuIcon, SearchIcon, LanguagesIcon, SunIcon, BellIcon, UserIcon } from '@lucide/svelte';
 	import { navigation } from '$lib/utils/navigation';
-	import Drawer from '$lib/dashboard/ui/drawer.svelte';
+	import Drawer from '$lib/dashboard/ui/drawer/drawer.svelte';
 
-	let { children } = $props();
+	const { children } = $props();
 	let open = $state(true);
 </script>
 
@@ -33,23 +33,23 @@
 	<div class="flex-1">
 		<nav class="flex h-16 w-full items-center px-4">
 			<Button class="rounded-full !px-2" onclick={() => (open = !open)}>
-				<MenuIcon />
+				<MenuIcon class="h-5 w-5" />
 			</Button>
 			<Button class="rounded-full !px-2">
-				<SearchIcon />
+				<SearchIcon class="h-5 w-5" />
 			</Button>
 			<div class="flex-1"></div>
 			<Button class="rounded-full !px-2">
-				<LanguagesIcon />
+				<LanguagesIcon class="h-5 w-5" />
 			</Button>
 			<Button class="rounded-full !px-2">
-				<SunIcon />
+				<SunIcon class="h-5 w-5" />
 			</Button>
 			<Button class="rounded-full !px-2">
-				<BellIcon />
+				<BellIcon class="h-5 w-5" />
 			</Button>
 			<Button class="rounded-full !px-2">
-				<UserIcon />
+				<UserIcon class="h-5 w-5" />
 			</Button>
 		</nav>
 		<div class="h-[calc(100vh-64px)] bg-neutral-100 p-4">
@@ -57,14 +57,3 @@
 		</div>
 	</div>
 </div>
-<!-- Create Calendar app using Svelte 5 and tailwind.
-1. Sidenav
-  1.1 Add event button
-  1.2 Mini calendar
-  1.3 Event filters
-2. header
- 2.1 Previous and Next month buttons
- 2.2 Current Day and Month
- 2.3 Month/Week/Day view
-3. body
-  3.1 Calendar itself -->

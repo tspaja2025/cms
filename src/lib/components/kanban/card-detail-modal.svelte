@@ -1,24 +1,52 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { KanbanCard, KanbanColumn, Tag, TagColor } from '$lib/components/kanban/types/types';
 	import { v4 as uuidv4 } from 'uuid';
 
-	export let cardId: string | null;
-	export let columnId: string;
-	export let columns: KanbanColumn[];
+	let {
+		cardId,
+		columnId,
+		columns,
+		title = '',
+		description = '',
+		tags = [],
+		createdAt = new Date().toISOString(),
+		updatedAt = new Date().toISOString(),
+		newTagName = '',
+		newTagColor = 'primary',
+		dispatch
+	}: {
+		cardId?: string | null;
+		columnId?: string;
+		columns: KanbanColumn[];
+		title?: string;
+		description?: string;
+		tags: Tag[];
+		createdAt?: string;
+		updatedAt?: string;
+		newTagName?: string;
+		newTagColor?: TagColor;
+		dispatch?: any;
+	} = $props();
 
-	const dispatch = createEventDispatcher();
+	// export let cardId: string | null;
+	// export let columnId: string;
+	// export let columns: KanbanColumn[];
 
-	let title = '';
-	let description = '';
-	let tags: Tag[] = [];
-	let createdAt = new Date().toISOString();
-	let updatedAt = new Date().toISOString();
-	let newTagName = '';
-	let newTagColor: TagColor = 'primary';
+	// const dispatch = createEventDispatcher();
 
-	$: isNewCard = cardId === null;
-	$: currentColumn = columns.find((col) => col.id === columnId);
+	// let title = '';
+	// let description = '';
+	// let tags: Tag[] = [];
+	// let createdAt = new Date().toISOString();
+	// let updatedAt = new Date().toISOString();
+	// let newTagName = '';
+	// let newTagColor: TagColor = 'primary';
+
+	// $: isNewCard = cardId === null;
+	// $: currentColumn = columns.find((col) => col.id === columnId);
+	let isNewCard = $derived(cardId === null);
+	let currentColumn = $derived(columns.find((col) => col.id === columnId));
 
 	onMount(() => {
 		if (cardId) {
@@ -143,7 +171,7 @@
 			</h2>
 			<button
 				class="text-2xl text-neutral-500 transition-colors hover:text-neutral-800"
-				on:click={handleClose}
+				onclick={handleClose}
 				aria-label="Close"
 			>
 				×
@@ -185,7 +213,7 @@
 							{tag.name}
 							<button
 								class="hover:text-error-600 ml-1 text-xs transition-colors"
-								on:click={() => removeTag(tag.id)}
+								onclick={() => removeTag(tag.id)}
 								aria-label="Remove tag"
 							>
 								×
@@ -204,7 +232,7 @@
 						class="input flex-1"
 						bind:value={newTagName}
 						placeholder="Add a tag"
-						on:keydown={(e) => e.key === 'Enter' && addTag()}
+						onkeydown={(e) => e.key === 'Enter' && addTag()}
 					/>
 
 					<div class="relative">
@@ -230,7 +258,7 @@
 						</div>
 					</div>
 
-					<button class="btn btn-secondary" on:click={addTag}> Add </button>
+					<button class="btn btn-secondary" onclick={addTag}> Add </button>
 				</div>
 			</div>
 
@@ -244,7 +272,7 @@
 							<div class="relative">
 								<select
 									class="input appearance-none bg-transparent py-1 pr-6 text-xs"
-									on:change={(e) => handleMoveCard(e.currentTarget.value)}
+									onchange={(e) => handleMoveCard(e.currentTarget.value)}
 									value={columnId}
 								>
 									{#each columns as col, colIndex (colIndex)}
@@ -278,13 +306,13 @@
 		<div class="flex justify-between border-t border-neutral-200 p-6">
 			<div>
 				{#if !isNewCard}
-					<button class="btn btn-danger" on:click={handleDelete}> Delete </button>
+					<button class="btn btn-danger" onclick={handleDelete}> Delete </button>
 				{/if}
 			</div>
 
 			<div class="flex gap-3">
-				<button class="btn btn-secondary" on:click={handleClose}> Cancel </button>
-				<button class="btn btn-primary" on:click={handleSave} disabled={!title.trim()}>
+				<button class="btn btn-secondary" onclick={handleClose}> Cancel </button>
+				<button class="btn btn-primary" onclick={handleSave} disabled={!title.trim()}>
 					{isNewCard ? 'Add Card' : 'Save Changes'}
 				</button>
 			</div>

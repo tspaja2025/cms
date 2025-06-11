@@ -1,20 +1,10 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { CardProps } from '$lib/dashboard/ui/card/types';
 
-	let {
-		children,
-		title,
-		subtitle,
-		actions
-	}: {
-		children: Snippet;
-		title?: string;
-		subtitle?: string;
-		actions?: Snippet;
-	} = $props();
+	let { children, title, subtitle, actions }: CardProps = $props();
 </script>
 
-<div class="flex flex-col rounded bg-white">
+<div class="flex flex-col rounded-md bg-white shadow">
 	<div class="flex items-center justify-between px-4 py-2">
 		<div class="flex flex-col">
 			<h3>{title}</h3>

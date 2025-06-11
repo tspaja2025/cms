@@ -1,8 +1,23 @@
 <script lang="ts">
 	import { ChevronDownIcon } from '@lucide/svelte';
-	import { slide } from 'svelte/transition';
+	import type { Snippet } from 'svelte';
+	import { slide, type SlideParams, type TransitionConfig } from 'svelte/transition';
 
-	let { children, title = '', open = $bindable(), params = {}, transition = slide } = $props();
+	type TransitionFunc = (node: HTMLElement, params: SlideParams) => TransitionConfig;
+
+	let {
+		children,
+		title = '',
+		open = $bindable(),
+		params = {},
+		transition = slide
+	}: {
+		children: Snippet;
+		title?: string;
+		open?: boolean;
+		params?: SlideParams;
+		transition?: TransitionFunc;
+	} = $props();
 </script>
 
 <div class="relative">

@@ -4,20 +4,27 @@
 	import { formatCurrency, formatDate, calculateDueDays } from '$lib/components/invoice/utils';
 	import StatusBadge from '$lib/components/invoice/status-badge.svelte';
 
-	export let invoice: Invoice;
+	// export let invoice: Invoice;
+	//
+	let {
+		invoice,
+		...restProps
+	}: {
+		invoice: Invoice;
+	} = $props();
 
 	const dueDays = calculateDueDays(invoice.dueDate);
 	const isPastDue = dueDays < 0;
 
-	const handleClick = () => {
-		push(`/invoices/${invoice.id}`);
-	};
+	// const handleClick = () => {
+	// 	push(`/invoices/${invoice.id}`);
+	// };
 </script>
 
 <div
 	class="card animate-scale-in group cursor-pointer hover:shadow-md"
-	onclick={handleClick}
-	{...$$restProps}
+	onclick={() => '/invoices/${invoice.id}'}
+	{...restProps}
 >
 	<div class="mb-4 flex items-start justify-between">
 		<div>

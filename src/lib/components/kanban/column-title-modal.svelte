@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-	export let title = '';
-	export let isNew = false;
-
-	const dispatch = createEventDispatcher();
+	let { title = '', dispatch } = $props();
+	let isNew = $state(false);
 
 	function handleClose() {
 		dispatch('close');
@@ -48,7 +46,7 @@
 			</h2>
 			<button
 				class="text-2xl text-neutral-500 transition-colors hover:text-neutral-800"
-				on:click={handleClose}
+				onclick={handleClose}
 				aria-label="Close"
 			>
 				×
@@ -72,8 +70,15 @@
 
 		<div class="flex justify-end border-t border-neutral-200 p-6">
 			<div class="flex gap-3">
-				<button class="btn btn-secondary" on:click={handleClose}> Cancel </button>
-				<button class="btn btn-primary" on:click={handleSave} disabled={!title.trim()}>
+				<button class="btn btn-secondary" onclick={handleClose} aria-labelledby="Cancel">
+					Cancel
+				</button>
+				<button
+					class="btn btn-primary"
+					onclick={handleSave}
+					disabled={!title.trim()}
+					aria-labelledby={isNew ? 'Add Column' : 'Save Changes'}
+				>
 					{isNew ? 'Add Column' : 'Save Changes'}
 				</button>
 			</div>

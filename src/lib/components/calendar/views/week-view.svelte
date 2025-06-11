@@ -6,15 +6,15 @@
 	import EventItem from '$lib/components/calendar/views/event-item.svelte';
 
 	// Get the week days
-	$: weekStart = startOfWeek($currentDate);
-	$: weekEnd = endOfWeek($currentDate);
-	$: weekDays = eachDayOfInterval({ start: weekStart, end: weekEnd });
+	const weekStart = $derived(startOfWeek($currentDate));
+	const weekEnd = $derived(endOfWeek($currentDate));
+	const weekDays = $derived(eachDayOfInterval({ start: weekStart, end: weekEnd }));
 
 	// Get the hours for the day
 	const hours = getHourLabels();
 
 	// Function to get events for a specific day
-	function getEventsForDay(day) {
+	function getEventsForDay(day: Date) {
 		return $filteredEvents.filter((event) => isSameDay(event.start, day));
 	}
 
@@ -79,7 +79,3 @@
 		{/each}
 	</div>
 </div>
-
-<style>
-	/* Add any component-specific styles here */
-</style>

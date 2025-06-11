@@ -1,27 +1,29 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import type { CalendarEvent, EventCategory } from '$lib/components/calendar/types';
 	import { addEvent, updateEvent } from '$lib/components/calendar/stores/events';
 
-	const dispatch = createEventDispatcher();
+	let {
+		event = {
+			title: '',
+			description: '',
+			start: new Date(),
+			end: new Date(new Date().setHours(new Date().getHours() + 1)),
+			allDay: false,
+			category: 'work'
+		},
+		isEdit = false,
+		onClose
+	} = $props();
 
-	export let event: Partial<CalendarEvent> = {
-		title: '',
-		description: '',
-		start: new Date(),
-		end: new Date(new Date().setHours(new Date().getHours() + 1)),
-		allDay: false,
-		category: 'work'
-	};
-
-	export let isEdit = false;
-
-	const categories = [
+	const categories = $state([
 		{ id: 'work', name: 'Work' },
 		{ id: 'personal', name: 'Personal' },
 		{ id: 'family', name: 'Family' },
 		{ id: 'other', name: 'Other' }
-	];
+	]);
+
+	const startDateTime = $derived(event.start ? formatDateTimeForInput(event.start) : '');
+	const endDateTime = $derived(event.end ? formatDateTimeForInput(event.end) : '');
 
 	function handleSubmit() {
 		if (!event.title) return;
@@ -39,19 +41,16 @@
 			});
 		}
 
-		dispatch('close');
+		onClose?.();
 	}
 
 	function handleCancel() {
-		dispatch('close');
+		onClose?.();
 	}
 
 	function formatDateTimeForInput(date: Date): string {
 		return date.toISOString().slice(0, 16);
 	}
-
-	$: startDateTime = event.start ? formatDateTimeForInput(event.start) : '';
-	$: endDateTime = event.end ? formatDateTimeForInput(event.end) : '';
 
 	function updateStartDate(e: Event) {
 		const input = e.target as HTMLInputElement;
@@ -69,7 +68,7 @@
 	}
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="space-y-4">
+<form onsubmit={handleSubmit} class="space-y-4">
 	<div>
 		<label for="title" class="mb-1 block text-sm font-medium text-gray-700">Title</label>
 		<input
@@ -113,7 +112,7 @@
 					type="datetime-local"
 					id="start-date"
 					value={startDateTime}
-					on:change={updateStartDate}
+					onchange={updateStartDate}
 					class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none"
 				/>
 			</div>
@@ -124,7 +123,7 @@
 					type="datetime-local"
 					id="end-date"
 					value={endDateTime}
-					on:change={updateEndDate}
+					onchange={updateEndDate}
 					class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none"
 				/>
 			</div>
@@ -136,7 +135,7 @@
 				type="date"
 				id="date"
 				value={event.start ? event.start.toISOString().split('T')[0] : ''}
-				on:change={updateStartDate}
+				onchange={updateStartDate}
 				class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none"
 			/>
 		</div>
@@ -149,14 +148,14 @@
 			bind:value={event.category}
 			class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none"
 		>
-			{#each categories as category (category)}
+			{#each categories as category (category.id)}
 				<option value={category.id}>{category.name}</option>
 			{/each}
 		</select>
 	</div>
 
 	<div class="flex justify-end gap-2 pt-2">
-		<button type="button" on:click={handleCancel} class="btn btn-secondary"> Cancel </button>
+		<button type="button" onclick={handleCancel} class="btn btn-secondary"> Cancel </button>
 		<button type="submit" class="btn btn-primary">
 			{isEdit ? 'Update' : 'Create'} Event
 		</button>

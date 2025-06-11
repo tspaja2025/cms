@@ -33,6 +33,4 @@
 	<title>Admin Dashboard</title>
 </svelte:head>
 
-<div>
-	<InvoiceListComponent {status} />
-</div>
+<InvoiceListComponent {status} />
