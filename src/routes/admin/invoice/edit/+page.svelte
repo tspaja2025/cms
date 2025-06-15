@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	// import { push } from 'svelte-spa-router';
-	import { invoiceStore } from '$lib/components/invoice/store/store';
-	import type { Invoice } from '$lib/components/invoice/types';
-	import InvoiceForm from '$lib/components/invoice/invoice-form.svelte';
+	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import type { Invoice } from '$lib/custom/invoice/types';
+	import InvoiceForm from '$lib/custom/invoice/invoice-form.svelte';
 
 	interface Props {
 		id: string;

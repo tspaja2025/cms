@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import { createState } from 'svelte';
-	import Card from '$lib/components/ecommerce/ui/card.svelte';
+	import Card from '$lib/custom/ecommerce/ui/card.svelte';
 
 	let searchQuery = $state('');
 	let selectedStatus = $state('all');

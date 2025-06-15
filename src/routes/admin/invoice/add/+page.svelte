@@ -1,5 +1,5 @@
 <script lang="ts">
-	import InvoiceForm from '$lib/components/invoice/invoice-form.svelte';
+	import InvoiceForm from '$lib/custom/invoice/invoice-form.svelte';
 </script>
 
 <svelte:head>

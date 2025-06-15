@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getEnrolledCourses, courses } from '$lib/components/academy/store/data';
-	import CourseCard from '$lib/components/academy/course-card.svelte';
+	import { getEnrolledCourses, courses } from '$lib/custom/academy/store/data';
+	import CourseCard from '$lib/custom/academy/course-card.svelte';
 
 	const enrolledCourses = getEnrolledCourses();
 	const availableCourses = courses.filter((course) => !course.enrolled);

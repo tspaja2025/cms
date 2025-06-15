@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { selectedCourseId, navigateTo } from '$lib/components/academy/store/navigation';
-	import { getCourseById } from '$lib/components/academy/store/data';
+	import { selectedCourseId, navigateTo } from '$lib/custom/academy/store/navigation';
+	import { getCourseById } from '$lib/custom/academy/store/data';
 
 	$: course = $selectedCourseId ? getCourseById($selectedCourseId) : null;
 

@@ -1,10 +1,7 @@
 <script>
-	import Button from '$lib/dashboard/ui/button/button.svelte';
-	import Card from '$lib/dashboard/ui/card/card.svelte';
-	import DropdownMenu from '$lib/dashboard/ui/dropdown-menu/dropdown-menu.svelte';
+	import * as Card from '$lib/components/ui/card';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { EllipsisVerticalIcon } from '@lucide/svelte';
-
-	let open = $state(true);
 </script>
 
 <svelte:head>
@@ -13,109 +10,165 @@
 
 <div class="mb-4 grid grid-cols-12 gap-4">
 	<div class="col-span-3">
-		<Card title="Ratings"></Card>
+		<Card.Root>
+			<Card.Header>Ratings</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-3">
-		<Card title="Sessions"></Card>
+		<Card.Root>
+			<Card.Header>Sessions</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-6">
-		<Card title="Transactions">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Transactions
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 </div>
 <div class="mb-4 grid grid-cols-12 gap-4">
 	<div class="col-span-3">
-		<Card title="Total Sales">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Total Sales
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-3">
-		<Card title="Revenue Report">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Revenue Report
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-6">
-		<Card title="Sales Overview">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Sales Overview
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 </div>
 <div class="mb-4 grid grid-cols-12 gap-4">
 	<div class="col-span-6">
-		<Card title="Activity Timeline">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Activity Timeline
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-4">
-		<Card title="Weekly Sales">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Weekly Sales
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-2">
-		<Card title="Sales Overview"></Card>
+		<Card.Root>
+			<Card.Header>Sales Overview</Card.Header>
+		</Card.Root>
 	</div>
 </div>
 <div class="grid grid-cols-12 gap-4">
 	<div class="col-span-4">
-		<Card title="Upgrade Plan">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Upgrade Plan
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-4">
-		<Card title="Meeting Schedule">
-			{#snippet actions()}
-				<DropdownMenu icon>
-					<Button>Item 1</Button>
-					<Button>Item 2</Button>
-					<Button>Item 3</Button>
-				</DropdownMenu>
-			{/snippet}
-		</Card>
+		<Card.Root>
+			<Card.Header class="flex justify-between">
+				Meeting Schedule
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<EllipsisVerticalIcon class="h-5 w-5" />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content class="flex flex-col">
+						<DropdownMenu.Item>Item 1</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 2</DropdownMenu.Item>
+						<DropdownMenu.Item>Item 3</DropdownMenu.Item>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Card.Header>
+		</Card.Root>
 	</div>
 	<div class="col-span-4">
-		<Card title="Overview"></Card>
+		<Card.Root>
+			<Card.Header>Overview</Card.Header>
+		</Card.Root>
 	</div>
 </div>

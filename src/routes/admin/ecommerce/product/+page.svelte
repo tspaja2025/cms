@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Card from '$lib/components/ecommerce/ui/card.svelte';
-	import StatusBadge from '$lib/components/ecommerce/ui/status-badge.svelte';
+	import Card from '$lib/custom/ecommerce/ui/card.svelte';
+	import StatusBadge from '$lib/custom/ecommerce/ui/status-badge.svelte';
 
 	let searchQuery = $state('');
 	let selectedCategory = $state('all');

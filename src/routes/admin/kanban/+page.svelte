@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { kanbanStore } from '$lib/components/kanban/store/kanban-store';
-	import KanbanColumn from '$lib/components/kanban/kanban-column.svelte';
-	import CardDetailModal from '$lib/components/kanban/card-detail-modal.svelte';
-	import ColumnTitleModal from '$lib/components/kanban/column-title-modal.svelte';
-	import ConfirmModal from '$lib/components/kanban/column-title-modal.svelte';
-	// import { v4 as uuidv4 } from 'uuid';
-	import type { KanbanCard } from '$lib/components/kanban/types/types';
+	import { kanbanStore } from '$lib/custom/kanban/store/kanban-store';
+	import KanbanColumn from '$lib/custom/kanban/kanban-column.svelte';
+	import CardDetailModal from '$lib/custom/kanban/card-detail-modal.svelte';
+	import ColumnTitleModal from '$lib/custom/kanban/column-title-modal.svelte';
+	import ConfirmModal from '$lib/custom/kanban/column-title-modal.svelte';
+	import type { KanbanCardType } from '$lib/custom/kanban/types/types';
+
+	import { Button } from '$lib/components/ui/button';
 
 	let {
 		activeCardId = null,
@@ -91,7 +92,7 @@
 		if (activeColumnId) {
 			if (activeCardId) {
 				// Update existing card
-				kanbanStore.updateCard(activeColumnId, card as KanbanCard);
+				kanbanStore.updateCard(activeColumnId, card as KanbanCardType);
 			} else {
 				// Add new card
 				kanbanStore.addCard(activeColumnId, {
@@ -135,7 +136,7 @@
 	<header class="shadow-apple-sm z-10 bg-white p-4">
 		<div class="container mx-auto flex items-center justify-between">
 			<h1 class="text-primary-500 text-2xl font-bold">Kanban Board</h1>
-			<button class="btn btn-primary" onclick={handleAddColumn}>+ Add Column</button>
+			<Button onclick={handleAddColumn}>+ Add Column</Button>
 		</div>
 	</header>
 
@@ -155,13 +156,7 @@
 			{/each}
 
 			<div class="flex w-64 flex-shrink-0 items-start">
-				<button
-					class="rounded-apple w-full bg-neutral-200 px-4 py-3 text-neutral-700 transition-colors
-                 hover:bg-neutral-300"
-					onclick={handleAddColumn}
-				>
-					+ Add Column
-				</button>
+				<Button class="w-full" variant="default" onclick={handleAddColumn}>+ Add Column</Button>
 			</div>
 		</div>
 	</main>

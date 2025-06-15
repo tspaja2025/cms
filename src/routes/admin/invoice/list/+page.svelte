@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	// import { location } from 'svelte-spa-router';
-	import InvoiceListComponent from '$lib/components/invoice/invoice-list.svelte';
-	import type { InvoiceStatus } from '$lib/components/invoice/types';
+	import InvoiceListComponent from '$lib/custom/invoice/invoice-list.svelte';
+	import type { InvoiceStatus } from '$lib/custom/invoice/types';
 
 	let status = $state<InvoiceStatus | 'all'>('all');
 
@@ -16,17 +15,6 @@
 			status = 'all';
 		}
 	});
-
-	// $: {
-	// 	const params = new URLSearchParams($location.split('?')[1] || '');
-	// 	const statusParam = params.get('status') as InvoiceStatus | null;
-
-	// 	if (statusParam && ['draft', 'sent', 'paid', 'overdue'].includes(statusParam)) {
-	// 		status = statusParam;
-	// 	} else {
-	// 		status = 'all';
-	// 	}
-	// }
 </script>
 
 <svelte:head>

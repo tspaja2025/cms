@@ -1,7 +1,7 @@
 <script>
-	import { getDashboardStats, getEnrolledCourses } from '$lib/components/academy/store/data';
-	import { navigateTo } from '$lib/components/academy/store/navigation';
-	import CourseCard from '$lib/components/academy/course-card.svelte';
+	import { getDashboardStats, getEnrolledCourses } from '$lib/custom/academy/store/data';
+	import { navigateTo } from '$lib/custom/academy/store/navigation';
+	import CourseCard from '$lib/custom/academy/course-card.svelte';
 
 	const stats = getDashboardStats();
 	const recentCourses = getEnrolledCourses().slice(0, 3);

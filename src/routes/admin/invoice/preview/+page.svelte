@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	// import { push, pop, location } from 'svelte-spa-router';
-	import { invoiceStore } from '$lib/components/invoice/store/store';
-	import type { Invoice } from '$lib/components/invoice/types';
+	import { goto } from '$app/navigation';
+	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import type { Invoice } from '$lib/custom/invoice/types';
 	import {
 		formatCurrency,
 		formatDate,
 		getStatusLabel,
 		getStatusColorClass
-	} from '$lib/components/invoice/utils';
-	import StatusBadge from '$lib/components/invoice/status-badge.svelte';
+	} from '$lib/custom/invoice/utils';
+	import StatusBadge from '$lib/custom/invoice/status-badge.svelte';
 
 	interface Props {
 		id: string;
@@ -53,7 +53,7 @@
 	}
 
 	function handleEdit() {
-		push(`/invoices/${id}/edit`);
+		goto(`/invoices/${id}/edit`);
 	}
 
 	function handleDelete() {
@@ -61,7 +61,7 @@
 
 		if (confirm('Are you sure you want to delete this invoice?')) {
 			invoiceStore.delete(invoice.id);
-			push('/invoices');
+			goto('/invoices');
 		}
 	}
 

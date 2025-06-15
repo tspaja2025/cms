@@ -1,7 +1,8 @@
 <script>
-	import Button from '$lib/dashboard/ui/button/button.svelte';
-	import Checkbox from '$lib/dashboard/ui/checkbox/checkbox.svelte';
-	import TextField from '$lib/dashboard/ui/input/text-field.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { Checkbox } from '$lib/components/ui/checkbox';
+	import { Label } from '$lib/components/ui/label';
+	import { Input } from '$lib/components/ui/input';
 	import { FacebookIcon, TwitterIcon } from '@lucide/svelte';
 	// Change
 </script>
@@ -22,22 +23,44 @@
 	<div class="mt-8 w-92">
 		<div class="rounded-md bg-white px-4 py-8 shadow">
 			<form class="space-y-6" action="/admin">
-				<TextField
+				<div>
+					<Label for="email">Email:</Label>
+					<Input
+						type="email"
+						name="email"
+						autocomplete="email"
+						placeholder="Enter your email address"
+					/>
+				</div>
+				<div>
+					<Label for="password">Password:</Label>
+					<Input
+						type="password"
+						name="password"
+						autocomplete="current-password"
+						placeholder="Enter your password"
+					/>
+				</div>
+				<!-- <TextField
 					label="Email:"
 					autocomplete="email"
 					name="email"
 					placeholder="Enter your email address"
-				/>
+				/> -->
 
-				<TextField
+				<!-- <TextField
 					label="Password:"
 					autocomplete="current-password"
 					name="passowrd"
 					placeholder="Enter your password"
-				/>
+				/> -->
 
 				<div class="flex items-center justify-between">
-					<Checkbox label="Remember me" name="remember_me" />
+					<div class="flex items-center gap-3">
+						<Checkbox id="remember_me" />
+						<Label for="remember_me">Remember me</Label>
+					</div>
+					<!-- <Checkbox label="Remember me" name="remember_me" /> -->
 
 					<div class="text-sm">
 						<a href="/" class="font-medium text-blue-500 hover:text-blue-600">

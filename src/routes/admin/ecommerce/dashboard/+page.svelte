@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Card from '$lib/components/ecommerce/ui/card.svelte';
-	import SalesChart from '$lib/components/ecommerce/dashboard/sales-chart.svelte';
-	import RecentOrders from '$lib/components/ecommerce/dashboard/recent-orders.svelte';
-	import TopProducts from '$lib/components/ecommerce/dashboard/top-products.svelte';
-	import Stats from '$lib/components/ecommerce/ui/stats.svelte';
+	import Card from '$lib/custom/ecommerce/ui/card.svelte';
+	import SalesChart from '$lib/custom/ecommerce/dashboard/sales-chart.svelte';
+	import RecentOrders from '$lib/custom/ecommerce/dashboard/recent-orders.svelte';
+	import TopProducts from '$lib/custom/ecommerce/dashboard/top-products.svelte';
+	import Stats from '$lib/custom/ecommerce/ui/stats.svelte';
 </script>
 
 <svelte:head>
