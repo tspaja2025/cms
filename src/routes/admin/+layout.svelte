@@ -2,6 +2,7 @@
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import * as Sidebar from '$lib/components/ui/sidebar';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import {
 		SearchIcon,
 		LanguagesIcon,
@@ -11,6 +12,7 @@
 		ChevronRightIcon
 	} from '@lucide/svelte';
 	import { navigation } from '$lib/navigation';
+	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
 
 	const { children } = $props();
 </script>
@@ -80,9 +82,16 @@
 			<Button variant="outline">
 				<BellIcon class="h-5 w-5" />
 			</Button>
-			<Button variant="outline">
-				<UserIcon class="h-5 w-5" />
-			</Button>
+			<DropdownMenu.Root>
+				<DropdownMenu.Trigger class={buttonVariants({ variant: 'outline'})}>
+					<UserIcon class="h-5 w-5" />
+				</DropdownMenu.Trigger>
+				<DropdownMenu.Content>
+					<DropdownMenu.Item>Profile</DropdownMenu.Item>
+					<DropdownMenu.Item>Settings</DropdownMenu.Item>
+					<DropdownMenu.Item>Sign Out</DropdownMenu.Item>
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
 		</nav>
 		<div class="h-[calc(100vh-64px)] bg-neutral-100 p-4">
 			{@render children()}

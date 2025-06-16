@@ -1,4 +1,6 @@
 <script lang="ts">
+	import * as Table from '$lib/components/ui/table';
+	import { Button } from '$lib/components/ui/button';
 	import StatusBadge from '$lib/custom/ecommerce/ui/status-badge.svelte';
 
 	// Sample data
@@ -70,75 +72,39 @@
 	}
 </script>
 
-<div class="overflow-x-auto">
-	<table class="min-w-full divide-y divide-gray-200">
-		<thead class="bg-gray-50">
-			<tr>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Order ID
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Customer
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Date
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Total
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Status
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-right text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Actions
-				</th>
-			</tr>
-		</thead>
-		<tbody class="divide-y divide-gray-200 bg-white">
-			{#each orders as order, orderIndex (orderIndex)}
-				<tr class="transition-colors hover:bg-gray-50">
-					<td class="text-primary-600 px-6 py-4 text-sm font-medium whitespace-nowrap">
-						{order.id}
-					</td>
-					<td class="px-6 py-4 whitespace-nowrap">
-						<div class="text-sm font-medium text-gray-900">{order.customer}</div>
-						<div class="text-sm text-gray-500">{order.email}</div>
-					</td>
-					<td class="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
-						{formatDate(order.date)}
-					</td>
-					<td class="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
-						{formatCurrency(order.total)}
-					</td>
-					<td class="px-6 py-4 whitespace-nowrap">
-						<StatusBadge status={order.status} />
-					</td>
-					<td class="px-6 py-4 text-right text-sm font-medium whitespace-nowrap">
-						<button class="text-primary-600 dark:text-primary-400 hover:text-primary-900 mr-3">
-							View
-						</button>
-						<button class="text-gray-600 hover:text-gray-900"> Edit </button>
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
+<Table.Root>
+    <Table.Header>
+      <Table.Row>
+        <Table.Head>Order ID</Table.Head>
+        <Table.Head>Customer</Table.Head>
+        <Table.Head>Date</Table.Head>
+        <Table.Head>Total</Table.Head>
+        <Table.Head>Status</Table.Head>
+        <Table.Head class="text-right">Actions</Table.Head>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      {#each orders as order}
+        <Table.Row>
+          <Table.Cell class="font-medium">{order.id}</Table.Cell>
+          <Table.Cell>
+            <div class="font-medium">{order.customer}</div>
+            <div class="text-muted-foreground">{order.email}</div>
+          </Table.Cell>
+          <Table.Cell class="text-muted-foreground">{formatDate(order.date)}</Table.Cell>
+          <Table.Cell>{formatCurrency(order.total)}</Table.Cell>
+          <Table.Cell>
+            <StatusBadge status={order.status} />
+          </Table.Cell>
+          <Table.Cell class="text-right">
+            <Button variant="link" class="text-primary hover:text-primary/90 mr-2">
+              View
+            </Button>
+            <Button variant="link" class="text-muted-foreground hover:text-foreground">
+              Edit
+            </Button>
+          </Table.Cell>
+        </Table.Row>
+      {/each}
+    </Table.Body>
+  </Table.Root>

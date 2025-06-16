@@ -41,26 +41,12 @@
 						placeholder="Enter your password"
 					/>
 				</div>
-				<!-- <TextField
-					label="Email:"
-					autocomplete="email"
-					name="email"
-					placeholder="Enter your email address"
-				/> -->
-
-				<!-- <TextField
-					label="Password:"
-					autocomplete="current-password"
-					name="passowrd"
-					placeholder="Enter your password"
-				/> -->
 
 				<div class="flex items-center justify-between">
 					<div class="flex items-center gap-3">
 						<Checkbox id="remember_me" />
 						<Label for="remember_me">Remember me</Label>
 					</div>
-					<!-- <Checkbox label="Remember me" name="remember_me" /> -->
 
 					<div class="text-sm">
 						<a href="/" class="font-medium text-blue-500 hover:text-blue-600">

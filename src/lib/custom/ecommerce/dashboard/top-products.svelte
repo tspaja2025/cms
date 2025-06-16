@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Table from '$lib/components/ui/table';
 	import StatusBadge from '$lib/custom/ecommerce/ui/status-badge.svelte';
 
 	// Sample data
@@ -64,74 +65,39 @@
 	}
 </script>
 
-<div class="overflow-x-auto">
-	<table class="min-w-full divide-y divide-gray-200">
-		<thead class="bg-gray-50">
-			<tr>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Product
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Price
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Sold
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Revenue
-				</th>
-				<th
-					scope="col"
-					class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-				>
-					Status
-				</th>
-			</tr>
-		</thead>
-		<tbody class="divide-y divide-gray-200 bg-white">
-			{#each products as product, productIndex (productIndex)}
-				<tr class="transition-colors hover:bg-gray-50">
-					<td class="px-6 py-4 whitespace-nowrap">
-						<div class="flex items-center">
-							<div class="h-10 w-10 flex-shrink-0">
-								<img
-									class="h-10 w-10 rounded-md object-cover"
-									src={product.image}
-									alt={product.name}
-								/>
-							</div>
-							<div class="ml-4">
-								<div class="text-sm font-medium text-gray-900">{product.name}</div>
-								<div class="text-sm text-gray-500">ID: #{product.id}</div>
-							</div>
-						</div>
-					</td>
-					<td class="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-						{formatCurrency(product.price)}
-					</td>
-					<td class="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-						{product.sold.toLocaleString()}
-					</td>
-					<td class="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
-						{formatCurrency(product.revenue)}
-					</td>
-					<td class="px-6 py-4 whitespace-nowrap">
-						<StatusBadge status={product.status} />
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
+<Table.Root>
+    <Table.Header>
+      <Table.Row>
+        <Table.Head>Product</Table.Head>
+        <Table.Head>Price</Table.Head>
+        <Table.Head>Sold</Table.Head>
+        <Table.Head>Revenue</Table.Head>
+        <Table.Head>Status</Table.Head>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      {#each products as product (product.id)}
+        <Table.Row class="hover:bg-muted/50">
+          <Table.Cell class="font-medium">
+            <div class="flex items-center gap-4">
+              <img
+                class="h-10 w-10 rounded-md object-cover"
+                src={product.image}
+                alt={product.name}
+              />
+              <div>
+                <div>{product.name}</div>
+                <div class="text-sm text-muted-foreground">ID: #{product.id}</div>
+              </div>
+            </div>
+          </Table.Cell>
+          <Table.Cell>{formatCurrency(product.price)}</Table.Cell>
+          <Table.Cell>{product.sold.toLocaleString()}</Table.Cell>
+          <Table.Cell class="font-medium">{formatCurrency(product.revenue)}</Table.Cell>
+          <Table.Cell>
+			<StatusBadge status={product.status} />
+          </Table.Cell>
+        </Table.Row>
+      {/each}
+    </Table.Body>
+  </Table.Root>

@@ -2,11 +2,11 @@ export const navigation = [
 	{
 		parent: 'Dashboards',
 		children: [
-			{ name: 'CRM', href: '' },
-			{ name: 'Analytics', href: '' },
-			{ name: 'eCommerce', href: '' },
-			{ name: 'Academy', href: '' },
-			{ name: 'Logistics', href: '' }
+			{ name: 'CRM', href: '/admin/dashboards/crm' },
+			{ name: 'Analytics', href: '/admin/dashboards/analytics' },
+			{ name: 'eCommerce', href: '/admin/dashboards/ecommerce' },
+			{ name: 'Academy', href: '/admin/dashboards/academy' },
+			{ name: 'Logistics', href: '/admin/dashboards/logistics' }
 		]
 	},
 	{
@@ -56,9 +56,8 @@ export const navigation = [
 	{
 		parent: 'Academy',
 		children: [
-			{ name: 'Dashboard', href: '' },
-			{ name: 'My Courses', href: '' },
-			{ name: 'Course Details', href: '' }
+			{ name: 'Dashboard', href: '/admin/academy/dashboard' },
+			{ name: 'My Courses', href: '/admin/academy/courses' },
 		]
 	},
 	{
@@ -68,10 +67,10 @@ export const navigation = [
 			{ name: 'Fleet', href: '' }
 		]
 	},
-	{ name: 'Email', href: '' },
+	{ name: 'Email', href: '/admin/email' },
 	{ name: 'Chat', href: '' },
-	{ name: 'Calendar', href: '' },
-	{ name: 'Kanban', href: '' },
+	{ name: 'Calendar', href: '/admin/calendar' },
+	{ name: 'Kanban', href: '/admin/kanban' },
 	{
 		parent: 'Invoice',
 		children: [
@@ -98,7 +97,7 @@ export const navigation = [
 	{
 		parent: 'Pages',
 		children: [
-			{ name: 'User Profile', href: '' },
+			{ name: 'User Profile', href: '/admin/pages/user-profile' },
 			{ name: 'Account Settings', href: '' },
 			{ name: 'FAQ', href: '' },
 			{ name: 'Pricing', href: '' },

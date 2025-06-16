@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { browser } from '$app/environment'; 
+	// import { Card } from '$lib/components/ui/card';
 	import Card from '$lib/custom/ecommerce/ui/card.svelte';
-	import SalesChart from '$lib/custom/ecommerce/dashboard/sales-chart.svelte';
+	// import SalesChart from '$lib/custom/ecommerce/dashboard/sales-chart.svelte';
 	import RecentOrders from '$lib/custom/ecommerce/dashboard/recent-orders.svelte';
 	import TopProducts from '$lib/custom/ecommerce/dashboard/top-products.svelte';
 	import Stats from '$lib/custom/ecommerce/ui/stats.svelte';
@@ -59,9 +61,9 @@
 	</div>
 
 	<!-- Sales Chart -->
-	<Card>
-		<SalesChart />
-	</Card>
+	<!-- <Card> -->
+		<!-- <SalesChart /> -->
+	<!-- </Card> -->
 
 	<!-- Orders and Products -->
 	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">

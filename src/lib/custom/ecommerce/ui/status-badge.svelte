@@ -1,5 +1,7 @@
 <script lang="ts">
-	export let status: string;
+	import { Badge } from '$lib/components/ui/badge';
+
+	let {status} = $props();
 
 	// Define badge styles based on status
 	const getBadgeClass = (status: string) => {
@@ -26,6 +28,6 @@
 	};
 </script>
 
-<span class="badge {getBadgeClass(status)}">
+<Badge class={getBadgeClass(status)}>
 	{status}
-</span>
+</Badge>

@@ -21,14 +21,13 @@
 	</div>
 
 	<div class="chart-container">
-		<!-- <Chart options={chartData.options} series={chartData.series} type={chartType} height={350} /> -->
 		<div
-			use:chart={{
-				options: chartData.options,
-				series: chartData.series,
-				type: chartType,
-				height: 350
-			}}
+		use:chart={{
+			options: chartData.options,
+			series: chartData.series,
+			type: chartType,
+			height: 350
+		}}
 		></div>
 	</div>
 </div>
