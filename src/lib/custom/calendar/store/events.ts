@@ -1,6 +1,41 @@
 import { writable, derived } from 'svelte/store';
-import type { CalendarEvent, EventCategory } from '$lib/custom/calendar/types';
-import { isSameDay } from 'date-fns';
+import {
+	CalendarDate,
+	CalendarDateTime,
+	isSameDay,
+	toCalendarDateTime,
+	ZonedDateTime
+} from '@internationalized/date';
+
+interface CalendarEvent {
+	id: string;
+	title: string;
+	description?: string;
+	start: CalendarDateTime;
+	end: CalendarDateTime;
+	allDay: boolean;
+	category: EventCategory;
+}
+
+type EventCategory = 'work' | 'personal' | 'family' | 'other';
+
+// Helper function to create a CalendarDateTime from a Date
+function dateToCalendarDateTime(date: Date): CalendarDateTime {
+	return new CalendarDateTime(
+		date.getFullYear(),
+		date.getMonth() + 1,
+		date.getDate(),
+		date.getHours(),
+		date.getMinutes(),
+		date.getSeconds(),
+		date.getMilliseconds()
+	);
+}
+
+// Helper function to create an all-day CalendarDateTime from a Date
+function dateToAllDayCalendarDate(date: Date): CalendarDate {
+	return new CalendarDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
+}
 
 // Initial sample events
 const initialEvents: CalendarEvent[] = [
@@ -8,8 +43,8 @@ const initialEvents: CalendarEvent[] = [
 		id: '1',
 		title: 'Team Meeting',
 		description: 'Weekly team sync',
-		start: new Date(new Date().setHours(10, 0, 0, 0)),
-		end: new Date(new Date().setHours(11, 0, 0, 0)),
+		start: dateToCalendarDateTime(new Date(new Date().setHours(10, 0, 0, 0))),
+		end: dateToCalendarDateTime(new Date(new Date().setHours(11, 0, 0, 0))),
 		allDay: false,
 		category: 'work'
 	},
@@ -17,8 +52,8 @@ const initialEvents: CalendarEvent[] = [
 		id: '2',
 		title: 'Lunch with Sarah',
 		description: 'Discuss project collaboration',
-		start: new Date(new Date().setHours(12, 30, 0, 0)),
-		end: new Date(new Date().setHours(13, 30, 0, 0)),
+		start: dateToCalendarDateTime(new Date(new Date().setHours(12, 30, 0, 0))),
+		end: dateToCalendarDateTime(new Date(new Date().setHours(13, 30, 0, 0))),
 		allDay: false,
 		category: 'personal'
 	},
@@ -26,12 +61,17 @@ const initialEvents: CalendarEvent[] = [
 		id: '3',
 		title: 'Doctor Appointment',
 		description: 'Annual check-up',
-		start: new Date(new Date().setDate(new Date().getDate() + 2)),
-		end: new Date(new Date().setDate(new Date().getDate() + 2)),
+		start: dateToAllDayCalendarDate(new Date(new Date().setDate(new Date().getDate() + 2))),
+		end: dateToAllDayCalendarDate(new Date(new Date().setDate(new Date().getDate() + 2))),
 		allDay: true,
 		category: 'personal'
 	}
-];
+].map((event) => ({
+	...event,
+	// Convert CalendarDate to CalendarDateTime for all-day events
+	start: event.allDay ? toCalendarDateTime(event.start as CalendarDate) : event.start,
+	end: event.allDay ? toCalendarDateTime(event.end as CalendarDate) : event.end
+}));
 
 // Create event store
 export const events = writable<CalendarEvent[]>(initialEvents);
@@ -48,8 +88,16 @@ export const filteredEvents = derived([events, categoryFilters], ([$events, $cat
 });
 
 // Function to get events for a specific day
-export function getEventsForDay(date: Date, eventList: CalendarEvent[]) {
-	return eventList.filter((event) => isSameDay(event.start, date));
+export function getEventsForDay(date: CalendarDate, eventList: CalendarEvent[]) {
+	return eventList.filter((event) => {
+		// Convert CalendarDate to CalendarDateTime for comparison if needed
+		const eventDate =
+			event.start instanceof CalendarDateTime || event.start instanceof ZonedDateTime
+				? event.start
+				: new CalendarDateTime(date.year, date.month, date.day);
+
+		return isSameDay(eventDate, date);
+	});
 }
 
 // Function to add a new event

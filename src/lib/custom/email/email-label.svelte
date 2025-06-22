@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { labels } from '$lib/custom/email/store/email-store';
+	import { labels } from '$lib/custom/email/store/email';
 
 	export let labelId: string;
 

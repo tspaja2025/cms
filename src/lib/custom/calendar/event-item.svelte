@@ -1,14 +1,21 @@
 <script lang="ts">
-	import type { CalendarEvent } from '$lib/custom/calendar/types';
-	import { formatEventTime } from '$lib/custom/calendar/utils/date-utils';
+	import { formatEventTime } from '$lib/custom/calendar/store/utils';
+	import type { CalendarDateTime } from '@internationalized/date';
 
-	let {
-		event,
-		compact = false
-	}: {
-		event: CalendarEvent;
-		compact: boolean;
-	} = $props();
+	interface CalendarEvent {
+		id: string;
+		title: string;
+		description?: string;
+		start: CalendarDateTime;
+		end: CalendarDateTime;
+		allDay: boolean;
+		category: EventCategory;
+	}
+
+	type EventCategory = 'work' | 'personal' | 'family' | 'other';
+
+	export let event: CalendarEvent;
+	export let compact = false;
 
 	const categoryColors = {
 		work: 'bg-blue-100 text-blue-800 border-blue-200',
