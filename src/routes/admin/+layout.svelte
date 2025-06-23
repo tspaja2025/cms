@@ -103,19 +103,19 @@
 	<div class="flex-1">
 		<nav class="flex h-16 w-full items-center gap-2 px-4 border-b border-(--sidebar-border) bg-(--sidebar)">
 			<Sidebar.Trigger class="!px-5 {buttonVariants({ variant: 'outline' })}" />
-			<Button variant="outline">
+			<Button variant="outline" aria-labelledby="search">
 				<SearchIcon class="h-5 w-5" />
 			</Button>
 			<div class="flex-1"></div>
-			<Button variant="outline">
+			<Button variant="outline"  aria-labelledby="language">
 				<LanguagesIcon class="h-5 w-5" />
 			</Button>
-			<Button variant="outline" onclick={toggleMode}>
+			<Button variant="outline" onclick={toggleMode}  aria-labelledby="darkMode">
 				<SunIcon class="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
 				<MoonIcon class="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 				<span class="sr-only">Toggle theme</span>
 			</Button>
-			<Button variant="outline">
+			<Button variant="outline" aria-labelledby="notifications">
 				<BellIcon class="h-5 w-5" />
 			</Button>
 			<DropdownMenu.Root>

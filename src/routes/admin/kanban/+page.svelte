@@ -5,8 +5,8 @@
   import ColumnTitleModal from "$lib/custom/kanban/column-title-modal.svelte";
   import ConfirmModal from "$lib/custom/kanban/column-title-modal.svelte";
   import type { KanbanCardType } from "$lib/custom/kanban/types/types";
-
   import { Button } from "$lib/components/ui/button";
+  import PlusIcon from '@lucide/svelte/icons/plus';
 
   let {
     activeCardId = null,
@@ -134,18 +134,12 @@
 
 <svelte:head>
   <title>Admin Dashboard</title>
+	<meta name="description" content="Kanban Board"/>
 </svelte:head>
 
 <div class="flex h-full flex-col">
-  <header class="shadow-apple-sm z-10 bg-white p-4">
-    <div class="container mx-auto flex items-center justify-between">
-      <h1 class="text-primary-500 text-2xl font-bold">Kanban Board</h1>
-      <Button onclick={handleAddColumn}>+ Add Column</Button>
-    </div>
-  </header>
-
-  <main class="flex-1 overflow-x-auto px-4 py-6">
-    <div class="flex min-h-[500px] gap-6 pb-8">
+  <main class="flex-1 overflow-x-auto">
+    <div class="flex min-h-[500px] gap-4 pb-8">
       {#each $kanbanStore as column (column.id)}
         <KanbanColumn
           {column}
@@ -161,7 +155,7 @@
 
       <div class="flex w-64 flex-shrink-0 items-start">
         <Button class="w-full" variant="default" onclick={handleAddColumn}
-          >+ Add Column</Button
+          ><PlusIcon/> Add Column</Button
         >
       </div>
     </div>

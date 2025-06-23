@@ -1,8 +1,9 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
 	import { cn } from '$lib/utils';
 	import type { KanbanCardType, Tag } from '$lib/custom/kanban/types/types';
 	import { createEventDispatcher } from 'svelte';
+	import * as Card from '$lib/components/ui/card';
+	import { Badge } from '$lib/components/ui/badge';
 
 	export let card: KanbanCardType;
 	export let isDragging: boolean = false;
@@ -42,26 +43,21 @@
 	role="button"
 	tabindex={0}
 >
-	<Card.Content class="space-y-2 p-4">
-		<Card.Header>
-			<Card.Title>{card.title}</Card.Title>
-			<Card.Description>
-				{#if card.description}
-					{card.description}
-				{/if}
-			</Card.Description>
-		</Card.Header>
+	<Card.Header>
+		<Card.Title>{card.title}</Card.Title>
+		{#if card.description}
+		<Card.Description>
+			{card.description}
+		</Card.Description>
+		{/if}
+	</Card.Header>
+	<Card.Content class="space-y-2">
 		{#if card.tags.length > 0}
-			<div class="flex flex-wrap gap-1 py-1">
+			<div class="flex flex-wrap gap-1">
 				{#each card.tags as tag}
-					<span
-						class={cn(
-							'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
-							getTagColorClass(tag.color)
-						)}
-					>
+					<Badge class={getTagColorClass(tag.color)}>
 						{tag.name}
-					</span>
+					</Badge>
 				{/each}
 			</div>
 		{/if}

@@ -3,8 +3,12 @@
 	import { dndzone } from 'svelte-dnd-action';
 	import KanbanCard from '$lib/custom/kanban/kanban-card.svelte';
 	import type { KanbanColumn as KanbanColumnType } from '$lib/custom/kanban/types/types';
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import PlusIcon from '@lucide/svelte/icons/plus';
+	import TrashIcon from '@lucide/svelte/icons/trash';
+	import EllipsisVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';
 
 	export let column: KanbanColumnType;
 	export let isDragging: boolean = false;
@@ -45,41 +49,28 @@
 	}
 </script>
 
-<Card.Root class="kanban-column animate-slide-up flex h-full flex-col">
-	<Card.Header class="pb-2">
-		<div class="flex items-center justify-between">
-			<Button
-				variant="ghost"
-				class="hover:text-primary h-auto p-0 text-lg font-semibold hover:bg-transparent"
-				onclick={handleColumnTitleClick}
-				onkeydown={(e) => e.key === 'Enter' && handleColumnTitleClick()}
-				role="button"
-				tabindex={0}
-				{...$$restProps}
-			>
-				{column.title}
-			</Button>
-			<div class="flex gap-2">
-				<Button
-					variant="ghost"
-					size="icon"
-					class="h-7 w-7"
-					onclick={handleAddCard}
-					aria-label="Add card"
-				>
-					<span class="text-lg">+</span>
-				</Button>
-				<Button
-					variant="ghost"
-					size="icon"
-					class="hover:bg-destructive hover:text-destructive-foreground h-7 w-7"
-					onclick={handleDeleteColumn}
-					aria-label="Delete column"
-				>
-					<span class="text-lg">×</span>
-				</Button>
-			</div>
-		</div>
+<Card.Root class="flex h-full flex-col shadow-none">
+	<Card.Header class="flex items-center justify-between">
+		<Button
+			variant="ghost"
+			class="hover:text-primary h-auto p-0 text-lg font-semibold hover:bg-transparent"
+			onclick={handleColumnTitleClick}
+			onkeydown={(e) => e.key === 'Enter' && handleColumnTitleClick()}
+			role="button"
+			tabindex={0}
+			{...$$restProps}
+		>
+			{column.title}
+		</Button>
+		<DropdownMenu.Root>
+			<DropdownMenu.Trigger class={buttonVariants({ variant: "ghost", size: "icon"})}>
+				<EllipsisVerticalIcon/>
+			</DropdownMenu.Trigger>
+			<DropdownMenu.Content>
+				<DropdownMenu.Item onclick={handleAddCard}><PlusIcon/> Add Card</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={handleDeleteColumn}><TrashIcon/> Delete Column</DropdownMenu.Item>
+			</DropdownMenu.Content>
+		</DropdownMenu.Root>
 	</Card.Header>
 
 	<Card.Content class="flex-1 overflow-y-auto p-4">
@@ -109,7 +100,7 @@
 			class="hover:bg-muted/50 hover:text-primary w-full"
 			onclick={handleAddCard}
 		>
-			+ Add a card
+			<PlusIcon/> Add a card
 		</Button>
 	</Card.Footer>
 </Card.Root>
