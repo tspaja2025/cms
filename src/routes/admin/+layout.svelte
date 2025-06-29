@@ -96,6 +96,7 @@
       <Button class="justify-start" variant="ghost" href={item.href}>{item.name}</Button>
     {/if}
   {/each}
+  <!-- Icon for Sidebar -->
 </Sidebar.Content>
 		<Sidebar.Rail />
 		<Sidebar.Footer />
@@ -105,6 +106,25 @@
 			<Sidebar.Trigger class="!px-5 {buttonVariants({ variant: 'outline' })}" />
 			<Button variant="outline" aria-labelledby="search">
 				<SearchIcon class="h-5 w-5" />
+				<!-- Search dialog.
+				* Popular Searches
+				  * Analytics
+					* CRM
+					* eCommerce
+					* User List
+				* Apps
+				  * Calendar
+					* Invoice List
+					* User List
+					* Roles & Permissions
+				* Pages
+				  * User Profile
+					* Account Settings
+					* Pricing
+					* FAQ
+				* Forms & Charts
+				  * Forms
+					* Apex Charts -->
 			</Button>
 			<div class="flex-1"></div>
 			<Button variant="outline"  aria-labelledby="language">
@@ -117,6 +137,7 @@
 			</Button>
 			<Button variant="outline" aria-labelledby="notifications">
 				<BellIcon class="h-5 w-5" />
+				<!-- Dropdown with Notifications list (* new)(mark all read) button to view all notifications -->
 			</Button>
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger class={buttonVariants({ variant: 'outline' })}>

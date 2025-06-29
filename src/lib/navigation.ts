@@ -75,8 +75,8 @@ export const navigation = [
   {
     parent: "User",
     children: [
-      { name: "List", href: "/" },
-      { name: "View", href: "/" },
+      { name: "List", href: "/admin/user/list" },
+      { name: "View", href: "/admin/user/view" },
     ],
   },
   {
