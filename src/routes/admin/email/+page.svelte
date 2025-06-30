@@ -38,6 +38,7 @@
   import * as Tooltip from "$lib/components/ui/tooltip";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import * as Avatar from "$lib/components/ui/avatar";
+  import * as Card from "$lib/components/ui/card";
 
   const { ...restProps } = $props();
 
@@ -196,33 +197,37 @@
       handleClose();
     }
   }
+
+  let open = $state(true);
 </script>
 
 <svelte:head>
   <title>Admin Dashboard</title>
 </svelte:head>
 
-<div class="flex flex-col bg-white">
+<Card.Root>
   <!-- Header -->
-  <div class="flex h-16 items-center gap-2 border-b border-neutral-200 px-4">
-    <h1 class="hidden text-xl font-semibold text-gray-800 md:block">Inbox</h1>
+  <Card.Header class="flex items-center gap-4">
+    <Card.Title>Inbox</Card.Title>
     <Input
       class="w-full"
       bind:value={searchValue}
       oninput={handleSearch}
       placeholder="Search emails"
     />
-    <Button variant="ghost">
-      <BellIcon class="h-5 w-5" />
-    </Button>
-    <Button variant="ghost">
-      <SettingsIcon class="h-5 w-5" />
-    </Button>
-  </div>
+    <div class="flex gap-2">
+      <Button variant="ghost">
+        <BellIcon class="h-5 w-5" />
+      </Button>
+      <Button variant="ghost">
+        <SettingsIcon class="h-5 w-5" />
+      </Button>
+    </div>
+  </Card.Header>
 
-  <div class="flex">
+  <Card.Content class="flex">
     <!-- Sidenav -->
-    <div class="flex w-72 flex-col space-y-2 border-r border-neutral-200 p-4">
+    <div class="flex w-72 flex-col space-y-2 border-r border-neutral-200 pr-4">
       <!-- Compose dialog -->
 
       <Dialog.Root open={$isComposeOpen} onOpenChange={handleClose}>
@@ -231,12 +236,12 @@
           <span>Compose</span>
         </Dialog.Trigger>
         <Dialog.Overlay class="bg-background/80" />
-        <Dialog.Content class="flex max-h-[80vh] flex-col p-0 sm:max-w-xl">
+        <Dialog.Content class="flex max-h-[80vh] flex-col p-4 sm:max-w-xl">
           <Dialog.Header class="border-b px-4 py-3">
             <Dialog.Title class="text-lg">New Message</Dialog.Title>
           </Dialog.Header>
 
-          <div class="flex-1 overflow-y-auto p-4">
+          <div class="flex-1 overflow-y-auto">
             <div class="space-y-4">
               <div class="grid gap-1.5">
                 <Label for="to" class="sr-only">To</Label>
@@ -245,7 +250,6 @@
                   type="email"
                   placeholder="To"
                   bind:value={to}
-                  class="rounded-none border-0 border-b px-0 shadow-none focus-visible:ring-0"
                 />
               </div>
 
@@ -256,7 +260,6 @@
                   type="text"
                   placeholder="Subject"
                   bind:value={subject}
-                  class="rounded-none border-0 border-b px-0 shadow-none focus-visible:ring-0"
                 />
               </div>
 
@@ -267,13 +270,13 @@
                   placeholder="Compose your message..."
                   rows={12}
                   bind:value={body}
-                  class="min-h-[200px] border-0 px-0 shadow-none focus-visible:ring-0"
+                  class="min-h-[200px]"
                 />
               </div>
             </div>
           </div>
           <Dialog.Footer
-            class="flex !justify-between border-t border-neutral-200 px-4 py-2"
+            class="flex !justify-between px-4 py-2"
           >
             <Button variant="ghost" size="icon" class="h-8 w-8 rounded-full">
               <PaperclipIcon class="h-5 w-5" />
@@ -438,7 +441,7 @@
       </div>
       <!-- Email Detail -->
       <div class="h-full w-full {!$selectedEmailId ? 'hidden md:flex' : ''}">
-        <div class="animate-fade-in flex h-full w-full flex-col bg-white">
+        <div class="animate-fade-in flex h-full w-full flex-col">
           {#if $selectedEmail}
             <div
               class="flex items-center justify-between border-b border-gray-200 p-3"
@@ -638,5 +641,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </Card.Content>
+</Card.Root>

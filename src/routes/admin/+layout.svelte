@@ -3,13 +3,19 @@
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import * as Sidebar from '$lib/components/ui/sidebar';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import SearchIcon from '@lucide/svelte/icons/search'
-	import LanguagesIcon from '@lucide/svelte/icons/languages'
-	import SunIcon from '@lucide/svelte/icons/sun'
-	import MoonIcon from '@lucide/svelte/icons/moon'
-	import BellIcon from '@lucide/svelte/icons/bell'
-	import UserIcon from '@lucide/svelte/icons/user'
-	import ChevronRightIcon  from '@lucide/svelte/icons/chevron-right'
+  import * as Dialog from '$lib/components/ui/dialog';
+  import * as Avatar from '$lib/components/ui/avatar';
+  import * as Tooltip from '$lib/components/ui/tooltip'
+  import { Input } from '$lib/components/ui/input';
+  import { Badge } from '$lib/components/ui/badge';
+	import SearchIcon from '@lucide/svelte/icons/search';
+	import LanguagesIcon from '@lucide/svelte/icons/languages';
+	import SunIcon from '@lucide/svelte/icons/sun';
+	import MoonIcon from '@lucide/svelte/icons/moon';
+	import BellIcon from '@lucide/svelte/icons/bell';
+	import UserIcon from '@lucide/svelte/icons/user';
+	import ChevronRightIcon  from '@lucide/svelte/icons/chevron-right';
+  import MailCheckIcon from '@lucide/svelte/icons/mail-check';
 	import { toggleMode } from 'mode-watcher';
 	import { navigation } from '$lib/navigation';
 
@@ -104,28 +110,54 @@
 	<div class="flex-1">
 		<nav class="flex h-16 w-full items-center gap-2 px-4 border-b border-(--sidebar-border) bg-(--sidebar)">
 			<Sidebar.Trigger class="!px-5 {buttonVariants({ variant: 'outline' })}" />
-			<Button variant="outline" aria-labelledby="search">
-				<SearchIcon class="h-5 w-5" />
-				<!-- Search dialog.
-				* Popular Searches
-				  * Analytics
-					* CRM
-					* eCommerce
-					* User List
-				* Apps
-				  * Calendar
-					* Invoice List
-					* User List
-					* Roles & Permissions
-				* Pages
-				  * User Profile
-					* Account Settings
-					* Pricing
-					* FAQ
-				* Forms & Charts
-				  * Forms
-					* Apex Charts -->
-			</Button>
+      <Dialog.Root>
+        <Dialog.Trigger class={buttonVariants({ variant: "outline"})}>
+          <SearchIcon class="h-5 w-5" />
+        </Dialog.Trigger>
+        <Dialog.Content class="sm:max-w-[512px]">
+          <Dialog.Header class="flex flex-row items-center">
+            <Dialog.Title>Search</Dialog.Title>
+            <Input class="w-96" type="search"/>
+          </Dialog.Header>
+          <div class="grid grid-cols-2 gap-4 py-4">
+            <div>
+              <h5 class="font-medium">Popular Searches</h5>
+              <ul>
+                <li><a href="/admin">Analytics</a></li>
+                <li><a href="/admin">CRM</a></li>
+                <li><a href="/admin">eCommerce</a></li>
+                <li><a href="/admin">User List</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium">Apps</h5>
+              <ul>
+                <li><a href="/admin">Calendar</a></li>
+                <li><a href="/admin">Invoice List</a></li>
+                <li><a href="/admin">Roles & Permissions</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium">Pages</h5>
+              <ul>
+                <li><a href="/admin">User Profile</a></li>
+                <li><a href="/admin">Account Settings</a></li>
+                <li><a href="/admin">Pricing</a></li>
+                <li><a href="/admin">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-medium">Forms & Charts</h5>
+              <ul>
+                <li><a href="/admin">Forms</a></li>
+                <li><a href="/admin">Apex Charts</a></li>
+                <li><a href="/admin">Pricing</a></li>
+                <li><a href="/admin">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+        </Dialog.Content>
+      </Dialog.Root>
 			<div class="flex-1"></div>
 			<Button variant="outline"  aria-labelledby="language">
 				<LanguagesIcon class="h-5 w-5" />
@@ -135,10 +167,73 @@
 				<MoonIcon class="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 				<span class="sr-only">Toggle theme</span>
 			</Button>
-			<Button variant="outline" aria-labelledby="notifications">
-				<BellIcon class="h-5 w-5" />
-				<!-- Dropdown with Notifications list (* new)(mark all read) button to view all notifications -->
-			</Button>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger class={buttonVariants({ variant: 'outline'})}>
+          <BellIcon class="h-5 w-5" />
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content class="w-92">
+          <div class="flex items-center  justify-between border-b border-neutral-200 px-4 py-2">
+            <h5 class="font-medium">Notifications</h5>
+            <div class="flex items-center gap-2">
+              <Badge>2 New</Badge>
+              <Tooltip.Provider>
+                <Tooltip.Root>
+                  <Tooltip.Trigger class={buttonVariants({ variant: "ghost", size: "icon"})}>
+                    <MailCheckIcon class="h-5 w-5"/>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content>
+                    Mark all as read
+                  </Tooltip.Content>
+                </Tooltip.Root>
+              </Tooltip.Provider>
+            </div>
+          </div>
+          <div class="flex border-b border-neutral-200 gap-4 p-4">
+            <Avatar.Root>
+              <Avatar.Image src="" alt=""/>
+              <Avatar.Fallback>CN</Avatar.Fallback>
+            </Avatar.Root>
+            <div>
+              <h5 class="font-medium">Congratulations</h5>
+              <p class="text-xs">Won something</p>
+              <p class="text-xs text-neutral-500">1h ago</p>
+            </div>
+          </div>
+          <div class="flex border-b border-neutral-200 gap-4 p-4">
+            <Avatar.Root>
+              <Avatar.Image src="" alt=""/>
+              <Avatar.Fallback>CN</Avatar.Fallback>
+            </Avatar.Root>
+            <div>
+              <h5 class="font-medium">Congratulations</h5>
+              <p class="text-xs">Won something</p>
+              <p class="text-xs text-neutral-500">1h ago</p>
+            </div>
+          </div>
+          <div class="flex border-b border-neutral-200 gap-4 p-4">
+            <Avatar.Root>
+              <Avatar.Image src="" alt=""/>
+              <Avatar.Fallback>CN</Avatar.Fallback>
+            </Avatar.Root>
+            <div>
+              <h5 class="font-medium">Congratulations</h5>
+              <p class="text-xs">Won something</p>
+              <p class="text-xs text-neutral-500">1h ago</p>
+            </div>
+          </div>
+          <div class="flex border-b border-neutral-200 gap-4 p-4">
+            <Avatar.Root>
+              <Avatar.Image src="" alt=""/>
+              <Avatar.Fallback>CN</Avatar.Fallback>
+            </Avatar.Root>
+            <div>
+              <h5 class="font-medium">Congratulations</h5>
+              <p class="text-xs">Won something</p>
+              <p class="text-xs text-neutral-500">1h ago</p>
+            </div>
+          </div>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
 			<DropdownMenu.Root>
 				<DropdownMenu.Trigger class={buttonVariants({ variant: 'outline' })}>
 					<UserIcon class="h-5 w-5" />

@@ -53,7 +53,7 @@ export function isWeekend(date: CalendarDate): boolean {
 
 // Get class names for a calendar day
 export function getDayClassNames(date: CalendarDate, currentMonth: CalendarDate): string {
-	const baseClasses = 'h-full min-h-[80px] p-1 border border-gray-200';
+	const baseClasses = 'h-full min-h-[80px] p-1 border border-neutral-500';
 	const jsDate = date.toDate(getLocalTimeZone());
 
 	if (isTodayIntl(date, getLocalTimeZone())) {
@@ -61,11 +61,11 @@ export function getDayClassNames(date: CalendarDate, currentMonth: CalendarDate)
 	}
 
 	if (date.month !== currentMonth.month) {
-		return `${baseClasses} bg-gray-50 text-gray-400`;
+		return `${baseClasses} text-gray-400`;
 	}
 
 	if (isWeekend(date)) {
-		return `${baseClasses} bg-gray-50`;
+		return `${baseClasses}`;
 	}
 
 	return baseClasses;
