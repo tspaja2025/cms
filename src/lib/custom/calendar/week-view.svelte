@@ -1,6 +1,10 @@
 <script lang="ts">
   import EventItem from "$lib/custom/calendar/event-item.svelte";
-  import { CalendarDate, isToday as isTodayIntl } from "@internationalized/date";
+  import {
+    CalendarDate,
+    DateFormatter,
+    isToday as isTodayIntl,
+  } from "@internationalized/date";
   import { getLocalTimeZone } from "@internationalized/date";
 
   export let weekDays: CalendarDate[];
@@ -13,20 +17,26 @@
 
 <div class="calendar-week-view animate-fade-in h-full overflow-auto">
   <div class="sticky top-0 z-10 grid grid-cols-8 border-b border-neutral-500">
-    <div class="border-r border-neutral-500 py-2 text-center text-sm font-medium text-gray-500">
+    <div
+      class="border-r border-neutral-500 py-2 text-center text-sm font-medium text-gray-500"
+    >
       Time
     </div>
 
     {#each weekDays as day}
-      <div class={`border-r border-neutral-500 py-2 text-center ${
-        isTodayIntl(day, getLocalTimeZone()) ? "bg-neutral-500" : ""
-      }`}>
+      <div
+        class={`border-r border-neutral-500 py-2 text-center ${
+          isTodayIntl(day, getLocalTimeZone()) ? "bg-neutral-500" : ""
+        }`}
+      >
         <div class="text-sm font-medium text-gray-500">
           {weekdayFormatter.format(day.toDate(getLocalTimeZone()))}
         </div>
-        <div class={`text-base font-bold ${
-          isTodayIntl(day, getLocalTimeZone()) ? "text-primary-600" : ""
-        }`}>
+        <div
+          class={`text-base font-bold ${
+            isTodayIntl(day, getLocalTimeZone()) ? "text-primary-600" : ""
+          }`}
+        >
           {dayFormatter.format(day.toDate(getLocalTimeZone()))}
         </div>
       </div>
@@ -35,7 +45,9 @@
 
   <div class="relative grid grid-cols-8">
     {#each hours as hour, i}
-      <div class="h-[60px] border-r border-b border-neutral-500 pr-2 text-right text-xs text-gray-500">
+      <div
+        class="h-[60px] border-r border-b border-neutral-500 pr-2 text-right text-xs text-gray-500"
+      >
         {hour}
       </div>
 

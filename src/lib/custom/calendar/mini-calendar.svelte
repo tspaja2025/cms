@@ -1,6 +1,11 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
-  import { CalendarDate, isToday as isTodayIntl, isSameDay } from "@internationalized/date";
+  import {
+    CalendarDate,
+    isToday as isTodayIntl,
+    isSameDay,
+    DateFormatter,
+  } from "@internationalized/date";
   import { getLocalTimeZone } from "@internationalized/date";
 
   export let days: CalendarDate[];
@@ -32,7 +37,7 @@
               : day.month === currentDate.month
                 ? ''
                 : 'text-gray-400'}"
-          on:click={() => selectDay(day)}
+          onclick={() => selectDay(day)}
         >
           {dayFormatter.format(day.toDate(getLocalTimeZone()))}
         </Button>

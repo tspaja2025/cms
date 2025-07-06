@@ -1,11 +1,12 @@
 <script lang="ts">
   import EventItem from "$lib/custom/calendar/event-item.svelte";
+  import type { CalendarDate } from "@internationalized/date";
 
   export let days: Array<{
-    date: CalendarDate,
-    dayNumber: number,
-    isToday: boolean,
-    isCurrentMonth: boolean
+    date: CalendarDate;
+    dayNumber: number;
+    isToday: boolean;
+    isCurrentMonth: boolean;
   }>;
   export let dayNames: string[];
   export let getCellClass: (day: any) => string;

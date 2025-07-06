@@ -8,10 +8,14 @@
   import { Textarea } from "$lib/components/ui/textarea";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import { createEventDispatcher } from "svelte";
-  import { CalendarDate, CalendarDateTime, toCalendarDateTime } from "@internationalized/date";
+  import {
+    CalendarDate,
+    CalendarDateTime,
+    toCalendarDateTime,
+  } from "@internationalized/date";
   import { addEvent, updateEvent } from "$lib/custom/calendar/store/events";
 
-  export let categories: Array<{ id: string, name: string, color: string }>;
+  export let categories: Array<{ id: string; name: string; color: string }>;
 
   type EventCategory = "work" | "personal" | "family" | "other";
 
@@ -30,10 +34,22 @@
   let event: Partial<CalendarEvent> = {
     title: "",
     description: "",
-    start: new CalendarDateTime(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), 0, 0),
-    end: new CalendarDateTime(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), 1, 0),
+    start: new CalendarDateTime(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate(),
+      0,
+      0,
+    ),
+    end: new CalendarDateTime(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate(),
+      1,
+      0,
+    ),
     allDay: false,
-    category: "work"
+    category: "work",
   };
 
   let isEdit = false;
@@ -56,7 +72,7 @@
         title: event.title || "",
         start: event.start as CalendarDateTime,
         end: event.end as CalendarDateTime,
-        category: event.category as EventCategory
+        category: event.category as EventCategory,
       });
     }
 
@@ -68,24 +84,36 @@
     const newDate = new Date(input.value);
 
     if (event.allDay) {
-      event.start = toCalendarDateTime(new CalendarDate(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate()));
-      event.end = toCalendarDateTime(new CalendarDate(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate()));
+      event.start = toCalendarDateTime(
+        new CalendarDate(
+          newDate.getFullYear(),
+          newDate.getMonth() + 1,
+          newDate.getDate(),
+        ),
+      );
+      event.end = toCalendarDateTime(
+        new CalendarDate(
+          newDate.getFullYear(),
+          newDate.getMonth() + 1,
+          newDate.getDate(),
+        ),
+      );
     } else {
       event.start = new CalendarDateTime(
         newDate.getFullYear(),
         newDate.getMonth() + 1,
         newDate.getDate(),
         newDate.getHours(),
-        newDate.getMinutes()
+        newDate.getMinutes(),
       );
-      
+
       if (event.end && event.end.compare(event.start) < 0) {
         event.end = new CalendarDateTime(
           newDate.getFullYear(),
           newDate.getMonth() + 1,
           newDate.getDate(),
           newDate.getHours() + 1,
-          newDate.getMinutes()
+          newDate.getMinutes(),
         );
       }
     }
@@ -94,15 +122,21 @@
   function updateEndDate(e: Event) {
     const input = e.target as HTMLInputElement;
     const newDate = new Date(input.value);
-    
+
     event.end = event.allDay
-      ? toCalendarDateTime(new CalendarDate(newDate.getFullYear(), newDate.getMonth() + 1, newDate.getDate()))
+      ? toCalendarDateTime(
+          new CalendarDate(
+            newDate.getFullYear(),
+            newDate.getMonth() + 1,
+            newDate.getDate(),
+          ),
+        )
       : new CalendarDateTime(
           newDate.getFullYear(),
           newDate.getMonth() + 1,
           newDate.getDate(),
           newDate.getHours(),
-          newDate.getMinutes()
+          newDate.getMinutes(),
         );
   }
 </script>
@@ -114,12 +148,12 @@
       Add Event
     </Button>
   </Dialog.Trigger>
-  
+
   <Dialog.Content>
     <Dialog.Header>
       <Dialog.Title>{isEdit ? "Edit" : "New"} Event</Dialog.Title>
     </Dialog.Header>
-    
+
     <form on:submit|preventDefault={handleSubmit} class="space-y-4">
       <div class="space-y-2">
         <Label for="title">Title</Label>
@@ -137,7 +171,7 @@
           id="description"
           bind:value={event.description}
           placeholder="Add a description"
-          rows="2"
+          rows={2}
         />
       </div>
 
@@ -164,7 +198,7 @@
               type="datetime-local"
               id="end-date"
               value={endDateTime}
-              on:change={updateEndDate}
+              onchange={updateEndDate}
             />
           </div>
         </div>
@@ -175,7 +209,7 @@
             type="date"
             id="date"
             value={event.start?.toString().split("T")[0] || ""}
-            on:change={updateStartDate}
+            onchange={updateStartDate}
           />
         </div>
       {/if}
@@ -195,7 +229,11 @@
       </div>
 
       <div class="flex justify-end gap-2 pt-2">
-        <Button type="button" on:click={() => dispatch("close")} variant="secondary">
+        <Button
+          type="button"
+          onclick={() => dispatch("close")}
+          variant="secondary"
+        >
           Cancel
         </Button>
         <Button type="submit">
