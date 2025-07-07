@@ -82,17 +82,17 @@ export const navigation = [
   {
     parent: "Roles and Permissions",
     children: [
-      { name: "Roles", href: "/" },
-      { name: "Permissions", href: "/" },
+      { name: "Roles", href: "/admin/roles-permissions/roles" },
+      { name: "Permissions", href: "/admin/roles-permissions/permissions" },
     ],
   },
   {
     parent: "Pages",
     children: [
       { name: "User Profile", href: "/admin/pages/user-profile" },
-      { name: "Account Settings", href: "/" },
-      { name: "FAQ", href: "/" },
-      { name: "Pricing", href: "/" },
+      { name: "Account Settings", href: "/admin/pages/account-settings" },
+      { name: "FAQ", href: "/admin/pages/faq" },
+      { name: "Pricing", href: "/admin/pages/pricing" },
       {
         parent: "Miscellaneous",
         children: [
