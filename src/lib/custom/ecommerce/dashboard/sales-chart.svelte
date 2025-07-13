@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { chart } from 'svelte-apexcharts';
+	import { chart } from '$lib/custom/apexchart/apexchart';
 	// import { onMount } from 'svelte';
 
 	// Sample data
@@ -271,7 +271,7 @@
 	<div class="mb-4 flex items-center justify-between">
 		<h2 class="text-lg font-semibold text-gray-900 dark:text-white">Sales Overview</h2>
 		<div class="flex space-x-2">
-			{#each periods as period (period.value)}
+			{#each periods as period, index (index)}
 				<button
 					class="rounded-md px-3 py-1 text-sm transition-colors
                            {selectedPeriod === period.value

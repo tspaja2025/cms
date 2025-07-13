@@ -35,7 +35,7 @@
 
 <Card.Root
 	class={cn(
-		'focus-within:ring-ring transition-all focus-within:ring-2 hover:shadow-md',
+		'focus-within:ring-ring gap-2 transition-all focus-within:ring-2 hover:shadow-md',
 		isDragging && 'scale-105 opacity-70 shadow-lg'
 	)}
 	onclick={handleClick}
@@ -46,9 +46,9 @@
 	<Card.Header>
 		<Card.Title>{card.title}</Card.Title>
 		{#if card.description}
-		<Card.Description>
-			{card.description}
-		</Card.Description>
+			<Card.Description>
+				{card.description}
+			</Card.Description>
 		{/if}
 	</Card.Header>
 	<Card.Content class="space-y-2">

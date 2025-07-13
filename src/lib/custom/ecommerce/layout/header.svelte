@@ -173,7 +173,7 @@
 							<h2 class="text-sm font-medium text-gray-800">Notifications</h2>
 						</div>
 						<div class="max-h-96 overflow-y-auto">
-							{#each notifications as notification, notificationIndex (notificationIndex)}
+							{#each notifications as notification, index (index)}
 								<div
 									class="cursor-pointer px-4 py-3 transition-colors duration-200 hover:bg-gray-50"
 									class:bg-gray-50={!notification.read}

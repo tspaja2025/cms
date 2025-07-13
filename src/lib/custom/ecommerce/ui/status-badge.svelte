@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge';
 
-	let {status} = $props();
+	let { status } = $props();
 
 	// Define badge styles based on status
 	const getBadgeClass = (status: string) => {

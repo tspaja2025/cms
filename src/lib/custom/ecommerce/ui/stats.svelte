@@ -23,8 +23,8 @@
 	</div>
 
 	<div>
-		<p class="text-sm font-medium text-gray-500">{label}</p>
-		<p class="mt-1 text-2xl font-bold text-gray-900">{value}</p>
+		<p class="text-sm font-medium text-slate-500">{label}</p>
+		<p class="mt-1 text-2xl font-bold">{value}</p>
 
 		{#if trend !== 0}
 			<div class="mt-1 flex items-center">

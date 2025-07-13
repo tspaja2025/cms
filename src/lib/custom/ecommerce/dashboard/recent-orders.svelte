@@ -73,38 +73,34 @@
 </script>
 
 <Table.Root>
-    <Table.Header>
-      <Table.Row>
-        <Table.Head>Order ID</Table.Head>
-        <Table.Head>Customer</Table.Head>
-        <Table.Head>Date</Table.Head>
-        <Table.Head>Total</Table.Head>
-        <Table.Head>Status</Table.Head>
-        <Table.Head class="text-right">Actions</Table.Head>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-      {#each orders as order}
-        <Table.Row>
-          <Table.Cell class="font-medium">{order.id}</Table.Cell>
-          <Table.Cell>
-            <div class="font-medium">{order.customer}</div>
-            <div class="text-muted-foreground">{order.email}</div>
-          </Table.Cell>
-          <Table.Cell class="text-muted-foreground">{formatDate(order.date)}</Table.Cell>
-          <Table.Cell>{formatCurrency(order.total)}</Table.Cell>
-          <Table.Cell>
-            <StatusBadge status={order.status} />
-          </Table.Cell>
-          <Table.Cell class="text-right">
-            <Button variant="link" class="text-primary hover:text-primary/90 mr-2">
-              View
-            </Button>
-            <Button variant="link" class="text-muted-foreground hover:text-foreground">
-              Edit
-            </Button>
-          </Table.Cell>
-        </Table.Row>
-      {/each}
-    </Table.Body>
-  </Table.Root>
+	<Table.Header>
+		<Table.Row>
+			<Table.Head>Order ID</Table.Head>
+			<Table.Head>Customer</Table.Head>
+			<Table.Head>Date</Table.Head>
+			<Table.Head>Total</Table.Head>
+			<Table.Head>Status</Table.Head>
+			<Table.Head class="text-right">Actions</Table.Head>
+		</Table.Row>
+	</Table.Header>
+	<Table.Body>
+		{#each orders as order, index (index)}
+			<Table.Row>
+				<Table.Cell class="font-medium">{order.id}</Table.Cell>
+				<Table.Cell>
+					<div class="font-medium">{order.customer}</div>
+					<div class="text-muted-foreground">{order.email}</div>
+				</Table.Cell>
+				<Table.Cell class="text-muted-foreground">{formatDate(order.date)}</Table.Cell>
+				<Table.Cell>{formatCurrency(order.total)}</Table.Cell>
+				<Table.Cell>
+					<StatusBadge status={order.status} />
+				</Table.Cell>
+				<Table.Cell class="text-right">
+					<Button variant="link" class="text-primary hover:text-primary/90 mr-2">View</Button>
+					<Button variant="link" class="text-muted-foreground hover:text-foreground">Edit</Button>
+				</Table.Cell>
+			</Table.Row>
+		{/each}
+	</Table.Body>
+</Table.Root>

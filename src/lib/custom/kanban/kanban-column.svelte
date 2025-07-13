@@ -49,8 +49,8 @@
 	}
 </script>
 
-<Card.Root class="flex h-full flex-col shadow-none">
-	<Card.Header class="flex items-center justify-between">
+<Card.Root class="flex h-full flex-1 flex-col gap-0 p-0 shadow-none">
+	<Card.Header class="flex items-center justify-between px-4 py-2">
 		<Button
 			variant="ghost"
 			class="hover:text-primary h-auto p-0 text-lg font-semibold hover:bg-transparent"
@@ -63,17 +63,19 @@
 			{column.title}
 		</Button>
 		<DropdownMenu.Root>
-			<DropdownMenu.Trigger class={buttonVariants({ variant: "ghost", size: "icon"})}>
-				<EllipsisVerticalIcon/>
+			<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+				<EllipsisVerticalIcon />
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>
-				<DropdownMenu.Item onclick={handleAddCard}><PlusIcon/> Add Card</DropdownMenu.Item>
-				<DropdownMenu.Item onclick={handleDeleteColumn}><TrashIcon/> Delete Column</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={handleAddCard}><PlusIcon /> Add Card</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={handleDeleteColumn}
+					><TrashIcon /> Delete Column</DropdownMenu.Item
+				>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	</Card.Header>
 
-	<Card.Content class="flex-1 overflow-y-auto p-4">
+	<Card.Content class="flex-1 overflow-y-auto px-4">
 		<div
 			use:dndzone={{ items: column.cards, type: 'card', dropFromOthersDisabled: isDragging }}
 			on:consider={handleConsider}
@@ -100,7 +102,7 @@
 			class="hover:bg-muted/50 hover:text-primary w-full"
 			onclick={handleAddCard}
 		>
-			<PlusIcon/> Add a card
+			<PlusIcon /> Add a card
 		</Button>
 	</Card.Footer>
 </Card.Root>

@@ -94,7 +94,7 @@
 		</div>
 
 		<nav class="space-y-1">
-			{#each navItems as item, itemIndex (itemIndex)}
+			{#each navItems as item, index (index)}
 				<a
 					href={item.path}
 					class="flex items-center rounded-lg px-4 py-3 text-gray-700 transition-colors duration-200"

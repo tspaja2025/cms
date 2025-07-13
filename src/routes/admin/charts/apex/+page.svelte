@@ -1,7 +1,12 @@
 <script lang="ts">
-	import { distributedOptions, scatterOptions, radialBarOptions, rangeAreaOptions } from "$lib/custom/apexchart/store/apex";
-	import { chart } from "$lib/custom/apexchart/apexchart";
-	import * as Card from "$lib/components/ui/card";
+	import {
+		distributedOptions,
+		scatterOptions,
+		radialBarOptions,
+		rangeAreaOptions
+	} from '$lib/custom/apexchart/store/apex';
+	import { chart } from '$lib/custom/apexchart/apexchart';
+	import * as Card from '$lib/components/ui/card';
 </script>
 
 <svelte:head>
