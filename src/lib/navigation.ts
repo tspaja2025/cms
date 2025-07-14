@@ -96,10 +96,10 @@ export const navigation = [
 			{
 				parent: 'Miscellaneous',
 				children: [
-					{ name: 'Coming Soon', href: '/' },
-					{ name: 'Under Maintenance', href: '/' },
-					{ name: 'Page Not Found - 404', href: '/' },
-					{ name: 'Not Authorized - 401', href: '/' }
+					{ name: 'Coming Soon', href: '/admin/pages/miscellaneous/coming-soon/' },
+					{ name: 'Under Maintenance', href: '/admin/pages/miscellaneous/under-maintenance' },
+					{ name: 'Page Not Found - 404', href: '/admin/pages/miscellaneous/page-not-found' },
+					{ name: 'Not Authorized - 401', href: '/admin/pages/miscellaneous/not-authorized' }
 				]
 			}
 		]
@@ -108,47 +108,28 @@ export const navigation = [
 		parent: 'Authentication',
 		children: [
 			{
-				parent: 'Login',
-				children: [
-					{ name: 'Login v1', href: '/' },
-					{ name: 'Login v2', href: '/' }
-				]
+				name: 'Login',
+				href: "/admin/auth-pages/login"
 			},
 			{
-				parent: 'Register',
-				children: [
-					{ name: 'Register v1', href: '/' },
-					{ name: 'Register v2', href: '/' },
-					{ name: 'Register Multi - Steps', href: '/' }
-				]
+				name: 'Register',
+				href: "/admin/auth-pages/register",
 			},
 			{
-				parent: 'Verify Email',
-				children: [
-					{ name: 'Verify Email v1', href: '/' },
-					{ name: 'Verify Email v2', href: '/' }
-				]
+				name: 'Verify Email',
+				href: "/admin/auth-pages/verify-email",
 			},
 			{
-				parent: 'Forgot Password',
-				children: [
-					{ name: 'Forgot Password v1', href: '/' },
-					{ name: 'Forgot Password v2', href: '/' }
-				]
+				name: 'Forgot Password',
+				href: "/admin/auth-pages/forgot-password",
 			},
 			{
-				parent: 'Reset Password',
-				children: [
-					{ name: 'Reset Password v1', href: '/' },
-					{ name: 'Reset Password v2', href: '/' }
-				]
+				name: 'Reset Password',
+				href: "/admin/auth-pages/reset-password",
 			},
 			{
-				parent: 'Two Steps',
-				children: [
-					{ name: 'Two Steps v1', href: '/' },
-					{ name: 'Two Steps v2', href: '/' }
-				]
+				name: 'Two Steps',
+				href: "/admin/auth-pages/two-steps",
 			}
 		]
 	},
@@ -160,7 +141,7 @@ export const navigation = [
 			{ name: 'Create Deal', href: '/admin/examples/wizard/create-deal' }
 		]
 	},
-	{ name: 'Dialog Examples', href: '/' },
+	{ name: 'Dialog Examples', href: '/admin/examples/dialog' },
 	{
 		parent: 'Widget Examples',
 		children: [
@@ -173,39 +154,33 @@ export const navigation = [
 		]
 	},
 	{ header: 'Forms and Tables' },
-	{ name: 'Forms Layouts', href: '/' },
-	// { name: "Form Validation", href: "/" },
-	// { name: "Form Wizard", href: "/" },
-	// { name: "Form Elements", href: "/" },
+	{ name: 'Forms Layouts', href: '/admin/forms' },
+	{ name: 'Tables', href: '/admin/tables' },
 	{ header: 'Charts and Misc' },
 	{
 		parent: 'Charts',
 		children: [{ name: 'Apexchart', href: '/admin/charts/apex' }]
 	},
-	// { name: "Foundation", href: "/" },
 	{ name: 'Components', href: 'https://www.shadcn-svelte.com/' },
-	// { name: "Menu Examples", href: "/" },
-	// { name: "Raise Support", href: "/" },
-	// { name: "Documentation", href: "/" },
 	{
 		parent: 'Others',
 		children: [
-			{ name: 'Item with Badge', href: '/' },
-			{ name: 'External Link', href: '/' }
+			{ name: 'Item with Badge', href: '/admin' },
+			{ name: 'External Link', href: '/admin' }
 		]
 	},
 	{
 		parent: 'Menu Levels',
 		children: [
-			{ name: 'Menu Level 2', href: '/' },
+			{ name: 'Menu Level 2', href: '/admin' },
 			{
 				parent: 'Menu Level 2',
 				children: [
-					{ name: 'Menu Level 3', href: '/' },
-					{ name: 'Menu Level 3', href: '/' }
+					{ name: 'Menu Level 3', href: '/admin' },
+					{ name: 'Menu Level 3', href: '/admin' }
 				]
 			},
-			{ name: 'Disabled Menu', href: '/' }
+			{ name: 'Disabled Menu', href: '/admin' }
 		]
 	}
 ];

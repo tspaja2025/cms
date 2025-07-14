@@ -32,7 +32,7 @@
 	<title>Admin Dashboard</title>
 </svelte:head>
 
-<Tabs.Root value="connections">
+<Tabs.Root value="Account">
 	<Tabs.List class="w-full">
 		<Tabs.Trigger value="account">Account</Tabs.Trigger>
 		<Tabs.Trigger value="security">Security</Tabs.Trigger>
