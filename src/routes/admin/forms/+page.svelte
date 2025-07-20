@@ -1,18 +1,11 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import * as Select from '$lib/components/ui/select';
-	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import * as Accordion from '$lib/components/ui/accordion';
-	import { Label } from '$lib/components/ui/label';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import { Checkbox } from '$lib/components/ui/checkbox';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import * as Accordion from '$lib/components/ui/accordion/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Button } from '$lib/components/ui/button/index';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root>
 	<Card.Header>

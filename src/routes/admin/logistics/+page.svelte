@@ -1,10 +1,10 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Progress } from '$lib/components/ui/progress';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Progress } from '$lib/components/ui/progress/index';
 	import TruckIcon from '@lucide/svelte/icons/truck';
 	import PackageIcon from '@lucide/svelte/icons/package';
 	import SearchIcon from '@lucide/svelte/icons/search';
@@ -281,7 +281,7 @@
 <div class="space-y-4">
 	<!-- Stats Cards -->
 	<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-		{#each stats as stat}
+		{#each stats as stat, index (index)}
 			<Card.Root>
 				<Card.Header class="flex flex-row items-center justify-between">
 					<Card.Title class="text-sm font-medium">{stat.title}</Card.Title>

@@ -1,20 +1,20 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import * as Table from '$lib/components/ui/table';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import * as Select from '$lib/components/ui/select';
-	import * as Alert from '$lib/components/ui/alert';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import * as Tooltip from '$lib/components/ui/tooltip';
-	import { Label } from '$lib/components/ui/label';
-	import { Input } from '$lib/components/ui/input';
-	import { Progress } from '$lib/components/ui/progress';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Switch } from '$lib/components/ui/switch';
-	import { projectList } from '$lib/custom/user/store/user';
+	import { base } from '$app/paths';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import * as Alert from '$lib/components/ui/alert/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import * as Tooltip from '$lib/components/ui/tooltip/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Progress } from '$lib/components/ui/progress/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Switch } from '$lib/components/ui/switch/index';
+	import { projectList } from '$lib/custom/user/store/data';
 	import CheckIcon from '@lucide/svelte/icons/check';
 	import TrashIcon from '@lucide/svelte/icons/trash';
 	import EyeIcon from '@lucide/svelte/icons/eye';
@@ -388,7 +388,7 @@
 							two-factor authentication adds an additional layer of security to your account by
 							requiring more than just a password to log in. <a
 								class="text-blue-500 hover:text-blue-600"
-								href="/admin/user/view">Learn more.</a
+								href="{base}/admin/user/view">Learn more.</a
 							>
 						</p>
 					</Card.Content>

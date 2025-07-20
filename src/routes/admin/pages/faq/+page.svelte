@@ -1,12 +1,8 @@
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import { Input } from '$lib/components/ui/input';
+	import * as Accordion from '$lib/components/ui/accordion/index';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import { Input } from '$lib/components/ui/input/index';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="mb-4 flex h-32 flex-col items-center justify-center space-y-4">
 	<div class="flex flex-col items-center justify-center">

@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import { base } from '$app/paths';
+	import { invoiceStore } from '$lib/custom/invoice/store/data';
 	import type { Invoice } from '$lib/custom/invoice/types';
 	import {
 		formatCurrency,
@@ -57,7 +58,7 @@
 	}
 
 	function handleEdit() {
-		goto(`/admin/invoice/${id}/edit`);
+		goto(`${base}/admin/invoice/${id}/edit`);
 	}
 
 	function handleDelete() {
@@ -65,22 +66,18 @@
 
 		if (confirm('Are you sure you want to delete this invoice?')) {
 			invoiceStore.delete(invoice.id);
-			goto('/admin/invoice/list');
+			goto(`${base}/admin/invoice/list`);
 		}
 	}
 
 	function handleBack() {
-		goto('/admin/invoice/list');
+		goto(`${base}/admin/invoice/list`);
 	}
 
 	function printInvoice() {
 		window.print();
 	}
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 {#if loading}
 	<div class="flex h-64 items-center justify-center">

@@ -1,13 +1,9 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Switch } from '$lib/components/ui/switch';
+	import * as Card from '$lib/components/ui/card/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Switch } from '$lib/components/ui/switch/index';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root>
 	<Card.Header class="flex flex-col items-center justify-center">

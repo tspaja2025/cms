@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import type { KanbanCardType, Tag } from '$lib/custom/kanban/types/types';
+	import type { KanbanCardType, Tag } from '$lib/custom/kanban/types';
 	import { createEventDispatcher } from 'svelte';
-	import * as Card from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Card from '$lib/components/ui/card/index';
+	import { Badge } from '$lib/components/ui/badge/index';
 
 	export let card: KanbanCardType;
 	export let isDragging: boolean = false;
@@ -54,7 +54,7 @@
 	<Card.Content class="space-y-2">
 		{#if card.tags.length > 0}
 			<div class="flex flex-wrap gap-1">
-				{#each card.tags as tag}
+				{#each card.tags as tag, index (index)}
 					<Badge class={getTagColorClass(tag.color)}>
 						{tag.name}
 					</Badge>

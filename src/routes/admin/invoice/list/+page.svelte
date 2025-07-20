@@ -17,8 +17,4 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
-
 <InvoiceListComponent {status} />

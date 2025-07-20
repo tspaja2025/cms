@@ -1,51 +1,62 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/card/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Users, Clock, BookOpen } from '@lucide/svelte';
 	import type { Course } from '$lib/custom/academy/store/data';
-	import { navigateTo } from '$lib/custom/academy/store/navigation';
-	import * as Card from '$lib/components/ui/card';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
 
-	export let course: Course;
-	export let showProgress = false;
-	export let showEnroll = false;
+	let { course }: { course: Course } = $props();
+
+	const statusColors = {
+		active: 'bg-green-100 text-green-800',
+		completed: 'bg-blue-100 text-blue-800',
+		upcoming: 'bg-yellow-100 text-yellow-800'
+	};
 </script>
 
-<Card.Root class="transition-shadow duration-200 hover:shadow-md">
-	<Card.Header>
-		<Card.Title>{course.title}</Card.Title>
-		<Card.Description>{course.description}</Card.Description>
+<Card.Root class="flex-1">
+	<Card.Header class="flex items-start justify-between">
+		<div>
+			<Card.Title>{course.title}</Card.Title>
+			<Card.Description>by {course.instructor}</Card.Description>
+		</div>
+		<Badge class={statusColors[course.status]}>
+			{course.status}
+		</Badge>
 	</Card.Header>
+
 	<Card.Content>
-		<a
-			href="/admin/academy/course-details/{course.id}"
-			class="block focus:outline-none"
-			on:click|preventDefault={() => navigateTo('course-details', course.id)}
-		>
-			<img src={course.image} alt={course.title} class="mb-4 h-48 w-full rounded-lg object-cover" />
+		<div class="flex items-center justify-between text-sm text-gray-500">
+			<div class="flex items-center">
+				<Users class="mr-1 h-4 w-4" />
+				{course.students} students
+			</div>
+			<div class="flex items-center">
+				<Clock class="mr-1 h-4 w-4" />
+				{course.duration}
+			</div>
+			<div class="flex items-center">
+				<BookOpen class="mr-1 h-4 w-4" />
+				{course.category}
+			</div>
+		</div>
 
+		<div>
 			<div class="mb-2 flex items-center justify-between">
-				<Badge>
-					{course.category}
-				</Badge>
-				<span class="text-sm text-gray-500">{course.duration}</span>
+				<span class="text-sm font-medium text-gray-700">Progress</span>
+				<span class="text-sm text-gray-500">{course.progress}%</span>
 			</div>
-
-			<div class="mb-4 flex items-center justify-between text-sm text-gray-500">
-				<span>By {course.instructor}</span>
-				<span class="flex items-center">
-					⭐ {course.rating} ({course.students.toLocaleString()})
-				</span>
+			<div class="h-2 w-full rounded-full bg-gray-200">
+				<div
+					class="bg-accent-500 h-2 rounded-full transition-all duration-300"
+					style="width: {course.progress}%"
+				></div>
 			</div>
-		</a>
+		</div>
 	</Card.Content>
-	<Card.Footer>
-		{#if showEnroll}
-			<Button class="flex-1">Enroll Now</Button>
-		{:else if course.enrolled}
-			<Button class="flex-1">
-				{course.progress > 0 ? 'Continue' : 'Start Learning'}
-			</Button>
-		{/if}
-		<Button onclick={() => navigateTo('course-details', course.id)}>View Details</Button>
+
+	<Card.Footer class="flex space-x-2">
+		<Button>View Details</Button>
+		<Button variant="secondary">Edit Course</Button>
 	</Card.Footer>
 </Card.Root>

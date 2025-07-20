@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
-	import * as Card from '$lib/components/ui/card';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as Select from '$lib/components/ui/select';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Label } from '$lib/components/ui/label';
-	import { Input } from '$lib/components/ui/input';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import RangeCalendar from '$lib/components/ui/range-calendar/range-calendar.svelte';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Dialog from '$lib/components/ui/dialog/index';
+	import * as Select from '$lib/components/ui/select/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Textarea } from '$lib/components/ui/textarea/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import { RangeCalendar } from '$lib/components/ui/range-calendar/index';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
@@ -256,53 +256,3 @@
 		</div>
 	</Card.Content>
 </Card.Root>
-
-<!-- <Card.Root>
-  <Card.Content class="flex p-0">
-    <div class="w-72 flex flex-col border-r px-4 space-y-4">
-      <EventFormDialog {categories} />
-      <RangeCalendar />
-      <CategoryFilters
-        {categories}
-        {toggleCategoryFilter}
-        filters={$categoryFilters}
-      />
-    </div>
-    <div class="flex flex-col flex-1">
-      <CalendarHeader
-        {goToPreviousMonth}
-        {goToNextMonth}
-        {goToToday}
-        monthYear={$currentMonthYear}
-        {headerDate}
-      />
-      {#if $calendarView === "month"}
-        <MonthView
-          days={$monthDays}
-          {dayNames}
-          {getCellClass}
-          {getEventsForDay}
-          events={$filteredEvents}
-        />
-      {:else if $calendarView === "week"}
-        <WeekView
-          {weekDays}
-          {hours}
-          {weekdayFormatter}
-          {dayFormatter}
-          {getEventsForDate}
-          {getEventStyle}
-        />
-      {:else if $calendarView === "day"}
-        <DayView
-          currentDate={$currentDate}
-          {hours}
-          {headerDateFormatter}
-          {allDayEvents}
-          {timedEvents}
-          {getEventStyle}
-        />
-      {/if}
-    </div>
-  </Card.Content>
-</Card.Root> -->

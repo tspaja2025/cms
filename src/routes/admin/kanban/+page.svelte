@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { kanbanStore } from '$lib/custom/kanban/store/kanban-store';
+	import { kanbanStore } from '$lib/custom/kanban/store/data';
 	import KanbanColumn from '$lib/custom/kanban/kanban-column.svelte';
 	import CardDetailModal from '$lib/custom/kanban/card-detail-modal.svelte';
 	import ColumnTitleModal from '$lib/custom/kanban/column-title-modal.svelte';
 	import ConfirmModal from '$lib/custom/kanban/column-title-modal.svelte';
-	import type { KanbanCardType } from '$lib/custom/kanban/types/types';
-	import { Button } from '$lib/components/ui/button';
+	import type { KanbanCardType } from '$lib/custom/kanban/types';
+	import { Button } from '$lib/components/ui/button/index';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 
 	let {

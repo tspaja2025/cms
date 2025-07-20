@@ -1,16 +1,17 @@
 <script lang="ts">
-	import * as Tabs from '$lib/components/ui/tabs';
-	import * as Table from '$lib/components/ui/table';
-	import * as Card from '$lib/components/ui/card';
-	import * as Select from '$lib/components/ui/select';
-	import * as Alert from '$lib/components/ui/alert';
-	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Switch } from '$lib/components/ui/switch';
+	import { base } from '$app/paths';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Select from '$lib/components/ui/select/index';
+	import * as Alert from '$lib/components/ui/alert/index';
+	import * as RadioGroup from '$lib/components/ui/radio-group/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import { Switch } from '$lib/components/ui/switch/index';
 	import AlertCircleIcon from '@lucide/svelte/icons/alert-circle';
 	import CheckIcon from '@lucide/svelte/icons/check';
 	import TrashIcon from '@lucide/svelte/icons/trash';
@@ -28,11 +29,7 @@
 	let paymentMethod = $state('cards');
 </script>
 
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
-
-<Tabs.Root value="Account">
+<Tabs.Root value="account">
 	<Tabs.List class="w-full">
 		<Tabs.Trigger value="account">Account</Tabs.Trigger>
 		<Tabs.Trigger value="security">Security</Tabs.Trigger>
@@ -189,7 +186,7 @@
 				<p>
 					Two-factor authentication adds an additional layer of security to your account by
 					requiring more than just a password to log in. <a
-						href="/admin/pages/account-settings"
+						href="{base}/admin/pages/account-settings"
 						class="text-blue-500 hover:text-blue-600">Learn more.</a
 					>
 				</p>

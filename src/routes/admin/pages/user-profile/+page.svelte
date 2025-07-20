@@ -1,11 +1,11 @@
 <script lang="ts">
-	import * as Tabs from '$lib/components/ui/tabs';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Card from '$lib/components/ui/card';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Progress } from '$lib/components/ui/progress';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import { Progress } from '$lib/components/ui/progress/index';
 	import MapPinIcon from '@lucide/svelte/icons/map-pin';
 	import MoreVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';
 	let activeTab = 'Profile';
@@ -105,10 +105,6 @@
 		}
 	];
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root class="relative mb-4">
 	<Card.Header class="flex items-center">

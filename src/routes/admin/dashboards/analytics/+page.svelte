@@ -1,13 +1,12 @@
 <script>
 	import MetricCard from '$lib/custom/analytics/metric-card.svelte';
-	// import ChartCard from "$lib/custom/analytics/chart-card.svelte";
 	import {
 		metricsData,
 		revenueChartData,
 		ordersChartData,
 		trafficSourcesData
 	} from '$lib/custom/analytics/store/analytics';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '$lib/components/ui/card/index';
 	import { chart } from '$lib/custom/apexchart/apexchart';
 </script>
 

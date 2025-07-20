@@ -11,11 +11,11 @@
 		getSortedRowModel,
 		getFilteredRowModel
 	} from '@tanstack/table-core';
-	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table';
-	import * as Table from '$lib/components/ui/table';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
+	import { createSvelteTable, FlexRender } from '$lib/components/ui/data-table/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];

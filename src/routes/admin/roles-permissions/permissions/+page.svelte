@@ -1,19 +1,15 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Label } from '$lib/components/ui/label';
-	import { Input } from '$lib/components/ui/input';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Checkbox } from '$lib/components/ui/checkbox';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import * as Dialog from '$lib/components/ui/dialog/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
 	import SquarePenIcon from '@lucide/svelte/icons/square-pen';
 	import EllipsisVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root>
 	<Card.Header class="flex justify-between">

@@ -1,5 +1,4 @@
 import { browser } from '$app/environment';
-import type { ApexOptions } from 'apexcharts';
 
 let ApexCharts: any;
 

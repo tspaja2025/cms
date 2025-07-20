@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Card from '$lib/components/ui/card/index';
+	import { Badge } from '$lib/components/ui/badge/index';
 	import { formatCurrency, formatDate, calculateDueDays } from '$lib/custom/invoice/utils';
 	import { goto } from '$app/navigation';
 	import type { Invoice } from '$lib/custom/invoice/types';

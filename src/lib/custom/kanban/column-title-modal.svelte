@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Dialog from '$lib/components/ui/dialog';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import * as Dialog from '$lib/components/ui/dialog/index';
 
 	export let open = false;
 	export let title = '';
@@ -29,7 +29,7 @@
 		<Dialog.Title>
 			{isNew ? 'Add New Column' : 'Edit Column Title'}
 		</Dialog.Title>
-		<Dialog.Close asChild>
+		<Dialog.Close>
 			<button
 				class="ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none"
 				aria-label="Close"
@@ -40,8 +40,8 @@
 	</Dialog.Header>
 	<Dialog.Content
 		class="sm:max-w-md"
-		onKeyDown={handleKeydown}
-		onEscapeKeyDown={() => dispatch('close')}
+		onkeydown={handleKeydown}
+		onEscapeKeydown={() => dispatch('close')}
 		onInteractOutside={() => dispatch('close')}
 	>
 		<div class="space-y-4 py-4">

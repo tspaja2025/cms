@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import * as Select from '$lib/components/ui/select';
-	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import * as Select from '$lib/components/ui/select/index';
+	import { invoiceStore } from '$lib/custom/invoice/store/data';
 	import type { InvoiceStatus, InvoiceFilter } from '$lib/custom/invoice/types';
 	import { sortInvoices, filterInvoices } from '$lib/custom/invoice/utils';
 	import InvoiceCard from '$lib/custom/invoice/invoice-card.svelte';

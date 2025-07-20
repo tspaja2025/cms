@@ -15,10 +15,10 @@
 	import DataTableCheckbox from '$lib/custom/tables/data-table-checkbox.svelte';
 	import DataTableEmailButton from '$lib/custom/tables/data-table-email-button.svelte';
 	import DataTableActions from '$lib/custom/tables/data-table-actions.svelte';
-	import * as Table from '$lib/components/ui/table';
-	import { Button } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Input } from '$lib/components/ui/input';
+	import * as Table from '$lib/components/ui/table/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import { Input } from '$lib/components/ui/input/index';
 	import {
 		FlexRender,
 		createSvelteTable,

@@ -2,10 +2,10 @@
 	import { createEventDispatcher } from 'svelte';
 	import { dndzone } from 'svelte-dnd-action';
 	import KanbanCard from '$lib/custom/kanban/kanban-card.svelte';
-	import type { KanbanColumn as KanbanColumnType } from '$lib/custom/kanban/types/types';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import type { KanbanColumn as KanbanColumnType } from '$lib/custom/kanban/types';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import TrashIcon from '@lucide/svelte/icons/trash';
 	import EllipsisVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';

@@ -1,15 +1,15 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import { Label } from '$lib/components/ui/label';
-	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as RadioGroup from '$lib/components/ui/radio-group/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Button } from '$lib/components/ui/button/index';
 	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
-	import PersonalDetails from '$lib/custom/property-listing/personal-details.svelte';
-	import PropertyDetails from '$lib/custom/property-listing/property-details.svelte';
-	import PropertyFeatures from '$lib/custom/property-listing/property-features.svelte';
-	import PropertyArea from '$lib/custom/property-listing/property-area.svelte';
-	import PriceDetails from '$lib/custom/property-listing/price-details.svelte';
+	import PersonalDetails from '$lib/custom/wizard/property-listing/personal-details.svelte';
+	import PropertyDetails from '$lib/custom/wizard/property-listing/property-details.svelte';
+	import PropertyFeatures from '$lib/custom/wizard/property-listing/property-features.svelte';
+	import PropertyArea from '$lib/custom/wizard/property-listing/property-area.svelte';
+	import PriceDetails from '$lib/custom/wizard/property-listing/price-details.svelte';
 
 	let checked = $state('personalDetails');
 

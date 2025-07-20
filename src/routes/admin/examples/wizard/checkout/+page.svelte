@@ -1,12 +1,7 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import * as Alert from '$lib/components/ui/alert';
-	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import { Input } from '$lib/components/ui/input';
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Switch } from '$lib/components/ui/switch';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Tabs from '$lib/components/ui/tabs/index';
+	import * as Alert from '$lib/components/ui/alert/index';
 	import ShoppingCartIcon from '@lucide/svelte/icons/shopping-cart';
 	import MapPinHouseIcon from '@lucide/svelte/icons/map-pin-house';
 	import CreditCardIcon from '@lucide/svelte/icons/credit-card';

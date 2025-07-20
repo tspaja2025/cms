@@ -1,116 +1,23 @@
 <script lang="ts">
-	import * as Select from '$lib/components/ui/select';
-	import * as Table from '$lib/components/ui/table';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import Card from '$lib/custom/ecommerce/ui/card.svelte';
-	import StatusBadge from '$lib/custom/ecommerce/ui/status-badge.svelte';
+	import * as Select from '$lib/components/ui/select/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import Card from '$lib/custom/ecommerce/card.svelte';
+	import StatusBadge from '$lib/custom/ecommerce/status-badge.svelte';
 	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import SearchIcon from '@lucide/svelte/icons/search';
+	import { orders } from '$lib/custom/ecommerce/store/data';
 
 	let searchQuery = $state('');
 	let selectedStatus = $state('all');
 	let currentPage = $state(1);
 	let dateRange = $state('all');
 
-	// Sample data
-	const orders = [
-		{
-			id: 'ORD-4872',
-			customer: 'Sarah Wilson',
-			date: '2023-08-15T10:30:00',
-			total: 129.99,
-			status: 'Delivered',
-			items: 3,
-			email: 'sarah.w@example.com'
-		},
-		{
-			id: 'ORD-4871',
-			customer: 'Michael Brown',
-			date: '2023-08-15T09:45:00',
-			total: 79.85,
-			status: 'Processing',
-			items: 2,
-			email: 'michael.b@example.com'
-		},
-		{
-			id: 'ORD-4870',
-			customer: 'Emma Johnson',
-			date: '2023-08-15T08:20:00',
-			total: 245.0,
-			status: 'Pending',
-			items: 4,
-			email: 'emma.j@example.com'
-		},
-		{
-			id: 'ORD-4869',
-			customer: 'David Lee',
-			date: '2023-08-14T16:50:00',
-			total: 189.99,
-			status: 'Delivered',
-			items: 1,
-			email: 'david.l@example.com'
-		},
-		{
-			id: 'ORD-4868',
-			customer: 'Jennifer Smith',
-			date: '2023-08-14T14:25:00',
-			total: 62.5,
-			status: 'Cancelled',
-			items: 2,
-			email: 'jennifer.s@example.com'
-		},
-		{
-			id: 'ORD-4867',
-			customer: 'Robert Johnson',
-			date: '2023-08-13T11:15:00',
-			total: 149.99,
-			status: 'Delivered',
-			items: 1,
-			email: 'robert.j@example.com'
-		},
-		{
-			id: 'ORD-4866',
-			customer: 'Lisa Anderson',
-			date: '2023-08-13T10:05:00',
-			total: 95.5,
-			status: 'Processing',
-			items: 3,
-			email: 'lisa.a@example.com'
-		},
-		{
-			id: 'ORD-4865',
-			customer: 'Thomas Wilson',
-			date: '2023-08-12T15:30:00',
-			total: 210.25,
-			status: 'Delivered',
-			items: 2,
-			email: 'thomas.w@example.com'
-		},
-		{
-			id: 'ORD-4864',
-			customer: 'Jessica Miller',
-			date: '2023-08-12T09:45:00',
-			total: 75.99,
-			status: 'Delivered',
-			items: 1,
-			email: 'jessica.m@example.com'
-		},
-		{
-			id: 'ORD-4863',
-			customer: 'Daniel Brown',
-			date: '2023-08-11T14:20:00',
-			total: 324.75,
-			status: 'Cancelled',
-			items: 4,
-			email: 'daniel.b@example.com'
-		}
-	];
-
 	// Format date
-	function formatDate(dateString) {
+	function formatDate(dateString: string) {
 		const date = new Date(dateString);
 		return new Intl.DateTimeFormat('en-US', {
 			month: 'short',
@@ -121,7 +28,7 @@
 	}
 
 	// Format currency
-	function formatCurrency(amount) {
+	function formatCurrency(amount: number) {
 		return new Intl.NumberFormat('en-US', {
 			style: 'currency',
 			currency: 'USD'
@@ -188,7 +95,7 @@
 		filteredOrders.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 	);
 
-	function goToPage(page) {
+	function goToPage(page: number) {
 		currentPage = page;
 	}
 
@@ -204,10 +111,6 @@
 		}
 	}
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="space-y-6">
 	<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

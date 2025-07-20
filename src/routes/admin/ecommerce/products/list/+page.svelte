@@ -1,98 +1,15 @@
 <script lang="ts">
-	import Card from '$lib/custom/ecommerce/ui/card.svelte';
-	import StatusBadge from '$lib/custom/ecommerce/ui/status-badge.svelte';
+	import Card from '$lib/custom/ecommerce/card.svelte';
+	import StatusBadge from '$lib/custom/ecommerce/status-badge.svelte';
+	import { products } from '$lib/custom/ecommerce/store/data';
 
 	let searchQuery = $state('');
 	let selectedCategory = $state('all');
 	let selectedStatus = $state('all');
 	let currentPage = $state(1);
 
-	// Sample data
-	const products = [
-		{
-			id: 1,
-			name: 'Wireless Headphones',
-			image:
-				'https://images.pexels.com/photos/3394665/pexels-photo-3394665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 149.99,
-			category: 'Electronics',
-			inventory: 45,
-			status: 'In Stock'
-		},
-		{
-			id: 2,
-			name: 'Smart Watch',
-			image:
-				'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 299.99,
-			category: 'Electronics',
-			inventory: 32,
-			status: 'In Stock'
-		},
-		{
-			id: 3,
-			name: 'Bluetooth Speaker',
-			image:
-				'https://images.pexels.com/photos/1279107/pexels-photo-1279107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 89.99,
-			category: 'Electronics',
-			inventory: 8,
-			status: 'Low Stock'
-		},
-		{
-			id: 4,
-			name: 'Laptop Backpack',
-			image:
-				'https://images.pexels.com/photos/1294731/pexels-photo-1294731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 79.99,
-			category: 'Accessories',
-			inventory: 64,
-			status: 'In Stock'
-		},
-		{
-			id: 5,
-			name: 'Mechanical Keyboard',
-			image:
-				'https://images.pexels.com/photos/1772123/pexels-photo-1772123.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 129.99,
-			category: 'Electronics',
-			inventory: 0,
-			status: 'Out of Stock'
-		},
-		{
-			id: 6,
-			name: 'Ergonomic Office Chair',
-			image:
-				'https://images.pexels.com/photos/1957478/pexels-photo-1957478.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 249.99,
-			category: 'Furniture',
-			inventory: 12,
-			status: 'In Stock'
-		},
-		{
-			id: 7,
-			name: 'Smartphone Stand',
-			image:
-				'https://images.pexels.com/photos/3178938/pexels-photo-3178938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 24.99,
-			category: 'Accessories',
-			inventory: 87,
-			status: 'In Stock'
-		},
-		{
-			id: 8,
-			name: 'Wireless Charger',
-			image:
-				'https://images.pexels.com/photos/4526482/pexels-photo-4526482.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100',
-			price: 39.99,
-			category: 'Electronics',
-			inventory: 41,
-			status: 'In Stock'
-		}
-	];
-
 	// Format currency
-	function formatCurrency(amount) {
+	function formatCurrency(amount: number) {
 		return new Intl.NumberFormat('en-US', {
 			style: 'currency',
 			currency: 'USD'
@@ -131,7 +48,7 @@
 		filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 	);
 
-	function goToPage(page) {
+	function goToPage(page: number) {
 		currentPage = page;
 	}
 
@@ -147,10 +64,6 @@
 		}
 	}
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="space-y-6">
 	<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

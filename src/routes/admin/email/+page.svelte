@@ -15,9 +15,16 @@
 		addEmail
 	} from '$lib/custom/email/store/email';
 	import EmailLabel from '$lib/custom/email/email-label.svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Input } from '$lib/components/ui/input';
+	import * as Dialog from '$lib/components/ui/dialog/index';
+	import * as Tooltip from '$lib/components/ui/tooltip/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import * as Card from '$lib/components/ui/card/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Textarea } from '$lib/components/ui/textarea/index';
+	import { Label } from '$lib/components/ui/label/index';
 	import BellIcon from '@lucide/svelte/icons/bell';
 	import SettingsIcon from '@lucide/svelte/icons/settings';
 	import SquarePenIcon from '@lucide/svelte/icons/square-pen';
@@ -32,13 +39,6 @@
 	import SendIcon from '@lucide/svelte/icons/send';
 	import FileTextIcon from '@lucide/svelte/icons/file-text';
 	import ShieldAlertIcon from '@lucide/svelte/icons/shield-alert';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Label } from '$lib/components/ui/label';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as Tooltip from '$lib/components/ui/tooltip';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import * as Card from '$lib/components/ui/card';
 
 	const { ...restProps } = $props();
 
@@ -195,13 +195,7 @@
 			handleClose();
 		}
 	}
-
-	let open = $state(true);
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root>
 	<!-- Header -->

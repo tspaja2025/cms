@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { labels } from '$lib/custom/email/store/email';
 
-	export let labelId: string;
+	let { labelId }: { labelId: string } = $props();
 
-	$: label = $labels.find((l) => l.id === labelId) || { name: labelId, color: 'gray' };
+	let label = $derived($labels.find((l) => l.id === labelId) || { name: labelId, color: 'gray' });
 
 	const colorClasses = {
 		blue: 'bg-primary-100 text-primary-800',

@@ -1,14 +1,11 @@
 <script lang="ts">
-	import Card from '$lib/custom/ecommerce/ui/card.svelte';
-	import SalesChart from '$lib/custom/ecommerce/dashboard/sales-chart.svelte';
-	import RecentOrders from '$lib/custom/ecommerce/dashboard/recent-orders.svelte';
-	import TopProducts from '$lib/custom/ecommerce/dashboard/top-products.svelte';
-	import Stats from '$lib/custom/ecommerce/ui/stats.svelte';
+	import { base } from '$app/paths';
+	import Card from '$lib/custom/ecommerce/card.svelte';
+	import SalesChart from '$lib/custom/ecommerce/sales-chart.svelte';
+	import RecentOrders from '$lib/custom/ecommerce/recent-orders.svelte';
+	import TopProducts from '$lib/custom/ecommerce/top-products.svelte';
+	import Stats from '$lib/custom/ecommerce/stats.svelte';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="space-y-6">
 	<!-- Stats Cards -->
@@ -69,8 +66,7 @@
 			title="Recent Orders"
 			hasAction={true}
 			actionText="View All Orders"
-			actionLink="/orders"
-			noPadding={true}
+			actionLink="{base}/admin/ecommerce/orders/list"
 		>
 			<RecentOrders />
 		</Card>
@@ -79,8 +75,7 @@
 			title="Top Selling Products"
 			hasAction={true}
 			actionText="View All Products"
-			actionLink="/products"
-			noPadding={true}
+			actionLink="{base}/admin/ecommerce/products/list"
 		>
 			<TopProducts />
 		</Card>

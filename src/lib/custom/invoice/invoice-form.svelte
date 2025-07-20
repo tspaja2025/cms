@@ -2,14 +2,14 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import type { Invoice, LineItem } from '$lib/custom/invoice/types';
-	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import { invoiceStore } from '$lib/custom/invoice/store/data';
 	import { formatCurrency } from '$lib/custom/invoice/utils';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Label } from '$lib/components/ui/label';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Textarea } from '$lib/components/ui/textarea/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Table from '$lib/components/ui/table/index';
 	import Trash2 from '@lucide/svelte/icons/trash-2';
 
 	interface Props {

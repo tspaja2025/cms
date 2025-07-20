@@ -1,14 +1,10 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Input } from '$lib/components/ui/input';
-	import { Badge } from '$lib/components/ui/badge';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Badge } from '$lib/components/ui/badge/index';
 	import MessagesSquareIcon from '@lucide/svelte/icons/messages-square';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <Card.Root class="p-0">
 	<Card.Content class="flex p-0">

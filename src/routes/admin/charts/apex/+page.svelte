@@ -4,14 +4,10 @@
 		scatterOptions,
 		radialBarOptions,
 		rangeAreaOptions
-	} from '$lib/custom/apexchart/store/apex';
+	} from '$lib/custom/apexchart/store/data';
 	import { chart } from '$lib/custom/apexchart/apexchart';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '$lib/components/ui/card/index';
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="grid grid-cols-2 gap-4">
 	<Card.Root>

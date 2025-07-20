@@ -1,5 +1,1 @@
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
-
-<h1 class="text-4xl">Register v1</h1>
+<h1 class="text-4xl">Register</h1>

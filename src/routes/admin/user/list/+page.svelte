@@ -1,23 +1,21 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import * as Select from '$lib/components/ui/select';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import {
-		ChevronLeftIcon,
-		ChevronRightIcon,
-		DownloadIcon,
-		EllipsisVerticalIcon,
-		EyeIcon,
-		SquarePenIcon,
-		TrashIcon,
-		UploadIcon
-	} from '@lucide/svelte';
-	import { userListData } from '$lib/custom/user/store/user';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import * as Select from '$lib/components/ui/select/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
+	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
+	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+	import DownloadIcon from '@lucide/svelte/icons/download';
+	import EllipsisVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';
+	import EyeIcon from '@lucide/svelte/icons/eye';
+	import SquarePenIcon from '@lucide/svelte/icons/square-pen';
+	import TrashIcon from '@lucide/svelte/icons/trash';
+	import UploadIcon from '@lucide/svelte/icons/upload';
+	import { userListData } from '$lib/custom/user/store/data';
 
 	// Pagination state
 	let currentPage = $state(1);

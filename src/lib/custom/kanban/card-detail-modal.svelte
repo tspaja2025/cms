@@ -1,14 +1,14 @@
 <script lang="ts">
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Label } from '$lib/components/ui/label';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Select from '$lib/components/ui/select';
+	import * as Dialog from '$lib/components/ui/dialog/index';
+	import { Button } from '$lib/components/ui/button/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Textarea } from '$lib/components/ui/textarea/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Badge } from '$lib/components/ui/badge/index';
+	import * as Select from '$lib/components/ui/select/index';
 	import { XIcon } from '@lucide/svelte';
 	import { createEventDispatcher, onMount } from 'svelte';
-	import type { KanbanCardType, KanbanColumn, Tag, TagColor } from '$lib/custom/kanban/types/types';
+	import type { KanbanCardType, KanbanColumn, Tag, TagColor } from '$lib/custom/kanban/types';
 	import { v4 as uuidv4 } from 'uuid';
 
 	export let cardId: string | null;
@@ -191,7 +191,7 @@
 					<Select.Root bind:value={newTagColor}>
 						<Select.Trigger class="w-[120px]">Color</Select.Trigger>
 						<Select.Content>
-							{#each tagColors as color}
+							{#each tagColors as color, index (index)}
 								<Select.Item value={color}>
 									{getTagDisplayName(color)}
 								</Select.Item>
@@ -213,7 +213,7 @@
 							<Select.Root value={columnId} onValueChange={handleMoveCard}>
 								<Select.Trigger class="h-8 w-[150px]">Select column</Select.Trigger>
 								<Select.Content>
-									{#each columns as col}
+									{#each columns as col, index (index)}
 										<Select.Item value={col.id} disabled={col.id === columnId}>
 											{col.title}
 										</Select.Item>
@@ -234,7 +234,7 @@
 					{/if}
 				</div>
 				<div class="space-x-2">
-					<Dialog.Close asChild>
+					<Dialog.Close>
 						<Button variant="outline">Cancel</Button>
 					</Dialog.Close>
 					<Button onclick={handleSave} disabled={!title.trim()}>

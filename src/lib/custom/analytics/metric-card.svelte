@@ -5,7 +5,7 @@
 	import TrendingUp from '@lucide/svelte/icons/trending-up';
 	import ArrowUp from '@lucide/svelte/icons/arrow-up';
 	import ArrowDown from '@lucide/svelte/icons/arrow-down';
-	import * as Card from '$lib/components/ui/card';
+	import * as Card from '$lib/components/ui/card/index';
 
 	const { metric } = $props();
 

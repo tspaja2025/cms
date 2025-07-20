@@ -1,14 +1,14 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import * as Table from '$lib/components/ui/table';
-	import * as Select from '$lib/components/ui/select';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Label } from '$lib/components/ui/label';
-	import { Input } from '$lib/components/ui/input';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Avatar from '$lib/components/ui/avatar/index';
+	import * as Dialog from '$lib/components/ui/dialog/index';
+	import * as Table from '$lib/components/ui/table/index';
+	import * as Select from '$lib/components/ui/select/index';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index';
 	import {
 		ChevronLeftIcon,
 		ChevronRightIcon,
@@ -19,7 +19,7 @@
 		TrashIcon,
 		UploadIcon
 	} from '@lucide/svelte';
-	import { userListData } from '$lib/custom/user/store/user';
+	import { userListData } from '$lib/custom/user/store/data';
 
 	const cardData = [
 		{ title: 'Administrator', description: 'Total 4 users' },
@@ -93,10 +93,6 @@
 		}
 	});
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 <div class="grid grid-cols-3 gap-4">
 	{#each cardData as card, index (index)}

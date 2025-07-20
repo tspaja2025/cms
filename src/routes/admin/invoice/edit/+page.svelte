@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { invoiceStore } from '$lib/custom/invoice/store/store';
+	import { invoiceStore } from '$lib/custom/invoice/store/data';
 	import type { Invoice } from '$lib/custom/invoice/types';
 	import InvoiceForm from '$lib/custom/invoice/invoice-form.svelte';
 
@@ -38,10 +38,6 @@
 		}
 	}
 </script>
-
-<svelte:head>
-	<title>Admin Dashboard</title>
-</svelte:head>
 
 {#if loading}
 	<div class="flex h-64 items-center justify-center">

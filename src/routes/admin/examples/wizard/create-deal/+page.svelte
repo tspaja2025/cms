@@ -1,14 +1,14 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import * as RadioGroup from '$lib/components/ui/radio-group';
-	import { Label } from '$lib/components/ui/label';
-	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card/index';
+	import * as RadioGroup from '$lib/components/ui/radio-group/index';
+	import { Label } from '$lib/components/ui/label/index';
+	import { Button } from '$lib/components/ui/button/index';
 	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
 	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
-	import DealType from '$lib/custom/create-deal/deal-type.svelte';
-	import DealDetails from '$lib/custom/create-deal/deal-details.svelte';
-	import DealUsage from '$lib/custom/create-deal/deal-usage.svelte';
-	import ReviewComplete from '$lib/custom/create-deal/review-complete.svelte';
+	import DealType from '$lib/custom/wizard/create-deal/deal-type.svelte';
+	import DealDetails from '$lib/custom/wizard/create-deal/deal-details.svelte';
+	import DealUsage from '$lib/custom/wizard/create-deal/deal-usage.svelte';
+	import ReviewComplete from '$lib/custom/wizard/create-deal/review-complete.svelte';
 
 	let checked = $state('dealType');
 
