@@ -53,14 +53,6 @@ export const navigation = [
 		]
 	},
 	{ name: 'Academy', href: `${base}/admin/academy` },
-	// {
-	// 	parent: 'Academy',
-	// 	children: [
-	// 		{ name: 'Dashboard', href: `${base}/admin/academy/dashboard` },
-	// 		{ name: 'My Courses', href: `${base}/admin/academy/my-courses` },
-	// 		{ name: 'Course Details', href: `${base}/admin/academy/my-courses` }
-	// 	]
-	// },
 	{ name: 'Logistics', href: `${base}/admin/logistics` },
 	{ name: 'Email', href: `${base}/admin/email` },
 	{ name: 'Chat', href: `${base}/admin/chat` },
@@ -168,28 +160,7 @@ export const navigation = [
 	{ header: 'Charts and Misc' },
 	{
 		parent: 'Charts',
-		children: [{ name: 'Apexchart', href: `${base}/admin/charts/apex` }]
+		children: [{ name: 'Apexchart', href: `${base}/admin/charts/apex` }, { name: 'Layerchart', href: `${base}/admin/charts/layer` }]
 	},
 	{ name: 'Components', href: 'https://www.shadcn-svelte.com/' },
-	{
-		parent: 'Others',
-		children: [
-			{ name: 'Item with Badge', href: `${base}/admin` },
-			{ name: 'External Link', href: `${base}/admin` }
-		]
-	},
-	{
-		parent: 'Menu Levels',
-		children: [
-			{ name: 'Menu Level 2', href: `${base}/admin` },
-			{
-				parent: 'Menu Level 2',
-				children: [
-					{ name: 'Menu Level 3', href: `${base}/admin` },
-					{ name: 'Menu Level 3', href: `${base}/admin` }
-				]
-			},
-			{ name: 'Disabled Menu', href: `${base}/admin` }
-		]
-	}
 ];

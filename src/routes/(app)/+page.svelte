@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import * as Alert from '$lib/components/ui/alert/index';
 	import { Button } from '$lib/components/ui/button/index';
 	import * as Card from '$lib/components/ui/card/index';
 	import { Checkbox } from '$lib/components/ui/checkbox/index';
 	import { Label } from '$lib/components/ui/label/index';
 	import { Input } from '$lib/components/ui/input/index';
 	import { toast } from 'svelte-sonner';
+	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert'
 
 	type AuthMode = 'login' | 'register';
 	let authMode: AuthMode = $state('login');
@@ -112,6 +114,10 @@
 	</Card.Header>
 	<Card.Content>
 		<form class="grid gap-4" onsubmit={handleSubmit}>
+			<Alert.Root class="bg-yellow-100 text-yellow-700">
+				<CircleAlertIcon/>
+				<Alert.Title>Email: admin@admin.com / Pass: 12345678</Alert.Title>
+			</Alert.Root>
 			<div class="grid gap-2">
 				<Label for="email">Email</Label>
 				<Input
