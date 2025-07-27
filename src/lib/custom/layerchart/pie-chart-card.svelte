@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card/index';
 	import * as Chart from '$lib/components/ui/chart/index';
-	import { PieChart, Text, type ChartContextValue } from 'layerchart';
+	import { PieChart, Text } from 'layerchart';
 	import { pieChartData, pieChartConfig } from '$lib/custom/layerchart/store/data';
 
 	const totalVisitors = pieChartData.reduce((acc, curr) => acc + curr.visitors, 0);

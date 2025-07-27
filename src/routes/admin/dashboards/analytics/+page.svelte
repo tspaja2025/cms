@@ -63,7 +63,7 @@
 			<Card.Root>
 				<Card.Header>
 					<Card.Title>Traffic Sources</Card.Title>
-					<Card.Description>subtitle="Where your visitors are coming from</Card.Description>
+					<Card.Description>Where your visitors are coming from</Card.Description>
 				</Card.Header>
 				<Card.Content>
 					<div use:chart={trafficSourcesData}></div>

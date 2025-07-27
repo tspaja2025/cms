@@ -16,22 +16,6 @@ const config = {
 		}),
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/cms' : process.env.BASE_PATH || '/cms'
-		},
-		prerender: {
-			entries: [
-				'/admin/examples/widget/actions',
-				'/admin/examples/widget/advanced',
-				'/admin/examples/widget/basic',
-				'/admin/examples/widget/charts',
-				'/admin/examples/widget/gamification',
-				'/admin/examples/widget/statistics',
-				'/admin/examples/wizard/form',
-				'/admin/front-pages/checkout',
-				'/admin/front-pages/help-center',
-				'/admin/front-pages/landing',
-				'/admin/front-pages/payment',
-				'/admin/front-pages/pricing'
-			]
 		}
 	}
 };

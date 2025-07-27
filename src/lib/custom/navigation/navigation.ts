@@ -9,16 +9,6 @@ export const navigation = [
 		]
 	},
 	{
-		parent: 'Front Pages',
-		children: [
-			{ name: 'Landing', href: `${base}/admin` },
-			{ name: 'Pricing', href: `${base}/admin` },
-			{ name: 'Payment', href: `${base}/admin` },
-			{ name: 'Checkout', href: `${base}/admin` },
-			{ name: 'Help Center', href: `${base}/admin` }
-		]
-	},
-	{
 		header: 'Apps and Pages'
 	},
 	{
@@ -27,29 +17,16 @@ export const navigation = [
 			{ name: 'Dashboard', href: `${base}/admin/ecommerce/dashboard` },
 			{
 				parent: 'Products',
-				children: [
-					{ name: 'List', href: `${base}/admin/ecommerce/products/list` },
-					{ name: 'Add', href: `${base}/admin/ecommerce/products/add` },
-					{ name: 'Category', href: `${base}/admin/ecommerce/products/category` }
-				]
+				children: [{ name: 'List', href: `${base}/admin/ecommerce/products/list` }]
 			},
 			{
 				parent: 'Orders',
-				children: [
-					{ name: 'List', href: `${base}/admin/ecommerce/orders/list` },
-					{ name: 'Details', href: `${base}/admin/ecommerce/orders/details` }
-				]
+				children: [{ name: 'List', href: `${base}/admin/ecommerce/orders/list` }]
 			},
 			{
 				parent: 'Customers',
-				children: [
-					{ name: 'List', href: `${base}/admin/ecommerce/customers/list` },
-					{ name: 'Details', href: `${base}/admin/ecommerce/customers/details` }
-				]
-			},
-			{ name: 'Manage Reviews', href: `${base}/admin/ecommerce/manage-reviews` },
-			{ name: 'Referrals', href: `${base}/admin/ecommerce/referrals` },
-			{ name: 'Settings', href: `${base}/admin/ecommerce/settings` }
+				children: [{ name: 'List', href: `${base}/admin/ecommerce/customers/list` }]
+			}
 		]
 	},
 	{ name: 'Academy', href: `${base}/admin/academy` },
@@ -87,22 +64,7 @@ export const navigation = [
 			{ name: 'User Profile', href: `${base}/admin/pages/user-profile` },
 			{ name: 'Account Settings', href: `${base}/admin/pages/account-settings` },
 			{ name: 'FAQ', href: `${base}/admin/pages/faq` },
-			{ name: 'Pricing', href: `${base}/admin/pages/pricing` },
-			{
-				parent: 'Miscellaneous',
-				children: [
-					{ name: 'Coming Soon', href: `${base}/admin/pages/miscellaneous/coming-soon/` },
-					{
-						name: 'Under Maintenance',
-						href: `${base}/admin/pages/miscellaneous/under-maintenance`
-					},
-					{
-						name: 'Page Not Found - 404',
-						href: `${base}/admin/pages/miscellaneous/page-not-found`
-					},
-					{ name: 'Not Authorized - 401', href: `${base}/admin/pages/miscellaneous/not-authorized` }
-				]
-			}
+			{ name: 'Pricing', href: `${base}/admin/pages/pricing` }
 		]
 	},
 	{
@@ -127,10 +89,6 @@ export const navigation = [
 			{
 				name: 'Reset Password',
 				href: `${base}/admin/auth-pages/reset-password`
-			},
-			{
-				name: 'Two Steps',
-				href: `${base}/admin/auth-pages/two-steps`
 			}
 		]
 	},
@@ -143,24 +101,16 @@ export const navigation = [
 		]
 	},
 	{ name: 'Dialog Examples', href: `${base}/admin/examples/dialog` },
-	{
-		parent: 'Widget Examples',
-		children: [
-			{ name: 'Basic', href: `${base}/admin` },
-			{ name: 'Advanced', href: `${base}/admin` },
-			{ name: 'Statistics', href: `${base}/admin` },
-			{ name: 'Charts', href: `${base}/admin` },
-			{ name: 'Gamification', href: `${base}/admin` },
-			{ name: 'Actions', href: `${base}/admin` }
-		]
-	},
 	{ header: 'Forms and Tables' },
 	{ name: 'Forms Layouts', href: `${base}/admin/forms` },
 	{ name: 'Tables', href: `${base}/admin/tables` },
 	{ header: 'Charts and Misc' },
 	{
 		parent: 'Charts',
-		children: [{ name: 'Apexchart', href: `${base}/admin/charts/apex` }, { name: 'Layerchart', href: `${base}/admin/charts/layer` }]
+		children: [
+			{ name: 'Apexchart', href: `${base}/admin/charts/apex` },
+			{ name: 'Layerchart', href: `${base}/admin/charts/layer` }
+		]
 	},
-	{ name: 'Components', href: 'https://www.shadcn-svelte.com/' },
+	{ name: 'Components', href: 'https://www.shadcn-svelte.com/' }
 ];
