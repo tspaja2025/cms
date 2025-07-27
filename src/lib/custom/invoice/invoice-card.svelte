@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import * as Card from '$lib/components/ui/card/index';
 	import { Badge } from '$lib/components/ui/badge/index';
 	import { formatCurrency, formatDate, calculateDueDays } from '$lib/custom/invoice/utils';
@@ -18,7 +19,7 @@
 
 <Card.Root
 	class="animate-scale-in group relative cursor-pointer transition-shadow hover:shadow-md"
-	onclick={() => goto(`/admin/invoice/preview/${invoice.id}`)}
+	onclick={() => goto(`${base}/admin/invoice/preview/${invoice.id}`)}
 	{...restProps}
 >
 	<Card.Header>

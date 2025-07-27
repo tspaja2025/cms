@@ -28,16 +28,6 @@
 	let searchQuery = $state('');
 
 	// Computed properties
-	// $: filteredData = userListData.filter((user) => {
-	//   return (
-	//     (selectedRole === "" || user.role.toLowerCase() === selectedRole) &&
-	//     (selectedPlan === "" || user.plan.toLowerCase() === selectedPlan) &&
-	//     (selectedStatus === "" || user.status.toLowerCase() === selectedStatus) &&
-	//     (searchQuery === "" ||
-	//       user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-	//       user.email.toLowerCase().includes(searchQuery.toLowerCase()))
-	//   );
-	// });
 	let filteredData = $derived(
 		userListData.filter((user) => {
 			return (
@@ -51,12 +41,7 @@
 		})
 	);
 
-	// $: totalPages = Math.ceil(filteredData.length / rowsPerPage);
 	let totalPages = $derived(Math.ceil(filteredData.length / rowsPerPage));
-	// $: paginatedData = filteredData.slice(
-	//   (currentPage - 1) * rowsPerPage,
-	//   currentPage * rowsPerPage,
-	// );
 	let paginatedData = $derived(
 		filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage)
 	);

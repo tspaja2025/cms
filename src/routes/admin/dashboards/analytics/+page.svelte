@@ -10,11 +10,6 @@
 	import { chart } from '$lib/custom/apexchart/apexchart';
 </script>
 
-<svelte:head>
-	<title>Admin Analytics Dashboard</title>
-	<meta name="description" content="Admin Analytics Dashboard" />
-</svelte:head>
-
 <div class="space-y-6 p-6">
 	<!-- Header -->
 	<div class="flex items-center justify-between">

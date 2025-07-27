@@ -7,83 +7,29 @@
 	import { Label } from '$lib/components/ui/label/index';
 	import { Input } from '$lib/components/ui/input/index';
 	import { toast } from 'svelte-sonner';
-	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert'
+	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
 
 	type AuthMode = 'login' | 'register';
 	let authMode: AuthMode = $state('login');
-
+	let isLoading = $state(false);
 	let formData = $state({
 		email: '',
 		password: '',
 		repeatPassword: '',
 		rememberMe: false
 	});
-
-	let isLoading = $state(false);
 	let errors = $state<Record<string, string>>({
 		email: '',
 		password: '',
 		repeatPassword: ''
 	});
 
-	function validateForm(): boolean {
-		const newErrors: Record<string, string> = {};
-
-		if (!formData.email) {
-			newErrors.email = 'Email is required';
-		} else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-			newErrors.email = 'Please enter a valid email';
-		}
-
-		if (!formData.password) {
-			newErrors.password = 'Password is required';
-		} else if (formData.password.length < 8) {
-			newErrors.password = 'Password must be at least 8 characters';
-		}
-
-		if (authMode === 'register' && formData.password !== formData.repeatPassword) {
-			newErrors.repeatPassword = 'Passwords do not match';
-		}
-
-		errors = newErrors;
-		return Object.keys(errors).length === 0;
-	}
-
-	async function handleSubmit(event: Event) {
-		event.preventDefault();
-
-		if (!validateForm()) return;
-
-		isLoading = true;
-
-		try {
-			const response = await fetch(`${base}/auth/${authMode}.json`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					email: formData.email,
-					password: formData.password,
-					rememberMe: formData.rememberMe
-				})
-			});
-
-			if (!response.ok) {
-				const errorData = await response.json();
-				throw new Error(errorData.message || 'Authentication failed');
-			}
-
-			// Redirect or handle successful auth
-			window.location.href = `${base}/admin/`;
-		} catch (error) {
-			toast.error(error.message || 'An error occurred during authentication');
-		} finally {
-			isLoading = false;
-		}
-	}
-
 	function toggleAuthMode() {
 		authMode = authMode === 'login' ? 'register' : 'login';
-		errors = {};
+	}
+
+	function handleSubmit() {
+		window.location.href = `${base}/admin/`;
 	}
 </script>
 
@@ -115,7 +61,7 @@
 	<Card.Content>
 		<form class="grid gap-4" onsubmit={handleSubmit}>
 			<Alert.Root class="bg-yellow-100 text-yellow-700">
-				<CircleAlertIcon/>
+				<CircleAlertIcon />
 				<Alert.Title>Email: admin@admin.com / Pass: 12345678</Alert.Title>
 			</Alert.Root>
 			<div class="grid gap-2">

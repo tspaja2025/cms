@@ -3,6 +3,7 @@ import { base } from '$app/paths';
 export const navigation = [
 	{
 		parent: 'Dashboards',
+		isActive: false,
 		children: [
 			{ name: 'CRM', href: `${base}/admin/dashboards/crm` },
 			{ name: 'Analytics', href: `${base}/admin/dashboards/analytics` }
@@ -13,6 +14,7 @@ export const navigation = [
 	},
 	{
 		parent: 'eCommerce',
+		isActive: false,
 		children: [
 			{ name: 'Dashboard', href: `${base}/admin/ecommerce/dashboard` },
 			{
@@ -37,6 +39,7 @@ export const navigation = [
 	{ name: 'Kanban', href: `${base}/admin/kanban` },
 	{
 		parent: 'Invoice',
+		isActive: false,
 		children: [
 			{ name: 'Add', href: `${base}/admin/invoice/add` },
 			{ name: 'Edit', href: `${base}/admin/invoice/edit` },
@@ -46,6 +49,7 @@ export const navigation = [
 	},
 	{
 		parent: 'User',
+		isActive: false,
 		children: [
 			{ name: 'List', href: `${base}/admin/user/list` },
 			{ name: 'View', href: `${base}/admin/user/view` }
@@ -53,6 +57,7 @@ export const navigation = [
 	},
 	{
 		parent: 'Roles and Permissions',
+		isActive: false,
 		children: [
 			{ name: 'Roles', href: `${base}/admin/roles-permissions/roles` },
 			{ name: 'Permissions', href: `${base}/admin/roles-permissions/permissions` }
@@ -60,6 +65,7 @@ export const navigation = [
 	},
 	{
 		parent: 'Pages',
+		isActive: false,
 		children: [
 			{ name: 'User Profile', href: `${base}/admin/pages/user-profile` },
 			{ name: 'Account Settings', href: `${base}/admin/pages/account-settings` },
@@ -69,6 +75,7 @@ export const navigation = [
 	},
 	{
 		parent: 'Authentication',
+		isActive: false,
 		children: [
 			{
 				name: 'Login',
@@ -94,6 +101,7 @@ export const navigation = [
 	},
 	{
 		parent: 'Wizard Examples',
+		isActive: false,
 		children: [
 			{ name: 'Checkout', href: `${base}/admin/examples/wizard/checkout` },
 			{ name: 'Property Listing', href: `${base}/admin/examples/wizard/property-listing` },
@@ -107,6 +115,7 @@ export const navigation = [
 	{ header: 'Charts and Misc' },
 	{
 		parent: 'Charts',
+		isActive: false,
 		children: [
 			{ name: 'Apexchart', href: `${base}/admin/charts/apex` },
 			{ name: 'Layerchart', href: `${base}/admin/charts/layer` }

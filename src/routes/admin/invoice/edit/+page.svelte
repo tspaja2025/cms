@@ -4,11 +4,7 @@
 	import type { Invoice } from '$lib/custom/invoice/types';
 	import InvoiceForm from '$lib/custom/invoice/invoice-form.svelte';
 
-	interface Props {
-		id: string;
-	}
-
-	const { id = '' }: Props = $props();
+	const id = $state('');
 
 	let invoice = $state<Invoice | null>(null);
 	let loading = $state(true);
