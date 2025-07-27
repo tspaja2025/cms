@@ -1,0 +1,1 @@
+import{_ as d}from"./D9Z9MdNV.js";let r;r=(await d(async()=>{const{default:t}=await import("./CKBaktT3.js");return{default:t}},[],import.meta.url)).default;const u=(t,a)=>{let e=new r(t,a);return e.render(),{update(_){e.update(_)},destroy(){e.destroy()}}};export{u as c};

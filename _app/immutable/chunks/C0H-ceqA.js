@@ -1,0 +1,1 @@
+import{ab as b,ac as t,R as c,ad as d,ae as h}from"./D4acD81I.js";function u(r,a){return r===a||r?.[h]===a}function T(r={},a,f,k){return b(()=>{var i,s;return t(()=>{i=s,s=[],c(()=>{r!==f(...s)&&(a(r,...s),i&&u(f(...i),r)&&a(null,...i))})}),()=>{d(()=>{s&&u(f(...s),r)&&a(null,...s)})}}),r}export{T as b};

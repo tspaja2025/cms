@@ -1,0 +1,1 @@
+import"../chunks/NZTpNUN0.js";import"../chunks/DGrZV8Wo.js";import{f as t,b as a}from"../chunks/D4acD81I.js";var m=t('<h1 class="text-4xl">Form Wizard</h1>');function n(o){var r=m();a(o,r)}export{n as component};

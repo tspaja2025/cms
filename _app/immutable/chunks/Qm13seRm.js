@@ -1,0 +1,1 @@
+import{ab as d,R as c,ac as n,am as u,aG as p}from"./D4acD81I.js";function m(s,o,r){d(()=>{var a=c(()=>o(s,r?.())||{});if(r&&a?.update){var t=!1,f={};n(()=>{var e=r();u(e),t&&p(f,e)&&(f=e,a.update(e))}),t=!0}if(a?.destroy)return()=>a.destroy()})}export{m as a};
