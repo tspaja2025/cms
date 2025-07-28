@@ -35,6 +35,9 @@
 					},
 					xAxis: {
 						format: (v: Date) => v.toLocaleDateString('en-US', { month: 'short' })
+					},
+					yAxis: {
+						format: (d) => (d >= 1000 ? `${d / 1000}k` : d.toString())
 					}
 				}}
 			>

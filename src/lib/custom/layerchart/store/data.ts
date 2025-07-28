@@ -1,4 +1,4 @@
-import * as Chart from '$lib/components/ui/chart/index';
+import type { ChartConfig } from "$lib/components/ui/chart";
 
 export const areaChartData = [
     { date: new Date("2024-01-01"), desktop: 186 },
@@ -33,8 +33,8 @@ export const pieChartConfig = {
     firefox: { label: "Firefox", color: "var(--chart-3)" },
     edge: { label: "Edge", color: "var(--chart-4)" },
     other: { label: "Other", color: "var(--chart-5)" },
-} satisfies Chart.ChartConfig;
+} satisfies ChartConfig;
 
 export const chartConfig = {
     desktop: { label: "Desktop", color: "var(--chart-1)" },
-} satisfies Chart.ChartConfig;
+} satisfies ChartConfig;

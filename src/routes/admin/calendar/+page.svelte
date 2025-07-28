@@ -12,6 +12,7 @@
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
+	import { Separator } from '$lib/components/ui/separator/index';
 
 	const currentDate = today(getLocalTimeZone());
 
@@ -199,7 +200,7 @@
 						<ChevronRightIcon class="h-5 w-5" />
 					</Button>
 
-					<div class="hidden h-6 border-l border-gray-300 md:block"></div>
+					<Separator orientation="vertical"/>
 
 					<Select.Root type="single" bind:value={viewValue}>
 						<Select.Trigger name="viewSelector">{triggerContent}</Select.Trigger>

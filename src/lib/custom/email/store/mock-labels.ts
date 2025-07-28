@@ -4,41 +4,41 @@ export const mockLabels: EmailLabel[] = [
 	{
 		id: 'work',
 		name: 'Work',
-		color: 'blue'
+		color: 'bg-blue-500'
 	},
 	{
 		id: 'personal',
 		name: 'Personal',
-		color: 'green'
+		color: 'bg-green-500'
 	},
 	{
 		id: 'family',
 		name: 'Family',
-		color: 'purple'
+		color: 'bg-purple-500'
 	},
 	{
 		id: 'social',
 		name: 'Social',
-		color: 'pink'
+		color: 'bg-pink-500'
 	},
 	{
 		id: 'important',
 		name: 'Important',
-		color: 'red'
+		color: 'bg-red-500'
 	},
 	{
 		id: 'urgent',
 		name: 'Urgent',
-		color: 'orange'
+		color: 'bg-orange-500'
 	},
 	{
 		id: 'newsletters',
 		name: 'Newsletters',
-		color: 'yellow'
+		color: 'bg-yellow-500'
 	},
 	{
 		id: 'promotions',
 		name: 'Promotions',
-		color: 'indigo'
+		color: 'bg-indigo-500'
 	}
 ];
