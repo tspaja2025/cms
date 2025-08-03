@@ -1,0 +1,1 @@
+import{_ as i}from"./D9Z9MdNV.js";const _=(a,r)=>{let t;return Promise.resolve().then(async()=>{const e=(await i(async()=>{const{default:o}=await import("./CKBaktT3.js");return{default:o}},[],import.meta.url)).default;t=new e(a,r),await t.render()}),{update(e){t&&t.updateOptions(e)},destroy(){t&&t.destroy()}}};export{_ as c};
