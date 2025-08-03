@@ -4,6 +4,7 @@
 	import * as Table from '$lib/components/ui/table/index';
 	import * as Select from '$lib/components/ui/select/index';
 	import { Checkbox } from '$lib/components/ui/checkbox/index';
+	import { notifications } from '$lib/custom/pages/user-settings/store/data';
 </script>
 
 <Card.Root>
@@ -24,41 +25,25 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				<Table.Row>
-					<Table.Cell>New for you</Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Account activity</Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>A new browser used to sign in</Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox /></Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>A new device is linked</Table.Cell>
-					<Table.Cell><Checkbox checked /></Table.Cell>
-					<Table.Cell><Checkbox /></Table.Cell>
-					<Table.Cell><Checkbox /></Table.Cell>
-				</Table.Row>
+				{#each notifications as item, index (index)}
+					<Table.Row>
+						<Table.Cell>{item.name}</Table.Cell>
+						<Table.Cell><Checkbox checked={item.email} /></Table.Cell>
+						<Table.Cell><Checkbox checked={item.browser} /></Table.Cell>
+						<Table.Cell><Checkbox checked={item.app} /></Table.Cell>
+					</Table.Row>
+				{/each}
 			</Table.Body>
-			<Select.Root type="single">
-				<Select.Trigger>When should we send you notifications?</Select.Trigger>
-				<Select.Content>
-					<Select.Item value="online">Only when I'm online</Select.Item>
-					<Select.Item value="anytime">Anytime</Select.Item>
-				</Select.Content>
-			</Select.Root>
 		</Table.Root>
+		<Select.Root type="single">
+			<Select.Trigger>When should we send you notifications?</Select.Trigger>
+			<Select.Content>
+				<Select.Item value="online">Only when I'm online</Select.Item>
+				<Select.Item value="anytime">Anytime</Select.Item>
+			</Select.Content>
+		</Select.Root>
 	</Card.Content>
-	<Card.Footer>
+	<Card.Footer class="gap-2">
 		<Button>Save Changes</Button>
 		<Button variant="secondary">Reset</Button>
 	</Card.Footer>

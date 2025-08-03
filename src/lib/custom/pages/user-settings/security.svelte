@@ -5,9 +5,9 @@
 	import * as Select from '$lib/components/ui/select/index';
 	import * as Alert from '$lib/components/ui/alert/index';
 	import { Button } from '$lib/components/ui/button/index';
-	import { Input } from '$lib/components/ui/input/index';
-	import { Label } from '$lib/components/ui/label/index';
 	import AlertCircleIcon from '@lucide/svelte/icons/alert-circle';
+	import FormField from '$lib/custom/pages/user-settings/form-field.svelte';
+	import { recentDevicesData } from '$lib/custom/pages/user-settings/store/data';
 </script>
 
 <Card.Root>
@@ -15,19 +15,10 @@
 		<Card.Title>Change Password</Card.Title>
 	</Card.Header>
 	<Card.Content class="space-y-4">
-		<div class="space-y-2">
-			<Label for="current_password">Current Password</Label>
-			<Input type="password" id="current_password" />
-		</div>
+		<FormField label="Current Password" id="current_password" />
 		<div class="flex space-x-4">
-			<div class="flex-1 space-y-2">
-				<Label for="new_password">New Password</Label>
-				<Input type="password" id="new_password" />
-			</div>
-			<div class="flex-1 space-y-2">
-				<Label for="confirm_new_password">Confirm New Password</Label>
-				<Input type="password" id="confirm_new_password" />
-			</div>
+			<FormField class="flex-1" label="New Password" id="new_password" />
+			<FormField class="flex-1" label="Confirm New Password" id="confirm_new_password" />
 		</div>
 		<Alert.Root variant="destructive">
 			<AlertCircleIcon />
@@ -41,7 +32,7 @@
 			</Alert.Description>
 		</Alert.Root>
 	</Card.Content>
-	<Card.Footer>
+	<Card.Footer class="gap-2">
 		<Button>Save Changes</Button>
 		<Button variant="secondary">Reset</Button>
 	</Card.Footer>
@@ -80,10 +71,7 @@
 				<Select.Item value="read_write">Read & Write</Select.Item>
 			</Select.Content>
 		</Select.Root>
-		<div class="space-y-2">
-			<Label for="key_name">Name the API key</Label>
-			<Input type="text" id="key_name" />
-		</div>
+		<FormField label="Name the API key" id="key_name" />
 	</Card.Content>
 	<Card.Footer>
 		<Button>Create Key</Button>
@@ -115,24 +103,13 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				<Table.Row>
-					<Table.Cell>Chrome on Windows</Table.Cell>
-					<Table.Cell>HP Spectre 360</Table.Cell>
-					<Table.Cell>Finland</Table.Cell>
-					<Table.Cell>07, July 20:20</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Chrome on MacOS</Table.Cell>
-					<Table.Cell>Apple iMac</Table.Cell>
-					<Table.Cell>Finland</Table.Cell>
-					<Table.Cell>07, July 20:20</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>Chrome on Android</Table.Cell>
-					<Table.Cell>Oneplus 9 Pro</Table.Cell>
-					<Table.Cell>Finland</Table.Cell>
-					<Table.Cell>07, July 20:20</Table.Cell>
-				</Table.Row>
+				{#each recentDevicesData as item, index (index)}
+					<Table.Row>
+						{#each item.items as it, index (index)}
+							<Table.Cell>{it.name}</Table.Cell>
+						{/each}
+					</Table.Row>
+				{/each}
 			</Table.Body>
 		</Table.Root>
 	</Card.Content>

@@ -118,7 +118,9 @@ export const navigation = [
 		isActive: false,
 		children: [
 			{ name: 'Apexchart', href: `${base}/admin/charts/apex` },
-			{ name: 'Layerchart', href: `${base}/admin/charts/layer` }
+			{ name: 'Layerchart', href: `${base}/admin/charts/layer` },
+			{ name: 'Chart.js', href: `${base}/admin/charts/chartjs` },
+			{ name: 'Echarts', href: `${base}/admin/charts/echart` }
 		]
 	},
 	{ name: 'Components', href: 'https://www.shadcn-svelte.com/' }

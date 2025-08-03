@@ -16,18 +16,18 @@
 		<Tabs.Trigger value="connections">Connections</Tabs.Trigger>
 	</Tabs.List>
 	<Tabs.Content value="account" class="space-y-4">
-		<Account/>
+		<Account />
 	</Tabs.Content>
 	<Tabs.Content value="security" class="space-y-4">
-		<Security/>
+		<Security />
 	</Tabs.Content>
 	<Tabs.Content value="billing-plans" class="space-y-4">
-		<BillingPlans/>
+		<BillingPlans />
 	</Tabs.Content>
 	<Tabs.Content value="notifications" class="space-y-4">
-		<Notifications/>
+		<Notifications />
 	</Tabs.Content>
 	<Tabs.Content value="connections" class="space-y-4">
-		<Connections/>
+		<Connections />
 	</Tabs.Content>
 </Tabs.Root>

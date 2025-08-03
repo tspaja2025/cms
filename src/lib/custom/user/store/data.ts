@@ -1,3 +1,11 @@
+import CheckIcon from '@lucide/svelte/icons/check';
+
+import ArrowDownIcon from '@lucide/svelte/icons/arrow-down';
+import SendHorizontalIcon from '@lucide/svelte/icons/send-horizontal';
+import MailIcon from '@lucide/svelte/icons/mail';
+import ChartPieIcon from '@lucide/svelte/icons/chart-pie';
+import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
+
 export const userListData = [
 	{
 		id: 1,
@@ -451,4 +459,98 @@ export const projectList = [
 		progress: 88,
 		hours: '12:42'
 	}
+];
+
+export const invoiceList = [
+	{
+		id: 50,
+		status: CheckIcon,
+		total: 3428,
+		issuedDate: '13 June 2025',
+		tooltip: [{ statusName: 'Paid', balance: 750, dueDate: '1 July 2025' }]
+	},
+	{
+		id: 49,
+		status: ArrowDownIcon,
+		total: 5219,
+		issuedDate: '17 June 2025',
+		tooltip: [{ statusName: 'Downloaded', balance: 0, dueDate: '15 July 2025' }]
+	},
+	{
+		id: 48,
+		status: SendHorizontalIcon,
+		total: 3719,
+		issuedDate: '19 June 2025',
+		tooltip: [{ statusName: 'Sent', balance: 0, dueDate: '11 July 2025' }]
+	},
+	{
+		id: 47,
+		status: MailIcon,
+		total: 4056,
+		issuedDate: '08 June 2025',
+		tooltip: [{ statusName: 'Draft', balance: 815, dueDate: '30 July 2025' }]
+	},
+	{
+		id: 46,
+		status: ChartPieIcon,
+		total: 3789,
+		issuedDate: '27 June 2025',
+		tooltip: [{ statusName: 'Partial Payment', balance: 666, dueDate: '18 July 2025' }]
+	},
+	{
+		id: 45,
+		status: CircleAlertIcon,
+		total: 5293,
+		issuedDate: '30 June 2025',
+		tooltip: [{ statusName: 'Past Due', balance: 0, dueDate: '1 July 2025' }]
+	}
+];
+
+export const recentDevices = [
+	{
+		browser: 'Chrome on Windows',
+		device: 'Dell XPS',
+		location: 'United States',
+		recentActivity: '10, Jan 2020 20:07'
+	},
+	{
+		browser: 'Chrome on Android',
+		device: 'Google Pixel',
+		location: 'United States',
+		recentActivity: '10, Jan 2020 20:07'
+	},
+	{
+		browser: 'Chrome on MacOS',
+		device: 'Apple iMac',
+		location: 'United States',
+		recentActivity: '10, Jan 2020 20:07'
+	},
+	{
+		browser: 'Chrome on iPhone',
+		device: 'Apple iPhone',
+		location: 'United States',
+		recentActivity: '10, Jan 2020 20:07'
+	}
+];
+
+export const notification = [
+	{ type: 'New for you', app: false, email: true, browser: false },
+	{ type: 'Account Activity	', app: true, email: false, browser: true },
+	{ type: 'A new browser sign in	', app: true, email: true, browser: true },
+	{ type: 'A new device linked', app: false, email: false, browser: true }
+];
+
+export const connectedAccounts = [
+	{ title: 'Google', description: 'Calendar and Contacts', checked: true },
+	{ title: 'Slack', description: 'Communications', checked: false },
+	{ title: 'Github', description: 'Manage your git repositories', checked: true },
+	{ title: 'Asana', description: 'Task Communication', checked: false }
+];
+
+export const socialAccounts = [
+	{ title: 'Facebook', connected: 'Not Connected' },
+	{ title: 'Twitter/X', connected: 'Not Connected' },
+	{ title: 'Linkedin', connected: 'Not Connected' },
+	{ title: 'Dribbble', connected: 'Not Connected' },
+	{ title: 'Behence', connected: 'Not Connected' }
 ];

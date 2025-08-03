@@ -3,7 +3,7 @@ import type { Invoice, InvoiceStatus, LineItem } from '$lib/custom/invoice/types
 import { v4 as uuidv4 } from 'uuid';
 
 // Initialize with sample data
-const initialInvoices: Invoice[] = [
+export const initialInvoices: Invoice[] = [
 	{
 		id: '1',
 		number: 'INV-001',

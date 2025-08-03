@@ -1,6 +1,7 @@
 import { CalendarDate } from '@internationalized/date';
+import type { ApexOptions } from 'apexcharts';
 
-export const distributedOptions = {
+export const distributedOptions: ApexOptions = {
 	chart: {
 		type: 'treemap'
 	},
@@ -104,7 +105,7 @@ function generateDayWiseTimeSeries(
 	return data;
 }
 
-export const scatterOptions = {
+export const scatterOptions: ApexOptions = {
 	chart: {
 		height: 350,
 		type: 'scatter',
@@ -224,7 +225,7 @@ export const scatterOptions = {
 	}
 };
 
-export const radialBarOptions = {
+export const radialBarOptions: ApexOptions = {
 	series: [44, 55, 67, 83],
 	chart: {
 		height: 350,
@@ -242,9 +243,9 @@ export const radialBarOptions = {
 				total: {
 					show: true,
 					label: 'Total',
-					formatter: function (w) {
+					formatter: function (w: string) {
 						// By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-						return 249;
+						return Number(249).toString();
 					}
 				}
 			}
@@ -253,7 +254,7 @@ export const radialBarOptions = {
 	labels: ['Apples', 'Oranges', 'Bananas', 'Berries']
 };
 
-export const rangeAreaOptions = {
+export const rangeAreaOptions: ApexOptions = {
 	series: [
 		{
 			type: 'rangeArea',
