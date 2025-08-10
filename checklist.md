@@ -1,0 +1,23 @@
+# Checklist
+
+- [ ] Scaling
+- [ ] Default to layerchart
+  - [ ] Depracate apexchart
+  - [ ] Depracate chart.js
+  - [ ] Depracate echart
+- [ ] Email app refactor
+- [ ] Chat app refactor
+- [ ] Calendar app refactor
+  - [ ] Events
+  - [ ] View selection
+  - [ ] Filters
+- [ ] Kanban app refactor
+  - [ ] Replace svelte-dnd-action with dnd-kit-svelte
+- [ ] Unified data location for page data
+- [ ] Lucia implementation
+- [ ] Drizzle implementation (sqlite)
+- [ ] Github OAuth
+- [ ] Google OAuth
+- [ ] Two-step verification
+- [ ] Adapters (deployment)
+- [ ] Performance (bundle size)
