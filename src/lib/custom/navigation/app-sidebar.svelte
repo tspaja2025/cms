@@ -1,94 +1,29 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import * as Collapsible from '$lib/components/ui/collapsible/index';
 	import * as Sidebar from '$lib/components/ui/sidebar/index';
-	import { Button } from '$lib/components/ui/button/index';
-	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
 	import { navigation } from '$lib/custom/navigation/navigation';
+	import type { ComponentProps } from 'svelte';
+	import Apps from './apps.svelte';
+	import Other from './other.svelte';
+	import Pages from './pages.svelte';
+
+	let {
+		ref = $bindable(null),
+		collapsible = 'icon',
+		...restProps
+	}: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 
-<Sidebar.Root>
-	<Sidebar.Header class="flex h-16 items-center justify-center">
-		<a href={base + '/admin'}>
+<Sidebar.Root {collapsible} {...restProps}>
+	<Sidebar.Header class="flex h-16 items-center justify-center border-b">
+		<a href="{base}/admin">
 			<h1 class="text-2xl font-bold">CMS</h1>
 		</a>
 	</Sidebar.Header>
 	<Sidebar.Content class="gap-0">
-		{#each navigation as item, index (index)}
-			{#if item.header}
-				<h4 class="mx-4 my-4 text-sm text-neutral-500">{item.header}</h4>
-			{:else if item.parent}
-				<Collapsible.Root title={item.parent} class="group/collapsible">
-					<Sidebar.Group class="!py-0">
-						<Sidebar.GroupLabel
-							class="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
-						>
-							{#snippet child({ props })}
-								<Collapsible.Trigger {...props}>
-									{item.parent}
-									<ChevronRightIcon
-										class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
-									/>
-								</Collapsible.Trigger>
-							{/snippet}
-						</Sidebar.GroupLabel>
-						<Collapsible.Content>
-							<Sidebar.GroupContent>
-								<Sidebar.Menu>
-									{#each item.children as childItem, childItemIndex (childItemIndex)}
-										{#if childItem.parent}
-											<!-- Nested collapsible for third level -->
-											<Collapsible.Root title={childItem.parent} class="group/collapsible">
-												<Sidebar.Group class="p-0">
-													<Sidebar.GroupLabel
-														class="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
-													>
-														{#snippet child({ props })}
-															<Collapsible.Trigger {...props}>
-																{childItem.parent}
-																<ChevronRightIcon
-																	class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
-																/>
-															</Collapsible.Trigger>
-														{/snippet}
-													</Sidebar.GroupLabel>
-													<Collapsible.Content>
-														<Sidebar.GroupContent>
-															<Sidebar.Menu>
-																{#each childItem.children as grandChildItem, grandChildItemIndex (grandChildItemIndex)}
-																	<Sidebar.MenuItem>
-																		<Sidebar.MenuButton isActive={grandChildItem.isActive}>
-																			{#snippet child({ props })}
-																				<a href={grandChildItem.href} {...props}
-																					>{grandChildItem.name}</a
-																				>
-																			{/snippet}
-																		</Sidebar.MenuButton>
-																	</Sidebar.MenuItem>
-																{/each}
-															</Sidebar.Menu>
-														</Sidebar.GroupContent>
-													</Collapsible.Content>
-												</Sidebar.Group>
-											</Collapsible.Root>
-										{:else}
-											<Sidebar.MenuItem>
-												<Sidebar.MenuButton isActive={childItem.isActive}>
-													{#snippet child({ props })}
-														<a href={childItem.href} {...props}>{childItem.name}</a>
-													{/snippet}
-												</Sidebar.MenuButton>
-											</Sidebar.MenuItem>
-										{/if}
-									{/each}
-								</Sidebar.Menu>
-							</Sidebar.GroupContent>
-						</Collapsible.Content>
-					</Sidebar.Group>
-				</Collapsible.Root>
-			{:else}
-				<Button class="justify-start" variant="ghost" href={item.href}>{item.name}</Button>
-			{/if}
-		{/each}
+		<Apps items={navigation.apps} />
+		<Pages items={navigation.pages} />
+		<Other items={navigation.other} />
 	</Sidebar.Content>
+	<Sidebar.Rail />
 </Sidebar.Root>
