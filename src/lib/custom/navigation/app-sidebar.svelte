@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import * as Sidebar from '$lib/components/ui/sidebar/index';
 	import { navigation } from '$lib/custom/navigation/navigation';
 	import type { ComponentProps } from 'svelte';
@@ -16,7 +16,7 @@
 
 <Sidebar.Root {collapsible} {...restProps}>
 	<Sidebar.Header class="flex h-16 items-center justify-center border-b">
-		<a href="{base}/admin">
+		<a href={resolve('/admin')}>
 			<h1 class="text-2xl font-bold">CMS</h1>
 		</a>
 	</Sidebar.Header>

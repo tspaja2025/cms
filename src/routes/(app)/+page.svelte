@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import * as Alert from '$lib/components/ui/alert/index';
 	import { Button } from '$lib/components/ui/button/index';
 	import * as Card from '$lib/components/ui/card/index';
@@ -57,7 +57,7 @@
 
 		isLoading = true;
 
-		window.location.href = `${base}/admin/`;
+		window.location.href = resolve('/admin/');
 	}
 
 	function toggleAuthMode() {

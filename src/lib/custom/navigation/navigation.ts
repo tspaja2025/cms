@@ -1,4 +1,4 @@
-import { base } from '$app/paths';
+import { resolve } from '$app/paths';
 import AppWindowIcon from '@lucide/svelte/icons/app-window';
 import BookTextIcon from '@lucide/svelte/icons/book-text';
 import ChartPieIcon from '@lucide/svelte/icons/chart-pie';
@@ -20,14 +20,14 @@ export const navigation = {
 			icon: AppWindowIcon,
 			isActive: true,
 			items: [
-				{ title: 'CRM', url: `${base}/admin/dashboards/crm`, isActive: false },
-				{ title: 'Analytics', url: `${base}/admin/dashboards/analytics`, isActive: false },
-				{ title: 'Academy', url: `${base}/admin/academy`, isActive: false },
-				{ title: 'Logistics', url: `${base}/admin/logistics`, isActive: false },
-				{ title: 'Email', url: `${base}/admin/email`, isActive: false },
-				{ title: 'Chat', url: `${base}/admin/chat`, isActive: false },
-				{ title: 'Calendar', url: `${base}/admin/calendar`, isActive: false },
-				{ title: 'Kanban', url: `${base}/admin/kanban`, isActive: false }
+				{ title: 'CRM', url: resolve('/admin/dashboards/crm'), isActive: false },
+				{ title: 'Analytics', url: resolve('/admin/dashboards/analytics'), isActive: false },
+				{ title: 'Academy', url: resolve('/admin/academy'), isActive: false },
+				{ title: 'Logistics', url: resolve('/admin/logistics'), isActive: false },
+				{ title: 'Email', url: resolve('/admin/email'), isActive: false },
+				{ title: 'Chat', url: resolve('/admin/chat'), isActive: false },
+				{ title: 'Calendar', url: resolve('/admin/calendar'), isActive: false },
+				{ title: 'Kanban', url: resolve('/admin/kanban'), isActive: false }
 			]
 		}
 	],
@@ -38,20 +38,20 @@ export const navigation = {
 			icon: ShoppingCartIcon,
 			isActive: false,
 			items: [
-				{ title: 'Dashboard', url: `${base}/admin/ecommerce/dashboard`, isActive: false },
+				{ title: 'Dashboard', url: resolve('/admin/ecommerce/dashboard'), isActive: false },
 				{
 					title: 'Products',
-					url: `${base}/admin/ecommerce/products/list`,
+					url: resolve('/admin/ecommerce/products/list'),
 					isActive: false
 				},
 				{
 					title: 'Orders',
-					url: `${base}/admin/ecommerce/orders/list`,
+					url: resolve('/admin/ecommerce/orders/list'),
 					isActive: false
 				},
 				{
 					title: 'Customers',
-					url: `${base}/admin/ecommerce/customers/list`,
+					url: resolve('/admin/ecommerce/customers/list'),
 					isActive: false
 				}
 			]
@@ -62,8 +62,8 @@ export const navigation = {
 			icon: ReceiptTextIcon,
 			isActive: false,
 			items: [
-				{ title: 'Add', url: `${base}/admin/invoice/add`, isActive: false },
-				{ title: 'List', url: `${base}/admin/invoice/list`, isActive: false },
+				{ title: 'Add', url: resolve('/admin/invoice/add'), isActive: false },
+				{ title: 'List', url: resolve('/admin/invoice/list'), isActive: false },
 			]
 		},
 		{
@@ -72,8 +72,8 @@ export const navigation = {
 			icon: UserIcon,
 			isActive: false,
 			items: [
-				{ title: 'List', url: `${base}/admin/user/list`, isActive: false },
-				{ title: 'View', url: `${base}/admin/user/view`, isActive: false }
+				{ title: 'List', url: resolve('/admin/user/list'), isActive: false },
+				{ title: 'View', url: resolve('/admin/user/view'), isActive: false }
 			]
 		},
 		{
@@ -82,10 +82,10 @@ export const navigation = {
 			icon: LockIcon,
 			isActive: false,
 			items: [
-				{ title: 'Roles', url: `${base}/admin/roles-permissions/roles`, isActive: false },
+				{ title: 'Roles', url: resolve('/admin/roles-permissions/roles'), isActive: false },
 				{
 					title: 'Permissions',
-					url: `${base}/admin/roles-permissions/permissions`,
+					url: resolve('/admin/roles-permissions/permissions'),
 					isActive: false
 				}
 			]
@@ -96,10 +96,10 @@ export const navigation = {
 			icon: FilesIcon,
 			isActive: false,
 			items: [
-				{ title: 'User Profile', url: `${base}/admin/pages/user-profile`, isActive: false },
-				{ title: 'Account Settings', url: `${base}/admin/pages/account-settings`, isActive: false },
-				{ title: 'FAQ', url: `${base}/admin/pages/faq`, isActive: false },
-				{ title: 'Pricing', url: `${base}/admin/pages/pricing`, isActive: false }
+				{ title: 'User Profile', url: resolve('/admin/pages/user-profile'), isActive: false },
+				{ title: 'Account Settings', url: resolve('/admin/pages/account-settings'), isActive: false },
+				{ title: 'FAQ', url: resolve('/admin/pages/faq'), isActive: false },
+				{ title: 'Pricing', url: resolve('/admin/pages/pricing'), isActive: false }
 			]
 		},
 		{
@@ -110,27 +110,27 @@ export const navigation = {
 			items: [
 				{
 					title: 'Login',
-					url: `${base}/admin/auth-pages/login`,
+					url: resolve('/admin/auth-pages/login'),
 					isActive: false
 				},
 				{
 					title: 'Register',
-					url: `${base}/admin/auth-pages/register`,
+					url: resolve('/admin/auth-pages/register'),
 					isActive: false
 				},
 				{
 					title: 'Verify Email',
-					url: `${base}/admin/auth-pages/verify-email`,
+					url: resolve('/admin/auth-pages/verify-email'),
 					isActive: false
 				},
 				{
 					title: 'Forgot Password',
-					url: `${base}/admin/auth-pages/forgot-password`,
+					url: resolve('/admin/auth-pages/forgot-password'),
 					isActive: false
 				},
 				{
 					title: 'Reset Password',
-					url: `${base}/admin/auth-pages/reset-password`,
+					url: resolve('/admin/auth-pages/reset-password'),
 					isActive: false
 				}
 			]
@@ -141,28 +141,28 @@ export const navigation = {
 			icon: WandIcon,
 			isActive: false,
 			items: [
-				{ title: 'Checkout', url: `${base}/admin/examples/wizard/checkout`, isActive: false },
+				{ title: 'Checkout', url: resolve('/admin/examples/wizard/checkout'), isActive: false },
 				{
 					title: 'Property Listing',
-					url: `${base}/admin/examples/wizard/property-listing`,
+					url: resolve('/admin/examples/wizard/property-listing'),
 					isActive: false
 				},
-				{ title: 'Create Deal', url: `${base}/admin/examples/wizard/create-deal`, isActive: false }
+				{ title: 'Create Deal', url: resolve('/admin/examples/wizard/create-deal'), isActive: false }
 			]
 		},
 		{
 			title: 'Dialog Examples',
-			url: `${base}/admin/examples/dialog`,
+			url: resolve('/admin/examples/dialog'),
 			icon: MessageSquareTextIcon,
 			isActive: false
 		},
-		{ title: 'Forms Layouts', url: `${base}/admin/forms`, icon: BookTextIcon, isActive: false },
-		{ title: 'Tables', url: `${base}/admin/tables`, icon: TableIcon, isActive: false }
+		{ title: 'Forms Layouts', url: resolve('/admin/forms'), icon: BookTextIcon, isActive: false },
+		{ title: 'Tables', url: resolve('/admin/tables'), icon: TableIcon, isActive: false }
 	],
 	other: [
 		{
 			title: 'Layerchart',
-			url: `${base}/admin/charts/`,
+			url: resolve('/admin/charts/'),
 			icon: ChartPieIcon,
 			isActive: false,
 		}
