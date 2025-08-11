@@ -1,6 +1,5 @@
 import { writable, derived } from 'svelte/store';
 import type { Invoice, InvoiceStatus, LineItem } from '$lib/custom/invoice/types';
-import { v4 as uuidv4 } from 'uuid';
 
 // Initialize with sample data
 export const initialInvoices: Invoice[] = [
@@ -165,7 +164,7 @@ const createInvoiceStore = () => {
 			const now = new Date().toISOString();
 			const newInvoice: Invoice = {
 				...invoice,
-				id: uuidv4(),
+				id: crypto.randomUUID(),
 				createdAt: now,
 				updatedAt: now
 			};

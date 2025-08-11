@@ -11,7 +11,7 @@
 	<Card.Header class="flex items-center justify-between">
 		<Card.Title>Upgrade Plan</Card.Title>
 		<DropdownMenu.Root>
-			<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+			<DropdownMenu.Trigger aria-label="upgrade settings" class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
 				<EllipsisVerticalIcon />
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>
@@ -38,7 +38,7 @@
 			</div>
 			<div>$<span class="text-2xl font-medium">5000</span> / year</div>
 		</div>
-		<Input type="text" placeholder="Email Address" />
+		<Input id="email" type="text" placeholder="Email Address" />
 		<Button class="w-full">Contact Now</Button>
 	</Card.Content>
 </Card.Root>

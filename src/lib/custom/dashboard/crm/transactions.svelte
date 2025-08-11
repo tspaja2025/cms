@@ -15,7 +15,7 @@
 			<Card.Description>38.5% Growth this month</Card.Description>
 		</div>
 		<DropdownMenu.Root>
-			<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+			<DropdownMenu.Trigger aria-label="transaction settings" class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
 				<EllipsisVerticalIcon />
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>

@@ -17,7 +17,7 @@
 	class="flex h-16 w-full items-center gap-2 border-b border-(--sidebar-border) bg-(--sidebar) px-4"
 >
 	<Sidebar.Trigger class="!px-5 {buttonVariants({ variant: 'outline' })}" />
-	<Button variant="outline">
+	<Button variant="outline" aria-label="search">
 		<SearchIcon />
 	</Button>
 	<div class="flex-1"></div>
@@ -44,7 +44,7 @@
 		<DropdownMenu.Content>
 			<DropdownMenu.Item>Profile</DropdownMenu.Item>
 			<DropdownMenu.Item>Settings</DropdownMenu.Item>
-			<a href={base + '/'}>
+			<a href="{base}/">
 				<DropdownMenu.Item>Sign Out</DropdownMenu.Item>
 			</a>
 		</DropdownMenu.Content>

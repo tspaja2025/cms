@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { invoiceStore } from '$lib/custom/invoice/store/data';
 	import type { Invoice } from '$lib/custom/invoice/types';
 	import InvoiceForm from '$lib/custom/invoice/invoice-form.svelte';
 
-	const id = $state('');
+	const id = page.params.id;
 
 	let invoice = $state<Invoice | null>(null);
 	let loading = $state(true);

@@ -6,7 +6,6 @@ import FilesIcon from '@lucide/svelte/icons/files';
 import KeyRoundIcon from '@lucide/svelte/icons/key-round';
 import LockIcon from '@lucide/svelte/icons/lock';
 import MessageSquareTextIcon from '@lucide/svelte/icons/message-square-text';
-import PuzzleIcon from '@lucide/svelte/icons/puzzle';
 import ReceiptTextIcon from '@lucide/svelte/icons/receipt-text';
 import ShoppingCartIcon from '@lucide/svelte/icons/shopping-cart';
 import TableIcon from '@lucide/svelte/icons/table';
@@ -64,9 +63,7 @@ export const navigation = {
 			isActive: false,
 			items: [
 				{ title: 'Add', url: `${base}/admin/invoice/add`, isActive: false },
-				{ title: 'Edit', url: `${base}/admin/invoice/edit`, isActive: false },
 				{ title: 'List', url: `${base}/admin/invoice/list`, isActive: false },
-				{ title: 'Preview', url: `${base}/admin/invoice/edit`, isActive: false }
 			]
 		},
 		{
@@ -164,22 +161,10 @@ export const navigation = {
 	],
 	other: [
 		{
-			title: 'Charts',
-			url: '##',
+			title: 'Layerchart',
+			url: `${base}/admin/charts/`,
 			icon: ChartPieIcon,
 			isActive: false,
-			items: [
-				{ title: 'Apexchart', url: `${base}/admin/charts/apex`, isActive: false },
-				{ title: 'Layerchart', url: `${base}/admin/charts/layer`, isActive: false },
-				{ title: 'Chart.js', url: `${base}/admin/charts/chartjs`, isActive: false },
-				{ title: 'Echarts', url: `${base}/admin/charts/echart`, isActive: false }
-			]
-		},
-		{
-			title: 'Components',
-			url: 'https://www.shadcn-svelte.com/',
-			icon: PuzzleIcon,
-			isActive: false
 		}
 	]
 };

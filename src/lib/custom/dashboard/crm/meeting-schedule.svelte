@@ -12,7 +12,7 @@
 	<Card.Header class="flex items-center justify-between">
 		<Card.Title>Meeting Schedule</Card.Title>
 		<DropdownMenu.Root>
-			<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+			<DropdownMenu.Trigger aria-label="meeting settings" class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
 				<EllipsisVerticalIcon />
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content>

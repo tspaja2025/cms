@@ -53,7 +53,7 @@
 	}
 
 	function handleEdit() {
-		goto(`${base}/admin/invoice/${id}/edit`);
+		goto(`${base}/admin/invoice/edit/${id}`);
 	}
 
 	function handleDelete() {

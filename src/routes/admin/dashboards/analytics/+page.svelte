@@ -1,13 +1,22 @@
-<script>
+<script lang="ts">
 	import MetricCard from '$lib/custom/analytics/metric-card.svelte';
 	import {
 		metricsData,
-		revenueChartData,
-		ordersChartData,
+		ordersByMonthConfig,
+		ordersByMonthData,
+		revenueOverviewConfig,
+		revenueOverviewData,
+		trafficSourcesConfig,
 		trafficSourcesData
 	} from '$lib/custom/analytics/store/analytics';
+	import * as Chart from '$lib/components/ui/chart/index';
 	import * as Card from '$lib/components/ui/card/index';
-	import { chart } from '$lib/custom/apexchart/apexchart';
+	import { AreaChart, BarChart, PieChart, type ChartContextValue } from 'layerchart';
+	import { scaleBand, scaleUtc } from 'd3-scale';
+	import { curveNatural } from 'd3-shape';
+	import { cubicInOut } from 'svelte/easing';
+
+	let context = $state<ChartContextValue>();
 </script>
 
 <div class="space-y-6 p-6">
@@ -37,7 +46,39 @@
 				<Card.Description>Monthly revenue for the current year</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<div use:chart={revenueChartData}></div>
+				<Chart.Container config={revenueOverviewConfig}>
+					<AreaChart
+						data={revenueOverviewData}
+						x="date"
+						xScale={scaleUtc()}
+						series={[
+							{
+								key: 'revenue',
+								label: 'Revenue',
+								color: revenueOverviewConfig.revenue.color
+							}
+						]}
+						axis="x"
+						props={{
+							area: {
+								curve: curveNatural,
+								'fill-opacity': 0.4,
+								line: { class: 'stroke-1' },
+								motion: 'tween'
+							},
+							xAxis: {
+								format: (v: Date) => v.toLocaleDateString('en-US', { month: 'short' })
+							}
+						}}
+					>
+						{#snippet tooltip()}
+							<Chart.Tooltip
+								labelFormatter={(v: Date) => v.toLocaleDateString('en-US', { month: 'long' })}
+								indicator="line"
+							/>
+						{/snippet}
+					</AreaChart>
+				</Chart.Container>
 			</Card.Content>
 		</Card.Root>
 
@@ -47,7 +88,38 @@
 				<Card.Description>Order volume throughout the year</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<div use:chart={ordersChartData}></div>
+				<Chart.Container config={ordersByMonthConfig}>
+					<BarChart
+						bind:context
+						data={ordersByMonthData}
+						xScale={scaleBand().padding(0.25)}
+						x="month"
+						axis="x"
+						series={[{ key: 'orders', label: 'Orders', color: ordersByMonthConfig.orders.color }]}
+						props={{
+							bars: {
+								stroke: 'none',
+								rounded: 'all',
+								radius: 8,
+								// use the height of the chart to animate the bars
+								initialY: context?.height,
+								initialHeight: 0,
+								motion: {
+									x: { type: 'tween', duration: 500, easing: cubicInOut },
+									width: { type: 'tween', duration: 500, easing: cubicInOut },
+									height: { type: 'tween', duration: 500, easing: cubicInOut },
+									y: { type: 'tween', duration: 500, easing: cubicInOut }
+								}
+							},
+							highlight: { area: { fill: 'none' } },
+							xAxis: { format: (d) => d.slice(0, 3) }
+						}}
+					>
+						{#snippet tooltip()}
+							<Chart.Tooltip hideLabel />
+						{/snippet}
+					</BarChart>
+				</Chart.Container>
 			</Card.Content>
 		</Card.Root>
 	</div>
@@ -61,7 +133,24 @@
 					<Card.Description>Where your visitors are coming from</Card.Description>
 				</Card.Header>
 				<Card.Content>
-					<div use:chart={trafficSourcesData}></div>
+					<Chart.Container
+						config={trafficSourcesConfig}
+						class="mx-auto aspect-square max-h-[250px]"
+					>
+						<PieChart
+							data={trafficSourcesData}
+							key="source"
+							value="sources"
+							c="color"
+							innerRadius={60}
+							padding={29}
+							props={{ pie: { motion: 'tween' } }}
+						>
+							{#snippet tooltip()}
+								<Chart.Tooltip hideLabel />
+							{/snippet}
+						</PieChart>
+					</Chart.Container>
 				</Card.Content>
 			</Card.Root>
 		</div>

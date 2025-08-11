@@ -3,9 +3,9 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index';
 	import { navigation } from '$lib/custom/navigation/navigation';
 	import type { ComponentProps } from 'svelte';
-	import Apps from './apps.svelte';
-	import Other from './other.svelte';
-	import Pages from './pages.svelte';
+	import Apps from '$lib/custom/navigation/apps.svelte';
+	import Other from '$lib/custom/navigation/other.svelte';
+	import Pages from '$lib/custom/navigation/pages.svelte';
 
 	let {
 		ref = $bindable(null),

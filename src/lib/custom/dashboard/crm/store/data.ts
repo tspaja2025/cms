@@ -1,169 +1,56 @@
-export const salesOverviewOptions = {
-	chart: {
-		type: 'donut',
-		height: 280,
-		width: 280
-	},
-	series: [12, 25, 13, 50],
-	legend: {
-		show: true
-	},
-	dataLabels: {
-		enabled: false
-	},
-	labels: ['Apparel', 'Electronics', 'FMCG', 'Other Sales'],
-	colors: ['#ad46ff', '#c27aff', '#dab2ff', '#62748e'],
-	plotOptions: {
-		pie: {
-			donut: {
-				labels: {
-					show: true,
-					total: {
-						showAlways: true,
-						show: true
-					}
-				}
-			}
-		}
-	}
-};
+import type { ChartConfig } from "$lib/components/ui/chart";
 
-export const totalSalesOptions = {
-	chart: {
-		type: 'line',
-		toolbar: {
-			show: false
-		}
-	},
-	series: [
-		{
-			name: 'Sales',
-			data: [0, 25, 1, 50]
-		}
-	],
-	grid: {
-		show: false
-	},
-	stroke: {
-		width: 5,
-		curve: 'smooth'
-	},
-	yaxis: {
-		labels: {
-			show: false
-		}
-	},
-	xaxis: {
-		type: 'datetime',
-		categories: ['1/11/2025', '2/11/2025', '3/11/2025', '4/11/2025'],
-		tickAmount: 5,
-		labels: {
-			formatter: function (
-				value: string | number,
-				timestamp: number | string | Date,
-				opts: { dateFormatter: (date: Date, format: string) => string }
-			) {
-				return opts.dateFormatter(new Date(timestamp), 'dd MMM');
-			}
-		}
-	},
-	fill: {
-		type: 'gradient',
-		gradient: {
-			shade: 'dark',
-			gradientToColors: ['#FDD835'],
-			shadeIntensity: 1,
-			type: 'horizontal',
-			opacityFrom: 1,
-			opacityTo: 1,
-			stops: [0, 100, 100, 100]
-		}
-	}
-};
+export const totalSalesData = [
+	{ date: new Date('2024-01-01'), sales: 186 },
+	{ date: new Date('2024-02-01'), sales: 305 },
+	{ date: new Date('2024-03-01'), sales: 237 },
+	{ date: new Date('2024-04-01'), sales: 73 },
+	{ date: new Date('2024-05-01'), sales: 209 },
+	{ date: new Date('2024-06-01'), sales: 214 }
+];
 
-export const revenueReportOptions = {
-	chart: {
-		type: 'bar',
-		toolbar: {
-			show: false
-		}
-	},
-	series: [
-		{
-			name: 'Sales',
-			data: [1.45, 5.42, 5.9, -0.42, -12.6]
-		}
-	],
-	grid: {
-		show: false
-	},
-	stroke: {
-		width: 5,
-		curve: 'smooth'
-	},
-	yaxis: {
-		labels: {
-			show: false
-		}
-	},
-	xaxis: {
-		type: 'datetime',
-		categories: ['2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01'],
-		labels: {
-			rotate: -90
-		}
-	},
-	plotOptions: {
-		bar: {
-			colors: {
-				ranges: [
-					{
-						from: -100,
-						to: -46,
-						color: '#F15B46'
-					},
-					{
-						from: -45,
-						to: 0,
-						color: '#FEB019'
-					}
-				]
-			},
-			columnWidth: '80%'
-		}
-	},
-	dataLabels: {
-		enabled: false
-	}
-};
+export const totalSalesConfig = {
+	sales: { label: 'Sales', color: 'var(--chart-1)' }
+} satisfies ChartConfig;
 
-export const weeklySalesOptions = {
-	chart: {
-		type: 'bar',
-		toolbar: {
-			show: false
-		}
-	},
-	series: [
-		{
-			name: 'Sales',
-			data: [2, 3, 4, 10, 4, 3, 3]
-		}
-	],
-	yaxis: {
-		labels: {
-			show: false
-		}
-	},
-	xaxis: {
-		categories: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-	},
-	plotOptions: {
-		bar: {
-			borderRadius: 8
-		}
-	},
-	dataLabels: {
-		enabled: false
-	}
-};
+export const revenueReportData = [
+	{ month: "January", sales: 186 },
+	{ month: "February", sales: 205 },
+	{ month: "March", sales: -207 },
+	{ month: "April", sales: 173 },
+	{ month: "May", sales: -209 },
+	{ month: "June", sales: 214 },
+];
+
+export  const revenueReportConfig = {
+sales: { label: "Sales" },
+} satisfies ChartConfig;
+
+export const salesOverviewData = [
+	{ products: 'apparel', sales: 200, color: 'var(--color-apparel)' },
+	{ products: 'electronics', sales: 287, color: 'var(--color-electronics)' },
+	{ products: 'fmcg', sales: 173, color: 'var(--color-fmcg)' },
+	{ products: 'other', sales: 190, color: 'var(--color-other)' }
+];
+
+export const salesOverviewConfig = {
+	sales: { label: 'Sales' },
+	apparel: { label: 'Apparel', color: 'var(--chart-1)' },
+	electronics: { label: 'Electronics', color: 'var(--chart-2)' },
+	fmcg: { label: 'FMCG', color: 'var(--chart-3)' },
+	other: { label: 'Other', color: 'var(--chart-4)' }
+} satisfies ChartConfig;
+
+export const weeklySalesData = [
+	{ day: 'S', sales: 186 },
+	{ day: 'M', sales: 305 },
+	{ day: 'T', sales: 237 },
+	{ day: 'W', sales: 73 },
+	{ day: 'T', sales: 209 },
+	{ day: 'F', sales: 214 },
+	{ day: 'S', sales: 214 }
+];
+
+export 	const weeklySalesConfig = {
+	sales: { label: 'Sales', color: 'var(--chart-1)' }
+} satisfies ChartConfig;
