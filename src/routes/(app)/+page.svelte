@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import * as Alert from '$lib/components/ui/alert/index';
 	import { Button } from '$lib/components/ui/button/index';
 	import * as Card from '$lib/components/ui/card/index';
@@ -8,6 +7,7 @@
 	import { Input } from '$lib/components/ui/input/index';
 	import { toast } from 'svelte-sonner';
 	import CircleAlertIcon from '@lucide/svelte/icons/circle-alert';
+	import { resolve } from '$app/paths';
 
 	type AuthMode = 'login' | 'register';
 
@@ -57,7 +57,7 @@
 
 		isLoading = true;
 
-		window.location.href = resolve('/admin/');
+		window.location.href = resolve('/admin');
 	}
 
 	function toggleAuthMode() {

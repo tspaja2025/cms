@@ -63,7 +63,7 @@ export const navigation = {
 			isActive: false,
 			items: [
 				{ title: 'Add', url: resolve('/admin/invoice/add'), isActive: false },
-				{ title: 'List', url: resolve('/admin/invoice/list'), isActive: false },
+				{ title: 'List', url: resolve('/admin/invoice/list'), isActive: false }
 			]
 		},
 		{
@@ -97,7 +97,11 @@ export const navigation = {
 			isActive: false,
 			items: [
 				{ title: 'User Profile', url: resolve('/admin/pages/user-profile'), isActive: false },
-				{ title: 'Account Settings', url: resolve('/admin/pages/account-settings'), isActive: false },
+				{
+					title: 'Account Settings',
+					url: resolve('/admin/pages/account-settings'),
+					isActive: false
+				},
 				{ title: 'FAQ', url: resolve('/admin/pages/faq'), isActive: false },
 				{ title: 'Pricing', url: resolve('/admin/pages/pricing'), isActive: false }
 			]
@@ -147,7 +151,11 @@ export const navigation = {
 					url: resolve('/admin/examples/wizard/property-listing'),
 					isActive: false
 				},
-				{ title: 'Create Deal', url: resolve('/admin/examples/wizard/create-deal'), isActive: false }
+				{
+					title: 'Create Deal',
+					url: resolve('/admin/examples/wizard/create-deal'),
+					isActive: false
+				}
 			]
 		},
 		{
@@ -162,9 +170,9 @@ export const navigation = {
 	other: [
 		{
 			title: 'Layerchart',
-			url: resolve('/admin/charts/'),
+			url: resolve('/admin/charts'),
 			icon: ChartPieIcon,
-			isActive: false,
+			isActive: false
 		}
 	]
 };

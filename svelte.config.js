@@ -13,7 +13,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '/cms' : process.env.BASE_PATH || '/cms'
+			base: process.argv.includes('dev') ? '/cms' : process.env.BASE_PATH
 		}
 	}
 };
