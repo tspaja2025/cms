@@ -1,0 +1,1 @@
+import{am as n,k as c,an as i,aj as f,F as u,ao as t,ak as o}from"./C4ENrkrF.js";function m(s){let e=0,r=i(0),a;return()=>{n()&&(c(r),f(()=>(e===0&&(a=u(()=>s(()=>t(r)))),e+=1,()=>{o(()=>{e-=1,e===0&&(a?.(),a=void 0,t(r))})})))}}export{m as c};
