@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { crossfade } from 'svelte/transition';
-	import Droppable from '$lib/custom/kanban/droppable.svelte';
-	import SortableItem from '$lib/custom/kanban/sortable-item.svelte';
+	import Droppable from '$lib/apps/kanban/droppable.svelte';
+	import SortableItem from '$lib/apps/kanban/sortable-item.svelte';
 	import {
 		DndContext,
 		DragOverlay,
 		type DragEndEvent,
 		type DragOverEvent,
-		type DragStartEvent,
+		type DragStartEvent
 	} from '@dnd-kit-svelte/core';
-	import {SortableContext, arrayMove} from '@dnd-kit-svelte/sortable';
-	import {dropAnimation, sensors} from '$lib/utils';
+	import { SortableContext, arrayMove } from '@dnd-kit-svelte/sortable';
+	import { dropAnimation, sensors } from '$lib/utils';
 
 	interface Todo {
 		id: string;
@@ -19,10 +19,10 @@
 	}
 
 	const defaultTasks: Todo[] = [
-		{id: 'task-1', content: 'Learn Svelte', done: false},
-		{id: 'task-2', content: 'Build a Kanban board', done: false},
-		{id: 'task-3', content: 'Review code', done: false},
-		{id: 'task-4', content: 'Setup project', done: false},
+		{ id: 'task-1', content: 'Learn Svelte', done: false },
+		{ id: 'task-2', content: 'Build a Kanban board', done: false },
+		{ id: 'task-3', content: 'Review code', done: false },
+		{ id: 'task-4', content: 'Setup project', done: false }
 	];
 
 	let todos = $state<Todo[]>(defaultTasks);
@@ -36,7 +36,7 @@
 		activeId = event.active.id as string;
 	}
 
-	function handleDragEnd({active, over}: DragEndEvent) {
+	function handleDragEnd({ active, over }: DragEndEvent) {
 		if (!over) return;
 
 		if (over.id === 'done' || over.id === 'in-progress') {
@@ -54,7 +54,7 @@
 		activeId = null;
 	}
 
-	function handleDragOver({active, over}: DragOverEvent) {
+	function handleDragOver({ active, over }: DragOverEvent) {
 		if (!over) return;
 
 		const activeTask = todos.find((todo) => todo.id === active.id);
@@ -74,39 +74,48 @@
 		activeTask.done = overTask.done;
 	}
 
-	const [send, recieve] = crossfade({duration: 100});
+	const [send, recieve] = crossfade({ duration: 100 });
 </script>
 
 <svelte:head>
-	<title>Admin Dashboard</title>
-	<meta name="description" content="Kanban Board" />
+	<title>CMS | Admin | Kanban</title>
+	<meta name="description" content="CMS" />
 </svelte:head>
 
-<DndContext {sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd} onDragOver={handleDragOver}>
-	<div class="grid gap-4 md:grid-cols-2">
-		{@render taskList('in-progress', 'In Progress', inProgress)}
-		{@render taskList('done', 'Done', done)}
-	</div>
-
-	<DragOverlay {dropAnimation}>
-		{#if activeTodo && activeId}
-			<SortableItem task={activeTodo} />
-		{/if}
-	</DragOverlay>
-</DndContext>
-
-{#snippet taskList(id: string, title: string, tasks: Todo[])}
-	<SortableContext items={tasks}>
-		<Droppable class="bg-#F9F9F9 rd-3xl p-3 pt-6" {id}>
-			<p class="text-lg fw-bold pb-3">{title}</p>
-
-			<div class="grid gap-2">
-				{#each tasks as task (task.id)}
-					<div class="" in:recieve={{key: task.id}} out:send={{key: task.id}}>
-						<SortableItem {task} />
-					</div>
-				{/each}
+<div class="mx-auto grid gap-4 md:max-w-full lg:max-w-7xl">
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
+		<DndContext
+			{sensors}
+			onDragStart={handleDragStart}
+			onDragEnd={handleDragEnd}
+			onDragOver={handleDragOver}
+		>
+			<div class="grid gap-4 md:grid-cols-2">
+				{@render taskList('in-progress', 'In Progress', inProgress)}
+				{@render taskList('done', 'Done', done)}
 			</div>
-		</Droppable>
-	</SortableContext>
-{/snippet}
+
+			<DragOverlay {dropAnimation}>
+				{#if activeTodo && activeId}
+					<SortableItem task={activeTodo} />
+				{/if}
+			</DragOverlay>
+		</DndContext>
+
+		{#snippet taskList(id: string, title: string, tasks: Todo[])}
+			<SortableContext items={tasks}>
+				<Droppable class="rd-3xl p-3 pt-6" {id}>
+					<p class="fw-bold pb-3 text-lg">{title}</p>
+
+					<div class="grid gap-2">
+						{#each tasks as task (task.id)}
+							<div class="" in:recieve={{ key: task.id }} out:send={{ key: task.id }}>
+								<SortableItem {task} />
+							</div>
+						{/each}
+					</div>
+				</Droppable>
+			</SortableContext>
+		{/snippet}
+	</div>
+</div>

@@ -1,13 +1,22 @@
 <script lang="ts">
-	import AreaChartCard from '$lib/custom/layerchart/area-chart-card.svelte';
-	import BarChartCard from '$lib/custom/layerchart/bar-chart-card.svelte';
-	import PieChartCard from '$lib/custom/layerchart/pie-chart-card.svelte';
-	import RadarChartCard from '$lib/custom/layerchart/radar-chart-card.svelte';
+	import AreaChartCard from '$lib/other/charts/layerchart/area-chart.svelte';
+	import BarChartCard from '$lib/other/charts/layerchart/bar-chart.svelte';
+	import PieChartCard from '$lib/other/charts/layerchart/pie-chart.svelte';
+	import LineChartCard from '$lib/other/charts/layerchart/line-chart.svelte';
 </script>
 
-<div class="grid grid-cols-2 gap-4">
-	<AreaChartCard/>
-	<BarChartCard/>
-	<PieChartCard/>
-	<RadarChartCard/>
+<svelte:head>
+	<title>CMS | Admin | Layerchart</title>
+	<meta name="description" content="CMS" />
+</svelte:head>
+
+<div class="mx-auto grid gap-4 md:max-w-full lg:max-w-7xl">
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+		<AreaChartCard />
+		<BarChartCard />
+	</div>
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+		<PieChartCard />
+		<LineChartCard />
+	</div>
 </div>

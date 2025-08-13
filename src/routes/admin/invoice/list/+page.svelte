@@ -1,7 +1,7 @@
 <script lang="ts">
+	import InvoiceList from '$lib/pages/invoice/invoice-list.svelte';
+	import type { InvoiceStatus } from '$lib/types';
 	import { onMount } from 'svelte';
-	import InvoiceListComponent from '$lib/custom/invoice/invoice-list.svelte';
-	import type { InvoiceStatus } from '$lib/custom/invoice/types';
 
 	let status = $state<InvoiceStatus | 'all'>('all');
 
@@ -17,4 +17,13 @@
 	});
 </script>
 
-<InvoiceListComponent {status} />
+<svelte:head>
+	<title>CMS | Admin | Invoice list</title>
+	<meta name="description" content="CMS" />
+</svelte:head>
+
+<div class="mx-auto grid gap-4 md:max-w-full lg:max-w-7xl">
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
+		<InvoiceList {status} />
+	</div>
+</div>

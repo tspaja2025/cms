@@ -4,7 +4,10 @@
 	const { children } = $props();
 </script>
 
-<div class="flex min-h-screen flex-col items-center justify-center">
-	<Toaster />
-	{@render children()}
-</div>
+<svelte:head>
+	<title>CMS | Login</title>
+	<meta name="description" content="CMS" />
+</svelte:head>
+
+<Toaster />
+{@render children?.()}

@@ -1,36 +1,41 @@
-<script lang="ts">
-	import Ratings from '$lib/custom/dashboard/crm/ratings.svelte';
-	import Sessions from '$lib/custom/dashboard/crm/sessions.svelte';
-	import Transactions from '$lib/custom/dashboard/crm/transactions.svelte';
-	import TotalSales from '$lib/custom/dashboard/crm/total-sales.svelte';
-	import RevenueReport from '$lib/custom/dashboard/crm/revenue-report.svelte';
-	import SalesOverview from '$lib/custom/dashboard/crm/sales-overview.svelte';
-	import ActivityTimeline from '$lib/custom/dashboard/crm/activity-timeline.svelte';
-	import WeeklySales from '$lib/custom/dashboard/crm/weekly-sales.svelte';
-	import UpgradePlan from '$lib/custom/dashboard/crm/upgrade-plan.svelte';
-	import MeetingSchedule from '$lib/custom/dashboard/crm/meeting-schedule.svelte';
+<script>
+	import ActivityTimeline from '$lib/apps/crm/activity-timeline.svelte';
+	import MeetingSchedule from '$lib/apps/crm/meeting-schedule.svelte';
+	import Ratings from '$lib/apps/crm/ratings.svelte';
+	import RevenueReport from '$lib/apps/crm/revenue-report.svelte';
+	import SalesOverview from '$lib/apps/crm/sales-overview.svelte';
+	import Sessions from '$lib/apps/crm/sessions.svelte';
+	import TotalSales from '$lib/apps/crm/total-sales.svelte';
+	import Transactions from '$lib/apps/crm/transactions.svelte';
+	import UpgradePlan from '$lib/apps/crm/upgrade-plan.svelte';
+	import WeeklySales from '$lib/apps/crm/weekly-sales.svelte';
 </script>
 
-<div class="mb-4 grid grid-cols-4 gap-4">
-	<Ratings />
-	<Sessions />
-	<Transactions />
-</div>
+<svelte:head>
+	<title>CMS | Admin</title>
+	<meta name="description" content="CMS" />
+</svelte:head>
 
-<div class="mb-4 grid grid-cols-3 gap-4">
-	<TotalSales />
-	<RevenueReport />
-	<SalesOverview />
-</div>
+<div class="mx-auto grid gap-4 md:max-w-full lg:max-w-7xl">
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-4">
+		<Ratings />
+		<Sessions />
+		<Transactions />
+	</div>
 
-<div class="mb-4 grid grid-cols-2 gap-4">
-	<ActivityTimeline />
-	<WeeklySales />
-</div>
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
+		<TotalSales />
+		<RevenueReport />
+		<SalesOverview />
+	</div>
 
-<div class="mb-4 grid grid-cols-2 gap-4">
-	<UpgradePlan />
-	<MeetingSchedule />
-</div>
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+		<ActivityTimeline />
+		<WeeklySales />
+	</div>
 
-<div class="p-1"></div>
+	<div class="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+		<UpgradePlan />
+		<MeetingSchedule />
+	</div>
+</div>
