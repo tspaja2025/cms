@@ -59,7 +59,7 @@
 		</div>
 
 		<div class="flex items-center gap-2">
-			<Select.Root bind:value={filter.sortBy}>
+			<Select.Root type="single" bind:value={filter.sortBy}>
 				<Select.Trigger class="w-[180px]">Sort by</Select.Trigger>
 				<Select.Content>
 					<Select.Item value="date">Issue Date</Select.Item>

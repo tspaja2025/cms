@@ -141,7 +141,7 @@
 						class="input pl-10"
 					/>
 				</div>
-				<Select.Root bind:value={selectedStatus}>
+				<Select.Root type="single" bind:value={selectedStatus}>
 					<Select.Trigger>All Statuses</Select.Trigger>
 					<Select.Content>
 						{#each statuses as status, index (index)}

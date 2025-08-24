@@ -170,7 +170,11 @@ shadow-xs dark:bg-card"
 				<div class="mt-4 flex items-center justify-end gap-4">
 					<div class="flex items-center gap-4">
 						Rows per page:
-						<Select.Root type="single" bind:value={rowsPerPage} onchange={() => (currentPage = 1)}>
+						<Select.Root
+							type="single"
+							value={String(rowsPerPage)}
+							onValueChange={() => (currentPage = 1)}
+						>
 							<Select.Trigger>{rowsPerPage}</Select.Trigger>
 							<Select.Content>
 								<Select.Item value="10">10</Select.Item>

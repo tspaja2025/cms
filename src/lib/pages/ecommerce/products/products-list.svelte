@@ -19,7 +19,7 @@
 	let currentPage = $state(1);
 
 	// Categories
-	const categories = ['all', ...new Set(products.map((product) => product.category))];
+	const categories = ['all', ...new Set(products.map((product) => product.status))];
 
 	// Statuses
 	const statuses = ['all', 'In Stock', 'Low Stock', 'Out of Stock'];
@@ -34,7 +34,7 @@
 
 			// Category
 			const matchesCategory =
-				selectedCategory === 'all' ? true : product.category === selectedCategory;
+				selectedCategory === 'all' ? true : product.status === selectedCategory;
 
 			// Status
 			const matchesStatus = selectedStatus === 'all' ? true : product.status === selectedStatus;
@@ -151,7 +151,7 @@
 							</div>
 						</Table.Cell>
 						<Table.Cell class="text-sm whitespace-nowrap">
-							{product.category}
+							{product.status}
 						</Table.Cell>
 						<Table.Cell class="text-sm font-medium whitespace-nowrap">
 							{formatCurrency(product.price)}

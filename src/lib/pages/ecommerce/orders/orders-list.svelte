@@ -12,6 +12,7 @@
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import PencilIcon from '@lucide/svelte/icons/pencil';
 	import TrashIcon from '@lucide/svelte/icons/trash';
+	import { SvelteDate } from 'svelte/reactivity';
 
 	let searchQuery = $state('');
 	let selectedStatus = $state('all');
@@ -52,7 +53,7 @@
 				}
 
 				if (dateRange === 'week') {
-					const weekStart = new Date(today);
+					const weekStart = new SvelteDate(today);
 					weekStart.setDate(today.getDate() - today.getDay());
 					return orderDate >= weekStart;
 				}
@@ -107,7 +108,7 @@
 					class="input pl-10"
 				/>
 			</div>
-			<Select.Root bind:value={selectedStatus}>
+			<Select.Root type="single" bind:value={selectedStatus}>
 				<Select.Trigger>All Statuses</Select.Trigger>
 				<Select.Content>
 					{#each statuses as status, index (index)}
@@ -115,7 +116,7 @@
 					{/each}
 				</Select.Content>
 			</Select.Root>
-			<Select.Root bind:value={dateRange}>
+			<Select.Root type="single" bind:value={dateRange}>
 				<Select.Trigger>All Time</Select.Trigger>
 				<Select.Content>
 					{#each dateRanges as range, index (index)}

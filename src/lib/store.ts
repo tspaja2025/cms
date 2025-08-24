@@ -12,6 +12,10 @@ import UserIcon from '@lucide/svelte/icons/user';
 import UsersIcon from '@lucide/svelte/icons/users';
 import FolderEditIcon from '@lucide/svelte/icons/folder-edit';
 import ShareIcon from '@lucide/svelte/icons/share';
+import BriefcaseBusinessIcon from '@lucide/svelte/icons/briefcase-business';
+import ImageIcon from '@lucide/svelte/icons/image';
+import LanguagesIcon from '@lucide/svelte/icons/languages';
+import PaletteIcon from '@lucide/svelte/icons/palette';
 
 // CRM
 // Total Sales
@@ -1852,25 +1856,25 @@ export const connections = [
 	{
 		name: 'LinkedIn',
 		url: 'linkedin.com/in/johndoe',
-		icon: '💼',
+		icon: BriefcaseBusinessIcon,
 		color: 'bg-blue-50 text-blue-600'
 	},
 	{
 		name: 'Dribbble',
 		url: 'dribbble.com/johndoe',
-		icon: '🎨',
+		icon: PaletteIcon,
 		color: 'bg-pink-50 text-pink-600'
 	},
 	{
 		name: 'Behance',
 		url: 'behance.net/johndoe',
-		icon: '🖼️',
+		icon: ImageIcon,
 		color: 'bg-purple-50 text-purple-600'
 	},
 	{
 		name: 'Personal Website',
 		url: 'johndoe.design',
-		icon: '🌐',
+		icon: LanguagesIcon,
 		color: 'bg-green-50 text-green-600'
 	}
 ];

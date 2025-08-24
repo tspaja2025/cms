@@ -2,17 +2,25 @@
 	import type { UniqueIdentifier } from '@dnd-kit-svelte/core';
 	import { CSS, styleObjectToString } from '@dnd-kit-svelte/utilities';
 	import { useSortable } from '@dnd-kit-svelte/sortable';
+	import * as Card from '$lib/components/ui/card';
+	import EllipsisVerticalIcon from '@lucide/svelte/icons/ellipsis-vertical';
+	import PencilIcon from '@lucide/svelte/icons/pencil';
+	import TrashIcon from '@lucide/svelte/icons/trash';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import * as Sheet from '$lib/components/ui/sheet';
 
-	interface Task {
+	interface Item {
 		id: UniqueIdentifier;
 		content: string;
+		color: string;
 	}
 
-	let { task }: { task: Task } = $props();
+	let { item }: { item: Item } = $props();
 
 	const { attributes, listeners, node, transform, transition, isDragging, isSorting } = useSortable(
 		{
-			id: task.id
+			id: item.id
 		}
 	);
 
@@ -26,19 +34,34 @@
 </script>
 
 <div
-	class="relative overflow-hidden rounded-md border select-none"
+	class="relative select-none"
 	bind:this={node.current}
 	{style}
 	{...listeners.current}
 	{...attributes.current}
 >
-	<!-- Original element - becomes invisible during drag but maintains dimensions -->
-	<div
-		class={[
-			'rd-18px bg-gradient-to-t from-primary/5 to-card p-4 shadow-xs dark:bg-card',
-			{ invisible: isDragging.current }
-		]}
-	>
-		{task.content}
-	</div>
+	<Card.Root class={['rounded-sm border-l-4 p-4', item.color, { invisible: isDragging.current }]}>
+		<Card.Content class="flex items-center justify-between px-0">
+			{item.content}
+			<DropdownMenu.Root>
+				<DropdownMenu.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+					<EllipsisVerticalIcon />
+				</DropdownMenu.Trigger>
+				<DropdownMenu.Content>
+					<!-- <DropdownMenu.Item><PencilIcon />Edit</DropdownMenu.Item> -->
+					<Sheet.Root>
+						<Sheet.Trigger class="w-full justify-start {buttonVariants({ variant: 'ghost' })}">
+							<PencilIcon />Edit
+						</Sheet.Trigger>
+						<Sheet.Content>
+							<Sheet.Header>
+								<Sheet.Title>Edit</Sheet.Title>
+							</Sheet.Header>
+						</Sheet.Content>
+					</Sheet.Root>
+					<DropdownMenu.Item><TrashIcon /> Delete</DropdownMenu.Item>
+				</DropdownMenu.Content>
+			</DropdownMenu.Root>
+		</Card.Content>
+	</Card.Root>
 </div>
