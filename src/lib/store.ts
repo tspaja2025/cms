@@ -16,6 +16,7 @@ import BriefcaseBusinessIcon from '@lucide/svelte/icons/briefcase-business';
 import ImageIcon from '@lucide/svelte/icons/image';
 import LanguagesIcon from '@lucide/svelte/icons/languages';
 import PaletteIcon from '@lucide/svelte/icons/palette';
+import { formatShortTime } from './utils';
 
 // CRM
 // Total Sales
@@ -1878,3 +1879,32 @@ export const connections = [
 		color: 'bg-green-50 text-green-600'
 	}
 ];
+
+// Chat
+const firstMessage = 25;
+const now = new Date();
+const baseTime = new Date(now.getTime() - firstMessage * 60000);
+
+export const chatMessages = [
+	{
+		senderId: '123456',
+		message: 'Hey, Svelte 5 just got released!',
+		sentAt: formatShortTime(new Date(baseTime.getTime()))
+	},
+];
+
+export const chatUser = {
+	id: '123456',
+	name: 'Jane Doe',
+	username: '@johndoe',
+	img:  'https://picsum.photos/id/30/200/300'
+}
+
+export const chatFriend = {
+	id: '654321',
+	name: 'John Doe',
+	username: '@johndoe',
+	img:  'https://picsum.photos/id/237/200/300'
+}
+
+export const chatUsers = [chatUser, chatFriend];

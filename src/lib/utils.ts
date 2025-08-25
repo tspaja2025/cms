@@ -114,38 +114,83 @@ export const generatePdfLink = (invoiceId: string): string => {
 };
 
 // Sort invoices
-export const sortInvoices = <T extends { [key: string]: any }>(
+export const sortInvoices = <T extends Record<string, any>>(
 	items: T[],
 	field: keyof T,
 	direction: 'asc' | 'desc'
 ): T[] => {
 	return [...items].sort((a, b) => {
-		let valueA = a[field];
-		let valueB = b[field];
+		let valueA: any = a[field];
+		let valueB: any = b[field];
 
 		// Handle nested fields like 'client.name'
-		if (field.toString().includes('.')) {
-			const parts = field.toString().split('.');
-			valueA = parts.reduce((obj, key) => obj?.[key], a);
-			valueB = parts.reduce((obj, key) => obj?.[key], b);
+		if (typeof field === 'string' && field.includes('.')) {
+			const parts = field.split('.');
+			valueA = parts.reduce((obj: any, key) => obj?.[key], a);
+			valueB= parts.reduce((obj: any, key) => obj?.[key], b);
 		}
 
-		// Handle string comparisons
+		// Handle undefined or null values
+		if (valueA == null && valueB == null) return 0;
+		if (valueA == null) return direction === 'asc' ? -1 : 1;
+		if (valueB == null) return direction === 'desc' ? 1 : -1;
+
+		// Handle string comparison
 		if (typeof valueA === 'string' && typeof valueB === 'string') {
-			return direction === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+			return direction === 'asc' ? valueB.localeCompare(valueB) : valueB.localeCompare(valueA);
 		}
 
-		// Handle date comparisons
-		if (field === 'date' || field === 'dueDate' || field === 'createdAt' || field === 'updatedAt') {
+		// Handle date comparisons - check if values are date like
+		if ((field === 'date' || field === 'dueDate' || field === 'createdAt' || field === 'updatedAt') ||
+        (typeof valueA === 'string' && !isNaN(Date.parse(valueA)) && typeof valueB === 'string' && !isNaN(Date.parse(valueB)))) {
 			const dateA = new Date(valueA).getTime();
 			const dateB = new Date(valueB).getTime();
 			return direction === 'asc' ? dateA - dateB : dateB - dateA;
 		}
 
 		// Handle number comparisons
-		return direction === 'asc' ? valueA - valueB : valueB - valueA;
-	});
-};
+		if (typeof valueA === 'number' && typeof valueB === 'number') {
+			return direction === 'asc' ? valueA - valueB : valueB - valueA;
+		}
+
+		// Fallback for other types
+		const strA = String(valueA);
+		const strB = String(valueB);
+		return direction === 'asc' ? strA.localeCompare(strB) : strB.localeCompare(strA);
+	})
+}
+// export const sortInvoices = <T extends { [key: string]: any }>(
+// 	items: T[],
+// 	field: keyof T,
+// 	direction: 'asc' | 'desc'
+// ): T[] => {
+// 	return [...items].sort((a, b) => {
+// 		let valueA = a[field];
+// 		let valueB = b[field];
+
+// 		// Handle nested fields like 'client.name'
+// 		if (field.toString().includes('.')) {
+// 			const parts = field.toString().split('.');
+// 			valueA = parts.reduce((obj, key) => obj?.[key], a);
+// 			valueB = parts.reduce((obj, key) => obj?.[key], b);
+// 		}
+
+// 		// Handle string comparisons
+// 		if (typeof valueA === 'string' && typeof valueB === 'string') {
+// 			return direction === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+// 		}
+
+// 		// Handle date comparisons
+// 		if (field === 'date' || field === 'dueDate' || field === 'createdAt' || field === 'updatedAt') {
+// 			const dateA = new Date(valueA).getTime();
+// 			const dateB = new Date(valueB).getTime();
+// 			return direction === 'asc' ? dateA - dateB : dateB - dateA;
+// 		}
+
+// 		// Handle number comparisons
+// 		return direction === 'asc' ? valueA - valueB : valueB - valueA;
+// 	});
+// };
 
 // Filter invoices
 export const filterInvoices = <T extends { status: InvoiceStatus; [key: string]: any }>(
@@ -172,3 +217,12 @@ export const filterInvoices = <T extends { status: InvoiceStatus; [key: string]:
 		return true;
 	});
 };
+
+// Chat format short time
+export function formatShortTime(date: Date) {
+	return date.toLocaleTimeString('en-US', {
+		hour: 'numeric',
+		minute: '2-digit',
+		hour12: true
+	})
+}
